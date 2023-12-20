@@ -42,7 +42,7 @@ void markInvoicePaidScreen() {
 					hostelInstance.updateInvoiceStatus(invoiceID, true);
 					successPopupMessage = "Invoice Updated Successfully!!";
 					globalShouldShowSuccessPopup = true;
-					currentLayer = DISPLAY_INVOICES_SCREEN;
+					currentLayer = MARK_INVOICE_PAID_SCREEN;
 				}
 			}
 		}

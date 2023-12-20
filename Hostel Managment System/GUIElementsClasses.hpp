@@ -327,7 +327,7 @@ public:
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 430, variables::GET_SPECIFIC_INVOICE_SCREEN, "All Invoices", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 470, variables::GENERATE_INVOICES_SCREEN, "Generate Invoice", false });
         // buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::DISPLAY_INVOICES_SCREEN, "Display Invoices", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::MARK_INVOICE_PAID, "Mark Invoice Paid", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::MARK_INVOICE_PAID_SCREEN, "Mark Invoice Paid", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 250, 670, variables::EXIT_SCREEN, "Exit", true });
 
         modeToggleButton = GUIToggleButton(sideBarBounds.x + buttonOffset, 560, "Serious", "Fun", " Mode: ");

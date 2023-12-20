@@ -57,7 +57,7 @@ int main(void)
         case variables::GENERATE_INVOICES_SCREEN:
             generateInvoicesScreen();
             break;
-        case variables::MARK_INVOICE_PAID:
+        case variables::MARK_INVOICE_PAID_SCREEN:
             markInvoicePaidScreen();
             break;
         case variables::GET_SPECIFIC_INVOICE_SCREEN:
