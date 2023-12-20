@@ -802,7 +802,6 @@ void Hostel::updateInvoiceStatus(int invoiceID, bool status)
         if (invoicesList[i].getInvoiceID() == invoiceID)
         {
             invoicesList[i].setStatus(status);
-            std::cout << "----------------------Invoice status updated!-------------" << std::endl;
             return;
         }
     }
