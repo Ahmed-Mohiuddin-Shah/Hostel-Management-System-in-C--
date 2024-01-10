@@ -132,10 +132,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="hostel.cpp" />
+    <ClCompile Include="invoice.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="room.cpp" />
+    <ClCompile Include="staff.cpp" />
+    <ClCompile Include="student.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileReader.h" />
+    <ClInclude Include="hostel.h" />
+    <ClInclude Include="invoice.h" />
+    <ClInclude Include="room.h" />
+    <ClInclude Include="staff.h" />
+    <ClInclude Include="student.h" />
+    <ClInclude Include="texttable.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
