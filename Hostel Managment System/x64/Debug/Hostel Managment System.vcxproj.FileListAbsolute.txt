@@ -1,2 +1,1 @@
 C:\Users\Ahmed Mohiuddin Shah\Documents\Projects\Hostel Managment System\Hostel Managment System\x64\Debug\Hostel Managment System.vcxproj.CopyComplete
-C:\Users\Ahmed Mohiuddin Shah\Documents\Projects\Hostel Management System in CPP\Hostel Managment System\x64\Debug\Hostel Managment System.vcxproj.CopyComplete
