@@ -10,4 +10,8 @@ public:
 
 	static bool createFile(std::string fileName);
 
+	static std::string readFromFile(std::string fileName);
+
+	static void writeToFile(std::string fileName, std::string data);
+
 };

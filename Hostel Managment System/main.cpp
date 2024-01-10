@@ -4,9 +4,14 @@
 #include "FileReader.h"
 
 int main() {
-	
+	std::string fileName = "HostelData.txt";
 	std::string jsonDocument = R"({"key":12,"key2":[false, null, true, "yay"]})";
-	folly::dynamic parsedJson = folly::parseJson(jsonDocument);
+
+	FileReader::writeToFile(fileName, jsonDocument);
+
+	std::string jsonFromText = FileReader::readFromFile(fileName);
+
+	folly::dynamic parsedJson = folly::parseJson(jsonFromText);
 
 	std::cout << parsedJson["key"] << std::endl;
 

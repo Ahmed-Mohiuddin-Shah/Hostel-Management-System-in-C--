@@ -1,4 +1,6 @@
 #include "FileReader.h"
+#include <string>
+#include <iostream>
 
 // ----------------------------------------------------------------
 // As long as you have the static keyword in the header file,
@@ -11,15 +13,43 @@ bool FileReader::checkIfFileExists(std::string fileName)
 	return std::ifstream(fileName).good();
 }
 
-bool createFile(std::string fileName) { 
+bool FileReader::createFile(std::string fileName) {
 	std::fstream file;
 	file.open(fileName, std::ios::out);
 	if (!file)
 	{
-		std::cout << "Error in creating file!!!";
 		throw "Failed To Create " + fileName;
+		return false;
 	}
-	std::cout << "File created successfully."; 
 	file.close();
 	return true;
+}
+
+std::string FileReader::readFromFile(std::string fileName) {
+	std::fstream file;
+	file.open(fileName, std::ios::in);
+	if (!file)
+	{
+		throw "Failed To Open " + fileName;
+	}
+
+	std::string data;
+	
+	std::getline(file, data);
+
+	file.close();
+	return data;
+}
+
+void FileReader::writeToFile(std::string fileName, std::string data) {
+	std::ofstream file;
+	file.open(fileName, std::ofstream::out | std::ofstream::trunc);
+	if (!file)
+	{
+		throw "Failed To Open " + fileName;
+	}
+	
+	file << data << std::endl;
+
+	file.close();
 }
