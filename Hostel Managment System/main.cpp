@@ -24,11 +24,12 @@ int main() {
 		std::cout << e.what();
 	}
 	
-	std::cout << parsedJson["hostel_name"] << std::endl;
-	std::cout << parsedJson["hostel_email"] << std::endl;
-	std::cout << parsedJson["hostel_address"] << std::endl;
+	std::cout << "Hostel Name: " << parsedJson["hostel_name"] << std::endl;
+	std::cout << "Hostel Email: " << parsedJson["hostel_email"] << std::endl;
+	std::cout << "Hostel Phone Number: " << parsedJson["hostel_phone_number"] << std::endl;
+	std::cout << "Hostel Address: " << parsedJson["hostel_address"] << std::endl;
 
-	std::cout << "students:" << std::endl;
+	std::cout << std::endl << "students:" << std::endl;
 	for (auto student : parsedJson["students"]) {
 		std::cout << student << std::endl;
 	}
