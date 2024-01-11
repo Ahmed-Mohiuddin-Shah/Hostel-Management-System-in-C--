@@ -59,5 +59,11 @@
     <ClInclude Include="texttable.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectHeader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="codeSnippets.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -703,3 +703,4 @@ void Hostel::displayInvoicesByDate(std::string date)
     invoiceTable.setAlignment(2, TextTable::Alignment::RIGHT);
     std::cout << invoiceTable << std::endl;
 }
+

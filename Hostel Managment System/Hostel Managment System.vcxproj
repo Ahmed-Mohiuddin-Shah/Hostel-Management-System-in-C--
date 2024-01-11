@@ -140,9 +140,11 @@
     <ClCompile Include="student.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="codeSnippets.hpp" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="hostel.h" />
     <ClInclude Include="invoice.h" />
+    <ClInclude Include="ProjectHeader.hpp" />
     <ClInclude Include="room.h" />
     <ClInclude Include="staff.h" />
     <ClInclude Include="student.h" />
