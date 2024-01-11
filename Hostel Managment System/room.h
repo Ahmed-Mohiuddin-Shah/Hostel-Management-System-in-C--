@@ -11,70 +11,21 @@ private:
 public:
     static const int maxStudentCount = 3;
 
-    Room(int roomNumber)
-    {
-        this->roomNumber = roomNumber;
-        this->studentCount = 0;
-    }
+    Room(int roomNumber);
 
-    void setRoomNumber(int roomNumber)
-    {
-        this->roomNumber = roomNumber;
-    }
+    void setRoomNumber(int roomNumber);
 
-    void setStudentCount(int studentCount)
-    {
-        this->studentCount = studentCount;
-    }
+    void setStudentCount(int studentCount);
 
-    int getRoomNumber()
-    {
-        return roomNumber;
-    }
+    int getRoomNumber();
 
-    int getStudentCount()
-    {
-        return studentCount;
-    }
+    int getStudentCount();
 
-    int getStudentID(int index)
-    {
-        return studentIDList[index];
-    }
+    int getStudentID(int index);
 
-    std::vector<int> getStudentIDList()
-    {
-        return studentIDList;
-    }
+    std::vector<int> getStudentIDList();
 
-    void addStudent(int studentID)
-    {
-        if (studentCount == maxStudentCount)
-        {
-            std::cout << "Room is full" << std::endl;
-            return;
-        }
+    void addStudent(int studentID);
 
-        studentIDList.push_back(studentID);
-        studentCount++;
-    }
-
-    void removeStudent(int studentID)
-    {
-        if (studentCount == 0)
-        {
-            std::cout << "Room is empty" << std::endl;
-            return;
-        }
-
-        for (int i = 0; i < studentIDList.size(); i++)
-        {
-            if (studentIDList[i] == studentID)
-            {
-                studentIDList.erase(studentIDList.begin() + i);
-                studentCount--;
-                break;
-            }
-        }
-    }
+    void removeStudent(int studentID);
 };
