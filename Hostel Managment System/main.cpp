@@ -5,18 +5,52 @@
 
 int main() {
 	std::string fileName = "HostelData.txt";
-	std::string jsonDocument = R"({"key":12,"key2":[false, null, true, "yay"]})";
+	std::string jsonDocument = R"({"hostel_name":"Hostelo","hostel_email":"example@gmail.com","hostel_address":"Islamabad"})";
+	std::string jsonFromText;
+	folly::dynamic parsedJson;
 
-	FileReader::writeToFile(fileName, jsonDocument);
+	if (!FileReader::checkIfFileExists(fileName)) {
 
-	std::string jsonFromText = FileReader::readFromFile(fileName);
+		std::cout << "File doesn't Exist\nCreating New File..." << std::endl;
 
-	folly::dynamic parsedJson = folly::parseJson(jsonFromText);
+		FileReader::writeToFile(fileName, jsonDocument);
 
-	std::cout << parsedJson["key"] << std::endl;
+		jsonFromText = FileReader::readFromFile(fileName);
+		
+		parsedJson = folly::parseJson(jsonFromText);
+		
+		folly::dynamic studentsArray = folly::dynamic::array;
 
-	for (auto& elements : parsedJson["key2"]) {
-		std::cout << elements << std::endl;
+		for (int i = 1; i <= 10; i++) {
+			folly::dynamic studentData = folly::dynamic::object;
+			studentData["s_id"] = i;
+			studentData["s_name"] = "TestName";
+			studentData["s_age"] = 18 + i;
+			studentData["s_gender"] = i%2?"male":"female";
+			studentsArray.push_back(studentData);
+		}
+
+		parsedJson["students"] = studentsArray;
+
+		std::string jsonString = folly::toJson(parsedJson);
+		std::cout << "File doesn't Exist" << std::endl;
+
+		FileReader::writeToFile(fileName, jsonString);
+
+	}
+
+	std::cout << "Text File Contents:" << std::endl;
+
+	jsonFromText = FileReader::readFromFile(fileName);
+
+	parsedJson = folly::parseJson(jsonFromText);
+	
+	std::cout << parsedJson["hostel_name"] << std::endl;
+	std::cout << parsedJson["hostel_email"] << std::endl;
+	std::cout << parsedJson["hostel_address"] << std::endl;
+
+	for (auto student : parsedJson["students"]) {
+		std::cout << student << std::endl;
 	}
 
 	return 0;
