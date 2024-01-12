@@ -36,6 +36,9 @@
     <ClCompile Include="hostel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HostelFileReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileReader.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="codeSnippets.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HostelFileReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
