@@ -5,6 +5,10 @@
 #include <folly/dynamic.h>
 #include "FileReader.h"
 
+#include <string>
+#include <vector>
+#include "hostel.h"
+
 namespace ProjectInfo
 {
 	std::string fileName = "HostelData.txt";
