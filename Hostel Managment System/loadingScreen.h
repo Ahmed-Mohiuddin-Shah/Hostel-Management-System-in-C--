@@ -1,12 +1,13 @@
 #pragma once
 
 variables::FileLoadStatus loadHostelDB() {
-	using namespace variables;
 
+	std::this_thread::sleep_for(std::chrono::seconds(5));  // HEHE Delay for Funsies :)
+
+	using namespace variables;
 	if (!FileReader::checkIfFileExists(ProjectInfo::fileName)) {
 		return DOES_NOT_EXIST;
 	}
-
 	try
 	{
 		fileContent = FileReader::readFromFile(ProjectInfo::fileName);
@@ -29,7 +30,7 @@ void loadingScreen() {
 
 	std::string randomLoadingText = getRandomString(true);
 
-	while (f.wait_for(1us) != std::future_status::ready && !WindowShouldClose())   // increment loopCounter after evaluating condition
+	while (f.wait_for(1us) != std::future_status::ready && !WindowShouldClose())
 	{
 		// --------- Logic -----------------
 
@@ -44,7 +45,8 @@ void loadingScreen() {
 		// --------- Drawing GUI -----------
 		BeginDrawing();
 		ClearBackground(H_DARK_GREY);
-		drawCustomText(randomLoadingText.c_str(), Vector2{ 10, 10 }, labels, 1, H_WHITE);
+		drawCustomText(randomLoadingText.c_str(), Vector2{ 400, 600 }, labels, 1, H_WHITE);
+		animateBugCatGIF(Vector2{ 0, 400 });
 		EndDrawing();
 	}
 

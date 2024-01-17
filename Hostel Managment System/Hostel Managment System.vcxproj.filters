@@ -102,5 +102,8 @@
     <ClInclude Include="variabledefinitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="overlay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

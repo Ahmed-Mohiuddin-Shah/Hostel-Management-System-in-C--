@@ -162,6 +162,7 @@
     <ClInclude Include="HostelFileReader.h" />
     <ClInclude Include="invoice.h" />
     <ClInclude Include="loadingScreen.h" />
+    <ClInclude Include="overlay.h" />
     <ClInclude Include="ProjectHeader.hpp" />
     <ClInclude Include="room.h" />
     <ClInclude Include="staff.h" />
