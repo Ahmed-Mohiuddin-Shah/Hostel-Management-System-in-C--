@@ -144,10 +144,25 @@
   <ItemGroup>
     <ClInclude Include="codeSnippets.hpp" />
     <ClInclude Include="FileReader.h" />
+    <ClInclude Include="headers\codeSnippets.hpp" />
+    <ClInclude Include="headers\FileReader.h" />
+    <ClInclude Include="headers\flavortext.h" />
+    <ClInclude Include="headers\helperfunctions.h" />
+    <ClInclude Include="headers\hostel.h" />
+    <ClInclude Include="headers\HostelFileReader.h" />
+    <ClInclude Include="headers\invoice.h" />
+    <ClInclude Include="headers\loadingScreen.h" />
+    <ClInclude Include="headers\ProjectHeader.hpp" />
+    <ClInclude Include="headers\room.h" />
+    <ClInclude Include="headers\staff.h" />
+    <ClInclude Include="headers\student.h" />
+    <ClInclude Include="headers\texttable.hpp" />
+    <ClInclude Include="headers\variabledefinitions.h" />
     <ClInclude Include="helperfunctions.h" />
     <ClInclude Include="hostel.h" />
     <ClInclude Include="HostelFileReader.h" />
     <ClInclude Include="invoice.h" />
+    <ClInclude Include="loadingScreen.h" />
     <ClInclude Include="ProjectHeader.hpp" />
     <ClInclude Include="room.h" />
     <ClInclude Include="staff.h" />

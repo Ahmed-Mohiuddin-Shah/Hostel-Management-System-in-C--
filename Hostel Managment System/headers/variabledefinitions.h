@@ -34,4 +34,13 @@ namespace variables {
 	int frameDelay = 3;
 	int frameCounter = 0;
 
+	// -------------- Screen Layers ------------------
+	enum LAYERS
+	{
+		LOADING_SCREEN
+	};
+
+	LAYERS currentLayer = LOADING_SCREEN;
+
+	// -------------- 
 }

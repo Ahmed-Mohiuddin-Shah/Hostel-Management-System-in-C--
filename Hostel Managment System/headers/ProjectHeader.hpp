@@ -15,6 +15,9 @@
 #include <vector>
 #include "hostel.h"
 
+// -------- Includes for Screen layers
+#include "loadingScreen.h"
+
 namespace ProjectInfo
 {
 	// Defaults for file handling

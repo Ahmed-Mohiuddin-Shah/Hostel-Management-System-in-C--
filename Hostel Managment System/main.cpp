@@ -9,11 +9,12 @@ int main(void)
 
     while (!WindowShouldClose())
     {
-        BeginDrawing();
-        ClearBackground(variables::H_DARK_GREY);
-        drawCustomText("Elo!", Vector2{ 10, 10 }, variables::headings, 1, variables::H_WHITE);
-        animateGIF(Vector2{ 100, 100 });
-        EndDrawing();
+        switch (variables::currentLayer)
+        {
+        case variables::LOADING_SCREEN:
+            loadingScreen();
+            break;
+        }
     }
 
     // De-Initialization
