@@ -9,7 +9,7 @@ void initializeVariables() {
     customFont = LoadFontEx(customFontPath, maxFontSize, 0, 250);
 
     // ------------- GIF Animation Initialization ---------
-    bugCatGIFImage = LoadImageAnim(bugCatGIFPath, &animFrames);
+    bugCatGIFImage = LoadImageAnim(bugCatGIFPath, &animBugCatFrames);
     bugCatTexture = LoadTextureFromImage(bugCatGIFImage);
 }
 
@@ -19,16 +19,16 @@ void drawCustomText(const char* text, Vector2 position, float fontSize, float sp
 }
 
 // ----------- GIF Drawing --------------------------------
-void animateGIF(Vector2 position) {
+void animateBugCatGIF(Vector2 position) {
     using namespace variables;
-    frameCounter++;
-    if (frameCounter >= frameDelay)
+    frameBugCatCounter++;
+    if (frameBugCatCounter >= frameBugCatDelay)
     {
-        currentAnimFrame++;
-        if (currentAnimFrame >= animFrames) currentAnimFrame = 0;
-        nextFrameDataOffset = bugCatGIFImage.width * bugCatGIFImage.height * 4 * currentAnimFrame;
-        UpdateTexture(bugCatTexture, ((unsigned char*)bugCatGIFImage.data) + nextFrameDataOffset);
-        frameCounter = 0;
+        currentBugCatAnimFrame++;
+        if (currentBugCatAnimFrame >= animBugCatFrames) currentBugCatAnimFrame = 0;
+        nextBugCatFrameDataOffset = bugCatGIFImage.width * bugCatGIFImage.height * 4 * currentBugCatAnimFrame;
+        UpdateTexture(bugCatTexture, ((unsigned char*)bugCatGIFImage.data) + nextBugCatFrameDataOffset);
+        frameBugCatCounter = 0;
     }
     DrawTexture(bugCatTexture, position.x, position.y, H_WHITE);
 }

@@ -3,9 +3,9 @@
 int main(void)
 {
     // --------------------- Initialization ---------------------------
-    InitWindow(variables::screenWidth, variables::screenHeight, "raylib [textures] example - gif playing");
+    InitWindow(variables::screenWidth, variables::screenHeight, ProjectInfo::appName);
     initializeVariables();
-    SetTargetFPS(60);
+    SetTargetFPS(variables::targetFPS);
 
     while (!WindowShouldClose())
     {
@@ -13,6 +13,9 @@ int main(void)
         {
         case variables::LOADING_SCREEN:
             loadingScreen();
+            break;
+        case variables::FATAL_ERROR:
+            fatalErrorScreen();
             break;
         }
     }

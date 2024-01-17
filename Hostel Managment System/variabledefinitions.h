@@ -3,7 +3,7 @@
 namespace variables {
 
 	// ------------- Misc ----------------------------
-
+	const int targetFPS = 60;
 
 	// ------------- Color Palette -------------------
 	Color H_DARK_GREY = { 68, 72, 68, 255 };
@@ -24,23 +24,34 @@ namespace variables {
 	const int screenWidth = 1280;
 	const int screenHeight = 720;
 
-	// ------------- GIF Animation -------------------
+	// ------------- BugCat GIF Animation ------------
 	const char* bugCatGIFPath = "resources/bugcatgif.gif";
-	int animFrames = 0;
+	int animBugCatFrames = 0;
 	Image bugCatGIFImage;
 	Texture2D bugCatTexture;
-	unsigned int nextFrameDataOffset = 0;
-	int currentAnimFrame = 0;
-	int frameDelay = 3;
-	int frameCounter = 0;
+	unsigned int nextBugCatFrameDataOffset = 0;
+	int currentBugCatAnimFrame = 0;
+	int frameBugCatDelay = 3;
+	int frameBugCatCounter = 0;
 
 	// -------------- Screen Layers ------------------
 	enum LAYERS
 	{
-		LOADING_SCREEN
+		LOADING_SCREEN,
+		FATAL_ERROR
 	};
 
 	LAYERS currentLayer = LOADING_SCREEN;
 
-	// -------------- 
+	// -------------- File Loading -------------------
+	enum FileLoadStatus {
+		DOES_NOT_EXIST,
+		LOADED_SUCCESSFULLY,
+		FAILED_TO_LOAD
+	};
+
+	std::string fileContent = "";
+
 }
+
+

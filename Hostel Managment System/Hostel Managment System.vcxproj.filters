@@ -44,13 +44,47 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\bugcatgif.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\ComicCode.otf">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="codeSnippets.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fatalErrorScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="FileReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="flavortext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIElementsClasses.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="helperfunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="hostel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HostelFileReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="invoice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="loadingScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectHeader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="room.h">
@@ -65,75 +99,8 @@
     <ClInclude Include="texttable.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectHeader.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="codeSnippets.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HostelFileReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="variabledefinitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="helperfunctions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="loadingScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\codeSnippets.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\FileReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\flavortext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\helperfunctions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\hostel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\HostelFileReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\invoice.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\loadingScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\ProjectHeader.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\room.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\staff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\student.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\texttable.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\variabledefinitions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="resources\bugcatgif.gif">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="resources\ComicCode.otf">
-      <Filter>Resource Files</Filter>
-    </Font>
   </ItemGroup>
 </Project>

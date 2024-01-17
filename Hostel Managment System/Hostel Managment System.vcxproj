@@ -77,6 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -92,6 +93,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -107,6 +109,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,6 +125,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,22 +146,17 @@
     <ClCompile Include="tests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\bugcatgif.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\ComicCode.otf" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="codeSnippets.hpp" />
+    <ClInclude Include="fatalErrorScreen.h" />
     <ClInclude Include="FileReader.h" />
-    <ClInclude Include="headers\codeSnippets.hpp" />
-    <ClInclude Include="headers\FileReader.h" />
-    <ClInclude Include="headers\flavortext.h" />
-    <ClInclude Include="headers\helperfunctions.h" />
-    <ClInclude Include="headers\hostel.h" />
-    <ClInclude Include="headers\HostelFileReader.h" />
-    <ClInclude Include="headers\invoice.h" />
-    <ClInclude Include="headers\loadingScreen.h" />
-    <ClInclude Include="headers\ProjectHeader.hpp" />
-    <ClInclude Include="headers\room.h" />
-    <ClInclude Include="headers\staff.h" />
-    <ClInclude Include="headers\student.h" />
-    <ClInclude Include="headers\texttable.hpp" />
-    <ClInclude Include="headers\variabledefinitions.h" />
+    <ClInclude Include="flavortext.h" />
+    <ClInclude Include="GUIElementsClasses.hpp" />
     <ClInclude Include="helperfunctions.h" />
     <ClInclude Include="hostel.h" />
     <ClInclude Include="HostelFileReader.h" />
@@ -169,12 +168,6 @@
     <ClInclude Include="student.h" />
     <ClInclude Include="texttable.hpp" />
     <ClInclude Include="variabledefinitions.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="resources\bugcatgif.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="resources\ComicCode.otf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
