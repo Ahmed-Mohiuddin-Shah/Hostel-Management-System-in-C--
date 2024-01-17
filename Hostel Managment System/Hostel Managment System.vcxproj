@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="codeSnippets.hpp" />
     <ClInclude Include="FileReader.h" />
+    <ClInclude Include="helperfunctions.h" />
     <ClInclude Include="hostel.h" />
     <ClInclude Include="HostelFileReader.h" />
     <ClInclude Include="invoice.h" />
@@ -152,6 +153,13 @@
     <ClInclude Include="staff.h" />
     <ClInclude Include="student.h" />
     <ClInclude Include="texttable.hpp" />
+    <ClInclude Include="variabledefinitions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\bugcatgif.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\ComicCode.otf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
