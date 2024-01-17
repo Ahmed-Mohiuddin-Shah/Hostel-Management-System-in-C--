@@ -6,10 +6,21 @@ This is a hostel management system implemented in C++.
 
 1. Clone the repository
 
-2. Install dependencies using vcpkg:
+2. If you have not already installed vcpkg then:
+    Open the command prompt in your C drive then execute the following:
+    ```
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+    bootstrap-vcpkg.bat
+    vcpkg integrate install
+    ```
+
+3. Install dependencies using vcpkg:
 
     ```bash
+    cd C:\vcpkg
     vcpkg install nlohmann-json
+    vcpkg install raylib:x64-windows
     ```
 
 ## Contributing
