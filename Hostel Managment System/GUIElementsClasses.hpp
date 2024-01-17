@@ -15,8 +15,9 @@ public:
     }
 
     void draw() {
-        DrawRectangleRec(bounds, isMouseOver() ? variables::H_DARK_BLUE : variables::H_BLUE);
-        drawCustomText(text, Vector2{ bounds.x + 0.5f, bounds.y + 0.5f }, variables::labels, 1, variables::H_WHITE);
+        DrawRectangleRounded(bounds, 2, 10, isMouseOver() ? variables::H_BLUE : variables::H_DARK_BLUE);
+        DrawRectangleRoundedLines(bounds, 2, 10, 5, isMouseOver() ? variables::H_DARK_BLUE : variables::H_BLUE);
+        drawCustomText(text, Vector2{ bounds.x + TextLength(text) / 2, bounds.y + 2.0f}, variables::labels, 1, variables::H_WHITE);
     }
 
     bool isClicked() {

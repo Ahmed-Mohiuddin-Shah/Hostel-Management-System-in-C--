@@ -19,9 +19,9 @@ namespace variables {
 	// ------------- Font Sizing ---------------------
 	float maxFontSize = 200;
 	float headings = 150;
-	float labels = 50;
-	float labelsTextHeight = 50;
-	float widthPerCharacterForLabels = 22;
+	float labels = 25;
+	float labelsTextHeight = 30;
+	float widthPerCharacterForLabels = 12;
 
 	// ------------- Screen Size ---------------------
 	const int screenWidth = 1280;

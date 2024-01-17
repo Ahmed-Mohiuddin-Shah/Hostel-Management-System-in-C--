@@ -3,8 +3,8 @@
 void createNewHostelScreen() {
 	using namespace variables;
 
-	GUIButton createHostelButton(screenWidth / 2 - (widthPerCharacterForLabels * 18) / 2, 500, widthPerCharacterForLabels * 18, labelsTextHeight, "Create new Hostel!"); // widthPerCharacterForLabels * (X) ; here X is number of characters
-	GUIButton exitProgramButton(screenWidth / 2 - (widthPerCharacterForLabels * 4) / 2, 570, widthPerCharacterForLabels * 4, labelsTextHeight, "Exit");
+	GUIButton createHostelButton(screenWidth / 2 - (widthPerCharacterForLabels * 18) / 2, 530, widthPerCharacterForLabels * 18, labelsTextHeight, "Create new Hostel!"); // widthPerCharacterForLabels * (X) ; here X is number of characters
+	GUIButton exitProgramButton(screenWidth / 2 - (widthPerCharacterForLabels * 4) / 2, 580, widthPerCharacterForLabels * 4, labelsTextHeight, "Exit");
 
 	while (!WindowShouldClose())
 	{
