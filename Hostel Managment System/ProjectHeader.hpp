@@ -6,6 +6,7 @@
 #include "helperfunctions.h"
 
 // Includes for File Handling
+#include "nlohmann/json.hpp"
 #include "FileReader.h"
 
 // -------- Includes for Hostel Test
