@@ -9,7 +9,7 @@ This is a hostel management system implemented in C++.
 2. Install dependencies using vcpkg:
 
     ```bash
-    vcpkg install folly:x64-windows
+    vcpkg install nlohmann-json
     ```
 
 ## Contributing
