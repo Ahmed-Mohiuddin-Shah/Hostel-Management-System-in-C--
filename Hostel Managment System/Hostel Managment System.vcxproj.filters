@@ -105,5 +105,8 @@
     <ClInclude Include="overlay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="createNewHostelScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

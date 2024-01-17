@@ -4,6 +4,7 @@ namespace variables {
 
 	// ------------- Misc ----------------------------
 	const int targetFPS = 60;
+	bool shouldExit = false;
 
 	// ------------- Color Palette -------------------
 	Color H_DARK_GREY = { 68, 72, 68, 255 };
@@ -19,6 +20,8 @@ namespace variables {
 	float maxFontSize = 200;
 	float headings = 150;
 	float labels = 50;
+	float labelsTextHeight = 50;
+	float widthPerCharacterForLabels = 22;
 
 	// ------------- Screen Size ---------------------
 	const int screenWidth = 1280;
@@ -39,7 +42,8 @@ namespace variables {
 	enum LAYERS
 	{
 		LOADING_SCREEN,
-		FATAL_ERROR
+		FATAL_ERROR_SCREEN,
+		CREATE_NEW_HOSTEL_SCREEN
 	};
 
 	LAYERS currentLayer = LOADING_SCREEN;

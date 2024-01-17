@@ -40,3 +40,4 @@ namespace ProjectInfo
 #include "overlay.h"
 #include "loadingScreen.h"
 #include "fatalErrorScreen.h"
+#include "createNewHostelScreen.h"
