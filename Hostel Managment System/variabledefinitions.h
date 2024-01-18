@@ -37,7 +37,7 @@ namespace variables {
 	int currentBugCatAnimFrame = 0;
 	int frameBugCatDelay = 3;
 	int frameBugCatCounter = 0;
-	Vector2 burgerMenuBugCatPosition = { 10, 550 };
+	Vector2 burgerMenuBugCatPosition = { 0, 550 };
 
 	// -------------- Screen Layers ------------------
 	enum LAYERS
@@ -58,5 +58,3 @@ namespace variables {
 
 	std::string fileContent = "";
 }
-
-

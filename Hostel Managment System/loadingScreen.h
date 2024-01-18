@@ -68,6 +68,8 @@ void loadingScreen() {
 		// std::this_thread::sleep_for(std::chrono::seconds(2));
 
 		currentLayer = CREATE_NEW_HOSTEL_SCREEN;
+
+		currentLayer = FATAL_ERROR_SCREEN;
 		break;
 	case variables::LOADED_SUCCESSFULLY:
 		break;
