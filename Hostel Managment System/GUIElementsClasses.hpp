@@ -48,6 +48,14 @@ public:
         this->toggledImageTexture = LoadTextureFromImage(imageToggled);
         this->bounds = Rectangle{ x, y, float(unToggledImageTexture.width), float (unToggledImageTexture.height)};
         this->isToggled = false;
+        UnloadImage(imageToggled);
+        UnloadImage(imageUnToggled);
+    }
+
+    ~GUIBurgerButton()
+    {
+        UnloadTexture(unToggledImageTexture);
+        UnloadTexture(toggledImageTexture);
     }
 
     void draw() {
@@ -89,6 +97,26 @@ public:
         text[0] = '\0';
     }
 
+
+    bool isActive() {
+        return this->isSelected;
+    }
+
+    void deSelect() {
+        this->isSelected = false;
+    }
+
+    void draw() const {
+
+        DrawRectangleRounded(bounds, 2, 10, variables::H_DARK_GREY);
+        DrawRectangleRounded(labelBounds, 2, 10, isSelected ? variables::H_BLUE : variables::H_DARK_BLUE);
+
+        DrawRectangleRoundedLines(bounds, 2, 10, 5, isSelected ? variables::H_DARK_BLUE : variables::H_BLUE);
+        DrawRectangleRoundedLines(labelBounds, 2, 10, 5, isSelected ? variables::H_DARK_BLUE : variables::H_BLUE);
+
+        drawCustomText(TextFormat("%s  %s", label, text), Vector2{ bounds.x + 10, bounds.y + bounds.height / 2 - 10 }, variables::labels, 1, variables::H_WHITE);
+    }
+
     void update() {
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), bounds)) {
             isSelected = !isSelected;
@@ -113,14 +141,8 @@ public:
         }
     }
 
-    void draw() const {
-
-        DrawRectangleRounded(bounds, 2, 10, variables::H_DARK_GREY);
-        DrawRectangleRounded(labelBounds, 2, 10, isSelected ? variables::H_DARK_BLUE : variables::H_BLUE);
-
-        DrawRectangleRoundedLines(bounds, 2, 10, 5, isSelected ? variables::H_BLUE : variables::H_DARK_BLUE);
-        DrawRectangleRoundedLines(labelBounds, 2, 10, 5, isSelected ? variables::H_BLUE : variables::H_DARK_BLUE);
-
-        drawCustomText(TextFormat("%s  %s", label, text), Vector2{bounds.x + 10, bounds.y + bounds.height / 2 - 10}, variables::labels, 1,  variables::H_WHITE);
+    Rectangle getBounds() {
+        return bounds;
     }
 };
+
