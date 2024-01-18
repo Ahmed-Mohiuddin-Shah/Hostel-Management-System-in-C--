@@ -20,6 +20,43 @@ public:
         drawCustomText(text, Vector2{ bounds.x + TextLength(text) / 2, bounds.y + 2.0f}, variables::labels, 1, variables::H_WHITE);
     }
 
+    void setPosition(int xPosition) {
+        bounds.x = xPosition;
+    }
+
+    bool isClicked() {
+        return isMouseOver() && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
+    }
+
+    Rectangle getBounds() {
+        return bounds;
+    }
+};
+
+class GUISideBarButton {
+private:
+    Rectangle bounds;
+    const char* text;
+public:
+    GUISideBarButton(float x, float y, const char* buttonText) {
+        this->bounds = Rectangle{ x, y, TextLength(buttonText) * variables::widthPerCharacterForsideBarButtonText , variables::sideBarButtonTextHeight };
+        this->text = buttonText;
+    }
+
+    bool isMouseOver() {
+        return CheckCollisionPointRec(GetMousePosition(), bounds);
+    }
+
+    void draw() {
+        DrawRectangleRounded(bounds, 0.5, 10, isMouseOver() ? variables::H_BLUE : variables::H_DARK_BLUE);
+        DrawRectangleRoundedLines(bounds, 0.5, 10, 5, isMouseOver() ? variables::H_DARK_BLUE : variables::H_BLUE);
+        drawCustomText(text, Vector2{ bounds.x + TextLength(text) / 2, bounds.y + 2.0f }, variables::sideBarButtonText, 1, variables::H_WHITE);
+    }
+
+    void setPosition(int xPosition) {
+        bounds.x = xPosition;
+    }
+
     bool isClicked() {
         return isMouseOver() && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
     }
@@ -154,14 +191,32 @@ class GUISidebar {
 private:
     Rectangle sideBarBounds;
     float closedPositionX;
+    std::vector<GUISideBarButton> buttons;
+    const int buttonOffset = 65;
 
 public:
     GUISidebar(float width) {
         closedPositionX = -width - width/10;
         sideBarBounds = Rectangle{ closedPositionX, 0, width, variables::screenHeight };
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 100, "Student Deets" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 140, "Add Student" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 180, "Promote Students" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 220, "Remove Student" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 260, "Room Deets" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 300, "Add Room" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, "Staff Deets" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, "Add Staff" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 420, "Delete Staff" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 460, "Generate Invoice" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 500, "Display Invoices" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 540, "Get Invoice" });
     }
 
-    void shouldShow(bool show) {
+    variables::LAYERS getLayerSelected() {
+
+    }
+
+    void shouldShowUpdate(bool show) {
         float targetX = show ? 0.0f : closedPositionX;
 
         if (abs(sideBarBounds.x - targetX) == sideBarBounds.width / 10) {
@@ -175,11 +230,23 @@ public:
             sideBarBounds.x += sideBarBounds.width / 10;
         }
 
+        for (auto& button : buttons) {
+            button.setPosition(sideBarBounds.x + buttonOffset);
+        }
+
     }
 
     void draw() {
         DrawRectangleRounded(sideBarBounds, 0.2, 10, variables::H_BLUE);
         DrawRectangle(sideBarBounds.x, sideBarBounds.y, (sideBarBounds.width / 2), sideBarBounds.height, variables::H_BLUE);
+
+
+        // drawButtons
+        for (auto& button : buttons) {
+            button.draw();
+        }
+
+
         animateBugCatGIF(Vector2{ sideBarBounds.x + 10, variables::burgerMenuBugCatPosition.y });
     }
 };

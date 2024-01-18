@@ -23,6 +23,11 @@ namespace variables {
 	float labels = 25;
 	float labelsTextHeight = 30;
 	float widthPerCharacterForLabels = 12;
+	float sideBarButtonText = 18;
+	float sideBarButtonTextHeight = 25;
+	float widthPerCharacterForsideBarButtonText = 10;
+
+
 
 	// ------------- Screen Size ---------------------
 	const int screenWidth = 1280;

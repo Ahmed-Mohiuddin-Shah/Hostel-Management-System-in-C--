@@ -7,7 +7,7 @@ void guiOverlay() {
     static GUISidebar sideBar(400);
 
     // Update
-    sideBar.shouldShow(burgerButton.isButtonToggled());
+    sideBar.shouldShowUpdate(burgerButton.isButtonToggled());
 
 
     // GUI
