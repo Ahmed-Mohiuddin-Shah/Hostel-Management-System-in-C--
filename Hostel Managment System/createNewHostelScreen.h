@@ -1,5 +1,38 @@
 #pragma once
 
+bool validateInputs(TextInputBox *inputBoxes) {
+
+	if (inputBoxes[0].getInputText().empty() || inputBoxes[1].getInputText().empty() || inputBoxes[2].getInputText().empty() || inputBoxes[3].getInputText().empty()) {
+		return false;
+	}
+	return true;
+}
+
+bool saveHostelInfo(TextInputBox* inputBoxes) {
+	JSON hostelInfoJson;
+	hostelInfoJson["hostel_name"] = inputBoxes[0].getInputText();
+	hostelInfoJson["hostel_address"] = inputBoxes[1].getInputText();
+	hostelInfoJson["hostel_ph_no"] = inputBoxes[2].getInputText();
+	hostelInfoJson["hostel_email"] = inputBoxes[3].getInputText();
+
+	std::string hostelInfoJsonString = hostelInfoJson.dump();
+
+	try
+	{
+		FileReader::createFile(ProjectInfo::fileName);
+		FileReader::writeToFile(ProjectInfo::fileName, hostelInfoJsonString);
+	}
+	catch (const std::exception&)
+	{
+		return false;
+	}
+
+	variables::currentLayer = variables::FATAL_ERROR_SCREEN;
+
+
+	return true;
+}
+
 void createNewHostelScreen() {
 	using namespace variables;
 
@@ -8,15 +41,15 @@ void createNewHostelScreen() {
 
 	const size_t numInputBoxes = 4;
 	TextInputBox inputBoxes[numInputBoxes] = {
-		{15, 200, "Hostel Name"},
-		{15, 300, "Hostel Address"},
-		{15, 400, "Hostel Phone Number"},
-		{15, 500, "Hostel Email"}
+		{15, 200, "Hostel Name", false},
+		{15, 300, "Hostel Address", false},
+		{15, 400, "Hostel Phone Number", true},
+		{15, 500, "Hostel Email", false}
 	};
 
 	bool anySelected = false;
 
-	while (!WindowShouldClose())
+	while (!layerChangedHandler() && !WindowShouldClose())
 	{
 		// --------- Logic -----------------
 		// Update input boxes
@@ -50,6 +83,14 @@ void createNewHostelScreen() {
 		if (exitProgramButton.isClicked()) {
 			shouldExit = true;
 			break;
+		}
+		if (createHostelButton.isClicked()) {
+			if (validateInputs(inputBoxes)) {
+				saveHostelInfo(inputBoxes);
+			}
+			else {
+				std::cout << "Invalid Input" << std::endl;
+			}
 		}
 
 		// --------- Drawing GUI -----------
