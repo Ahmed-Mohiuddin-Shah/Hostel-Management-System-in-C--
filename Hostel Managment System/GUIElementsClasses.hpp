@@ -194,32 +194,54 @@ public:
     }
 };
 
+struct SideBarInfoText {
+    Vector2 position;
+    const char* text;
+};
+
 class GUISidebar {
 private:
     Rectangle sideBarBounds;
     float closedPositionX;
     std::vector<GUISideBarButton> buttons;
+    std::vector<Rectangle> infoBoxes;
+    std::vector<SideBarInfoText> textPositions;
     const int buttonOffset = 65;
+    const int rectOffset = 55;
+    int textOffset;
 
 public:
     GUISidebar(float width) {
         closedPositionX = -width - width/10;
         sideBarBounds = Rectangle{ closedPositionX, 0, width, variables::screenHeight };
+
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 120, 20, variables::HOSTEL_DETAILS_SCREEN, "Hostel Deets" });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 60, 20, variables::HOME_SCREEN, "Home" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 100, variables::FATAL_ERROR_SCREEN, "Student Deets" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 100, variables::FATAL_ERROR_SCREEN, "Student Deets" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 140, variables::FATAL_ERROR_SCREEN, "Add Student" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 180, variables::FATAL_ERROR_SCREEN, "Promote Students" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 220, variables::FATAL_ERROR_SCREEN, "Remove Student" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 260, variables::FATAL_ERROR_SCREEN, "Room Deets" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 300, variables::FATAL_ERROR_SCREEN, "Add Room" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 80, variables::FATAL_ERROR_SCREEN, "Student Deets" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 120, variables::FATAL_ERROR_SCREEN, "Add Student" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 160, variables::FATAL_ERROR_SCREEN, "Promote Students" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 200, variables::FATAL_ERROR_SCREEN, "Remove Student" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 250, variables::FATAL_ERROR_SCREEN, "Room Deets" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 290, variables::FATAL_ERROR_SCREEN, "Add Room" });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::FATAL_ERROR_SCREEN, "Staff Deets" });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, variables::FATAL_ERROR_SCREEN, "Add Staff" });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 420, variables::FATAL_ERROR_SCREEN, "Delete Staff" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 460, variables::FATAL_ERROR_SCREEN, "Generate Invoice" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 500, variables::FATAL_ERROR_SCREEN, "Display Invoices" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 540, variables::FATAL_ERROR_SCREEN, "Get Invoice"});
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 470, variables::FATAL_ERROR_SCREEN, "Generate Invoice" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::FATAL_ERROR_SCREEN, "Display Invoices" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::FATAL_ERROR_SCREEN, "Get Invoice"});
+
+        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset + 60, 10, width - rectOffset - 145, 45 });
+        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 70, width - rectOffset - 10, 165 });
+        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 240, width - rectOffset - 10, 85 });
+        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 330, width - rectOffset - 10, 125 });
+        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 460, width - rectOffset - 10, 125 });
+
+        textOffset = width - 20;
+
+        textPositions.push_back({ Vector2{ sideBarBounds.x + textOffset, 80} , "Students"});
+        textPositions.push_back({ Vector2{ sideBarBounds.x + textOffset, 250 }, "Rooms"});
+        textPositions.push_back({ Vector2{ sideBarBounds.x + textOffset, 340 }, "Staff"});
+        textPositions.push_back({ Vector2{ sideBarBounds.x + textOffset, 470 }, "Invocie"});
     }
 
     void checkToChangeLayer() {
@@ -244,6 +266,18 @@ public:
             sideBarBounds.x += sideBarBounds.width / 10;
         }
 
+        for (auto& infoBox : infoBoxes) {
+            if (infoBox.y == 10) {
+                infoBox.x = sideBarBounds.x + rectOffset + 60;
+                continue;
+            }
+            infoBox.x = sideBarBounds.x + rectOffset;
+        }
+
+        for (auto& textPosition : textPositions) {
+            textPosition.position.x = sideBarBounds.x + textOffset;
+        }
+
         for (auto& button : buttons) {
             if (button.getScreenLayer() == variables::HOSTEL_DETAILS_SCREEN) {
                 button.setPosition(sideBarBounds.x + buttonOffset + 120);
@@ -262,6 +296,18 @@ public:
         DrawRectangleRounded(sideBarBounds, 0.2, 10, variables::H_BLUE);
         DrawRectangle(sideBarBounds.x, sideBarBounds.y, (sideBarBounds.width / 2), sideBarBounds.height, variables::H_BLUE);
 
+        // draw info boxes
+        for (auto& infoBox : infoBoxes) {
+            if (infoBox.y == 10) {
+                DrawRectangleRounded(infoBox, 0.4, 10, variables::H_DARK_GREY);
+                continue;
+            }
+            DrawRectangleRounded(infoBox, 0.2, 10, variables::H_DARK_GREY);
+        }
+
+        for (auto& textPosition : textPositions) {
+            DrawTextPro(variables::customFont, textPosition.text, textPosition.position, Vector2{0, 0}, 90.0, variables::labels, 1, variables::H_WHITE);
+        }
 
         // drawButtons
         for (auto& button : buttons) {
