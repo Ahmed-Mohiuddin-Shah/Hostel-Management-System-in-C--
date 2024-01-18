@@ -330,3 +330,58 @@ public:
         animateBugCatGIF(Vector2{ sideBarBounds.x + 10, variables::burgerMenuBugCatPosition.y });
     }
 };
+
+class ErrorPopup {
+private:
+    Rectangle bounds;
+    Vector2 position;
+    std::string message;
+    int messageLength = 300;
+    float slideSpeed;
+    float originalDisplayTime;
+    float displayTime;
+    bool isVisible;
+
+public:
+    ErrorPopup(float slideSpeed, float displayTime) : slideSpeed(slideSpeed), originalDisplayTime(displayTime), displayTime(displayTime), isVisible(false) {
+        bounds = { variables::screenWidth, 10, 320, 60 };
+        position = { variables::screenWidth, 20 };
+    }
+
+    void showMessage(const std::string& errorMessage) {
+        message = errorMessage;
+        messageLength = message.length() * variables::widthPerCharacterForLabels;
+        bounds.width = messageLength + 100;
+        isVisible = true;
+    }
+
+    void update() {
+        if (isVisible) {
+            // Slide in
+            if (bounds.x > variables::screenWidth - messageLength) {
+                position.x -= slideSpeed * GetFrameTime();
+                bounds.x -= slideSpeed * GetFrameTime();
+            }
+
+
+            // Check if time to display has elapsed
+            displayTime -= GetFrameTime();
+            if (displayTime <= 0) {
+                isVisible = false;
+                displayTime = originalDisplayTime;
+            }
+        }
+        else {
+            position = { variables::screenWidth, 10 };
+            bounds.x = variables::screenWidth;
+        }
+    }
+  
+    void draw() const {
+        if (isVisible) {
+            DrawRectangleRounded(bounds, 0.5, 5, RED);
+            DrawRectangleRoundedLines(bounds, 0.5, 10, 5, MAROON);
+            drawCustomText(message.c_str(), Vector2 {position.x + 10, position.y + 10 }, variables::labels, 1, variables::H_WHITE);
+        }
+    }
+};
