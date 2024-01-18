@@ -4,7 +4,7 @@
 void guiOverlay() {
     using namespace variables;
     static GUIBurgerButton burgerButton(10, 10);
-    static GUISidebar sideBar(300);
+    static GUISidebar sideBar(400);
 
     // Update
     sideBar.shouldShow(burgerButton.isButtonToggled());
@@ -14,8 +14,4 @@ void guiOverlay() {
     
     sideBar.draw();
     burgerButton.draw();
-
-    if (burgerButton.isButtonToggled()) {
-        animateBugCatGIF(burgerMenuBugCatPosition);
-    }
 }

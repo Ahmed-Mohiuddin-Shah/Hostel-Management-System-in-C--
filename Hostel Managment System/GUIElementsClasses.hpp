@@ -153,25 +153,33 @@ public:
 class GUISidebar {
 private:
     Rectangle sideBarBounds;
-    float targetPositionX;
+    float closedPositionX;
 
 public:
     GUISidebar(float width) {
-        targetPositionX = -width;
-        sideBarBounds = Rectangle{ targetPositionX, 0, width, variables::screenHeight };
+        closedPositionX = -width - width/10;
+        sideBarBounds = Rectangle{ closedPositionX, 0, width, variables::screenHeight };
     }
 
     void shouldShow(bool show) {
-        if (show) {
-            sideBarBounds.x = 0;
+        float targetX = show ? 0.0f : closedPositionX;
+
+        if (abs(sideBarBounds.x - targetX) == sideBarBounds.width / 10) {
+            return;
+        }
+
+        if (sideBarBounds.x > targetX) {
+            sideBarBounds.x -= sideBarBounds.width / 10;
         }
         else {
-            sideBarBounds.x = targetPositionX;
+            sideBarBounds.x += sideBarBounds.width / 10;
         }
+
     }
 
     void draw() {
         DrawRectangleRounded(sideBarBounds, 0.2, 10, variables::H_BLUE);
         DrawRectangle(sideBarBounds.x, sideBarBounds.y, (sideBarBounds.width / 2), sideBarBounds.height, variables::H_BLUE);
+        animateBugCatGIF(Vector2{ sideBarBounds.x + 10, variables::burgerMenuBugCatPosition.y });
     }
 };
