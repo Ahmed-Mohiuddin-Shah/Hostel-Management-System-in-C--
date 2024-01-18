@@ -9,9 +9,6 @@ int main(void)
 
     while (!variables::shouldExit && !WindowShouldClose())
     {
-
-        std::cout << "layer changed"<<std::endl;
-
         switch (variables::currentLayer)
         {
         case variables::LOADING_SCREEN:
