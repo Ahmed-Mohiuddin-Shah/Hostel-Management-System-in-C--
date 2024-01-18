@@ -65,7 +65,7 @@ void loadingScreen() {
 		ClearBackground(H_DARK_GREY);
 		drawCustomText("Hostel File Does Not Exist :(", Vector2{10, 10}, labels, 1, H_WHITE);
 		EndDrawing();
-		std::this_thread::sleep_for(std::chrono::seconds(2));
+		// std::this_thread::sleep_for(std::chrono::seconds(2));
 
 		currentLayer = CREATE_NEW_HOSTEL_SCREEN;
 		break;

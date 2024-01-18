@@ -5,8 +5,8 @@ private:
     Rectangle bounds;
     const char* text;
 public:
-    GUIButton(float x, float y, float width, float height, const char* buttonText) {
-        this->bounds = Rectangle{ x, y, width, height };
+    GUIButton(float x, float y, const char* buttonText) {
+        this->bounds = Rectangle{ x, y, TextLength(buttonText) * variables::widthPerCharacterForLabels , variables::labelsTextHeight};
         this->text = buttonText;
     }
 
@@ -67,5 +67,60 @@ public:
 
     bool isButtonToggled() {
         return isToggled;
+    }
+
+    void setButtonToggled(bool toggleState) {
+        isToggled = toggleState;
+    }
+};
+
+class TextInputBox {
+private:
+    Rectangle bounds;
+    Rectangle labelBounds;
+    const char* label;
+    char text[64];
+    bool isSelected;
+
+public:
+    TextInputBox(float x, float y,  const char* boxLabel)
+        : bounds({ x, y, variables::widthPerCharacterForLabels * (63 + TextLength(boxLabel)), variables::labelsTextHeight }), labelBounds({ x, y, variables::widthPerCharacterForLabels * (TextLength(boxLabel) + 1), variables::labelsTextHeight }), label(boxLabel), isSelected(false) {
+        // Initialize text buffer
+        text[0] = '\0';
+    }
+
+    void update() {
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), bounds)) {
+            isSelected = !isSelected;
+        }
+
+        if (isSelected) {
+            int key = GetCharPressed();
+
+            while (key > 0) {
+                if ((key >= 32) && (key <= 125) && (strlen(text) < sizeof(text) - 1)) {
+                    int len = strlen(text);
+                    text[len] = static_cast<char>(key);
+                    text[len + 1] = '\0';
+                }
+
+                key = GetCharPressed();
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE) && (strlen(text) > 0)) {
+                text[strlen(text) - 1] = '\0';
+            }
+        }
+    }
+
+    void draw() const {
+
+        DrawRectangleRounded(bounds, 2, 10, variables::H_DARK_GREY);
+        DrawRectangleRounded(labelBounds, 2, 10, isSelected ? variables::H_DARK_BLUE : variables::H_BLUE);
+
+        DrawRectangleRoundedLines(bounds, 2, 10, 5, isSelected ? variables::H_BLUE : variables::H_DARK_BLUE);
+        DrawRectangleRoundedLines(labelBounds, 2, 10, 5, isSelected ? variables::H_BLUE : variables::H_DARK_BLUE);
+
+        drawCustomText(TextFormat("%s  %s", label, text), Vector2{bounds.x + 10, bounds.y + bounds.height / 2 - 10}, variables::labels, 1,  variables::H_WHITE);
     }
 };

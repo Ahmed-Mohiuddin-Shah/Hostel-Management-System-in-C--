@@ -19,6 +19,7 @@ namespace variables {
 	// ------------- Font Sizing ---------------------
 	float maxFontSize = 200;
 	float headings = 150;
+	float widthPerCharacterForHeadings = 66;
 	float labels = 25;
 	float labelsTextHeight = 30;
 	float widthPerCharacterForLabels = 12;
