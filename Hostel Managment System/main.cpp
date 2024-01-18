@@ -20,6 +20,9 @@ int main(void)
         case variables::CREATE_NEW_HOSTEL_SCREEN:
             createNewHostelScreen();
             break;
+        case variables::EXIT_SCREEN:
+            variables::shouldExit = true;
+            break;
         default:
             fatalErrorScreen();
             break;
@@ -28,7 +31,9 @@ int main(void)
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
+    // wrap in closing/exit screen
     unloadResources();
+    
     CloseWindow();
     //--------------------------------------------------------------------------------------
 
