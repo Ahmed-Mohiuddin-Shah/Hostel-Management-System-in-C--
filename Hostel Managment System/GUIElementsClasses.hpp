@@ -36,10 +36,12 @@ public:
 class GUISideBarButton {
 private:
     Rectangle bounds;
+    variables::LAYERS layerIdentifier;
     const char* text;
 public:
-    GUISideBarButton(float x, float y, const char* buttonText) {
+    GUISideBarButton(float x, float y, variables::LAYERS screenLayer, const char* buttonText) {
         this->bounds = Rectangle{ x, y, TextLength(buttonText) * variables::widthPerCharacterForsideBarButtonText , variables::sideBarButtonTextHeight };
+        this->layerIdentifier = screenLayer;
         this->text = buttonText;
     }
 
@@ -63,6 +65,10 @@ public:
 
     Rectangle getBounds() {
         return bounds;
+    }
+
+    variables::LAYERS getScreenLayer() {
+        return layerIdentifier;
     }
 };
 
@@ -111,6 +117,7 @@ public:
 
         if (isClicked()) {
             isToggled = !isToggled;
+            variables::globalBurgerButtonToggleState = isToggled;
         }
     }
 
@@ -132,7 +139,7 @@ private:
     bool isSelected;
 
 public:
-    TextInputBox(float x, float y,  const char* boxLabel)
+    TextInputBox(float x, float y, const char* boxLabel)
         : bounds({ x, y, variables::widthPerCharacterForLabels * (63 + TextLength(boxLabel)), variables::labelsTextHeight }), labelBounds({ x, y, variables::widthPerCharacterForLabels * (TextLength(boxLabel) + 1), variables::labelsTextHeight }), label(boxLabel), isSelected(false) {
         // Initialize text buffer
         text[0] = '\0';
@@ -198,22 +205,29 @@ public:
     GUISidebar(float width) {
         closedPositionX = -width - width/10;
         sideBarBounds = Rectangle{ closedPositionX, 0, width, variables::screenHeight };
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 100, "Student Deets" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 140, "Add Student" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 180, "Promote Students" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 220, "Remove Student" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 260, "Room Deets" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 300, "Add Room" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, "Staff Deets" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, "Add Staff" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 420, "Delete Staff" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 460, "Generate Invoice" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 500, "Display Invoices" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 540, "Get Invoice" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 120, 20, variables::HOSTEL_DETAILS_SCREEN, "Hostel Deets" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 60, 20, variables::HOME_SCREEN, "Home" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 100, variables::FATAL_ERROR_SCREEN, "Student Deets" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 100, variables::FATAL_ERROR_SCREEN, "Student Deets" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 140, variables::FATAL_ERROR_SCREEN, "Add Student" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 180, variables::FATAL_ERROR_SCREEN, "Promote Students" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 220, variables::FATAL_ERROR_SCREEN, "Remove Student" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 260, variables::FATAL_ERROR_SCREEN, "Room Deets" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 300, variables::FATAL_ERROR_SCREEN, "Add Room" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::FATAL_ERROR_SCREEN, "Staff Deets" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, variables::FATAL_ERROR_SCREEN, "Add Staff" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 420, variables::FATAL_ERROR_SCREEN, "Delete Staff" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 460, variables::FATAL_ERROR_SCREEN, "Generate Invoice" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 500, variables::FATAL_ERROR_SCREEN, "Display Invoices" });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 540, variables::FATAL_ERROR_SCREEN, "Get Invoice"});
     }
 
-    variables::LAYERS getLayerSelected() {
-
+    void checkToChangeLayer() {
+        for (auto& button : buttons) {
+            if (button.isClicked()) {
+                variables::currentLayer = button.getScreenLayer();
+            }
+        }
     }
 
     void shouldShowUpdate(bool show) {
@@ -231,6 +245,14 @@ public:
         }
 
         for (auto& button : buttons) {
+            if (button.getScreenLayer() == variables::HOSTEL_DETAILS_SCREEN) {
+                button.setPosition(sideBarBounds.x + buttonOffset + 120);
+                continue;
+            }
+            if (button.getScreenLayer() == variables::HOME_SCREEN) {
+                button.setPosition(sideBarBounds.x + buttonOffset + 60);
+                continue;
+            }
             button.setPosition(sideBarBounds.x + buttonOffset);
         }
 

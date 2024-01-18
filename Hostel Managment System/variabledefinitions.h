@@ -49,10 +49,13 @@ namespace variables {
 	{
 		LOADING_SCREEN,
 		FATAL_ERROR_SCREEN,
-		CREATE_NEW_HOSTEL_SCREEN
+		CREATE_NEW_HOSTEL_SCREEN,
+		HOSTEL_DETAILS_SCREEN,
+		HOME_SCREEN
 	};
 
 	LAYERS currentLayer = LOADING_SCREEN;
+	LAYERS previousLayer = LOADING_SCREEN;
 
 	// -------------- File Loading -------------------
 	enum FileLoadStatus {
@@ -62,4 +65,7 @@ namespace variables {
 	};
 
 	std::string fileContent = "";
+
+	// --------------- Overlay -----------------------
+	bool globalBurgerButtonToggleState = false;
 }

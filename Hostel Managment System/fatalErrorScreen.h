@@ -3,7 +3,7 @@
 void fatalErrorScreen() {
 	using namespace variables;
 
-	while (!WindowShouldClose())
+	while (!layerChangedHandler() && !WindowShouldClose())
 	{
 		// --------- Logic -----------------
 

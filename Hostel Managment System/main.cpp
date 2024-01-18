@@ -9,6 +9,9 @@ int main(void)
 
     while (!variables::shouldExit && !WindowShouldClose())
     {
+
+        std::cout << "layer changed"<<std::endl;
+
         switch (variables::currentLayer)
         {
         case variables::LOADING_SCREEN:
@@ -19,6 +22,9 @@ int main(void)
             break;
         case variables::CREATE_NEW_HOSTEL_SCREEN:
             createNewHostelScreen();
+            break;
+        default:
+            fatalErrorScreen();
             break;
         }
     }

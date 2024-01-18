@@ -38,3 +38,12 @@ void unloadResources() {
     UnloadTexture(bugCatTexture);
     UnloadImage(bugCatGIFImage);
 }
+
+bool layerChangedHandler() {
+    if (variables::previousLayer != variables::currentLayer) {
+        variables::previousLayer = variables::currentLayer;
+        variables::globalBurgerButtonToggleState = false;
+        return true;
+    }
+    return false;
+}
