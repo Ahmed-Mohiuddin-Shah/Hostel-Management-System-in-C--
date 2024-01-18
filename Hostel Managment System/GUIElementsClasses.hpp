@@ -15,13 +15,17 @@ public:
     }
 
     void draw() {
-        DrawRectangleRounded(bounds, 2, 10, isMouseOver() ? variables::H_BLUE : variables::H_DARK_BLUE);
-        DrawRectangleRoundedLines(bounds, 2, 10, 5, isMouseOver() ? variables::H_DARK_BLUE : variables::H_BLUE);
+        DrawRectangleRounded(bounds, 0.5, 10, isMouseOver() ? variables::H_BLUE : variables::H_DARK_BLUE);
+        DrawRectangleRoundedLines(bounds, 0.5, 10, 5, isMouseOver() ? variables::H_DARK_BLUE : variables::H_BLUE);
         drawCustomText(text, Vector2{ bounds.x + TextLength(text) / 2, bounds.y + 2.0f}, variables::labels, 1, variables::H_WHITE);
     }
 
     bool isClicked() {
         return isMouseOver() && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
+    }
+
+    Rectangle getBounds() {
+        return bounds;
     }
 };
 
@@ -108,11 +112,11 @@ public:
 
     void draw() const {
 
-        DrawRectangleRounded(bounds, 2, 10, variables::H_DARK_GREY);
-        DrawRectangleRounded(labelBounds, 2, 10, isSelected ? variables::H_BLUE : variables::H_DARK_BLUE);
+        DrawRectangleRounded(bounds, 0.5, 10, variables::H_DARK_GREY);
+        DrawRectangleRounded(labelBounds, 0.5, 10, isSelected ? variables::H_BLUE : variables::H_DARK_BLUE);
 
-        DrawRectangleRoundedLines(bounds, 2, 10, 5, isSelected ? variables::H_DARK_BLUE : variables::H_BLUE);
-        DrawRectangleRoundedLines(labelBounds, 2, 10, 5, isSelected ? variables::H_DARK_BLUE : variables::H_BLUE);
+        DrawRectangleRoundedLines(bounds, 0.5, 10, 5, isSelected ? variables::H_DARK_BLUE : variables::H_BLUE);
+        DrawRectangleRoundedLines(labelBounds, 0.5, 10, 5, isSelected ? variables::H_DARK_BLUE : variables::H_BLUE);
 
         drawCustomText(TextFormat("%s  %s", label, text), Vector2{ bounds.x + 10, bounds.y + bounds.height / 2 - 10 }, variables::labels, 1, variables::H_WHITE);
     }
@@ -146,3 +150,28 @@ public:
     }
 };
 
+class GUISidebar {
+private:
+    Rectangle sideBarBounds;
+    float targetPositionX;
+
+public:
+    GUISidebar(float width) {
+        targetPositionX = -width;
+        sideBarBounds = Rectangle{ targetPositionX, 0, width, variables::screenHeight };
+    }
+
+    void shouldShow(bool show) {
+        if (show) {
+            sideBarBounds.x = 0;
+        }
+        else {
+            sideBarBounds.x = targetPositionX;
+        }
+    }
+
+    void draw() {
+        DrawRectangleRounded(sideBarBounds, 0.2, 10, variables::H_BLUE);
+        DrawRectangle(sideBarBounds.x, sideBarBounds.y, (sideBarBounds.width / 2), sideBarBounds.height, variables::H_BLUE);
+    }
+};
