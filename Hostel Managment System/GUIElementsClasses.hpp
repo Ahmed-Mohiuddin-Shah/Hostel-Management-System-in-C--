@@ -137,10 +137,11 @@ private:
     const char* label;
     char text[64];
     bool isSelected;
+    bool isNumericField;
 
 public:
-    TextInputBox(float x, float y, const char* boxLabel)
-        : bounds({ x, y, variables::widthPerCharacterForLabels * (63 + TextLength(boxLabel)), variables::labelsTextHeight }), labelBounds({ x, y, variables::widthPerCharacterForLabels * (TextLength(boxLabel) + 1), variables::labelsTextHeight }), label(boxLabel), isSelected(false) {
+    TextInputBox(float x, float y, const char* boxLabel, bool numberField)
+        : bounds({ x, y, variables::widthPerCharacterForLabels * (63 + TextLength(boxLabel)), variables::labelsTextHeight }), labelBounds({ x, y, variables::widthPerCharacterForLabels * (TextLength(boxLabel) + 1), variables::labelsTextHeight }), label(boxLabel), isSelected(false), isNumericField(numberField) {
         // Initialize text buffer
         text[0] = '\0';
     }
@@ -174,7 +175,14 @@ public:
             int key = GetCharPressed();
 
             while (key > 0) {
-                if ((key >= 32) && (key <= 125) && (strlen(text) < sizeof(text) - 1)) {
+                if (isNumericField && (key >= '0' && key <= '9') && (strlen(text) < sizeof(text) - 1)) {
+                    // Only accept numeric characters when isNumeric is true
+                    int len = strlen(text);
+                    text[len] = static_cast<char>(key);
+                    text[len + 1] = '\0';
+                }
+                else if (!isNumericField && (key >= 32) && (key <= 125) && (strlen(text) < sizeof(text) - 1)) {
+                    // Accept alphanumeric characters when isNumeric is false
                     int len = strlen(text);
                     text[len] = static_cast<char>(key);
                     text[len + 1] = '\0';
@@ -187,6 +195,10 @@ public:
                 text[strlen(text) - 1] = '\0';
             }
         }
+    }
+
+    std::string getInputText() {
+        return std::string(text);
     }
 
     Rectangle getBounds() {
