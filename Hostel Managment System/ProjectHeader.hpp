@@ -36,6 +36,8 @@ namespace ProjectInfo
 #include "nlohmann/json.hpp"
 #include "FileReader.h"
 
+using JSON = nlohmann::json;
+
 // Includes for Screen layers
 #include "overlay.h"
 #include "loadingScreen.h"
