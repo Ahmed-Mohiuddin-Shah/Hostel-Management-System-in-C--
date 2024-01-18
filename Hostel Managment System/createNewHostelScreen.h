@@ -49,6 +49,8 @@ void createNewHostelScreen() {
 
 	bool anySelected = false;
 
+	ErrorPopup errorPopup(1000.0f, 3.0f);
+
 	while (!layerChangedHandler() && !WindowShouldClose())
 	{
 		// --------- Logic -----------------
@@ -79,19 +81,12 @@ void createNewHostelScreen() {
 			}
 		}
 
-		// TODO change shouldExit to exit screen
 		if (exitProgramButton.isClicked()) {
 			shouldExit = true;
 			break;
 		}
-		if (createHostelButton.isClicked()) {
-			if (validateInputs(inputBoxes)) {
-				saveHostelInfo(inputBoxes);
-			}
-			else {
-				std::cout << "Invalid Input" << std::endl;
-			}
-		}
+
+		errorPopup.update();
 
 		// --------- Drawing GUI -----------
 		BeginDrawing();
@@ -104,6 +99,17 @@ void createNewHostelScreen() {
 		for (size_t i = 0; i < numInputBoxes; ++i) {
 			inputBoxes[i].draw();
 		}
+
+		if (createHostelButton.isClicked()) {
+			if (validateInputs(inputBoxes)) {
+				saveHostelInfo(inputBoxes);
+			}
+			else {
+				errorPopup.showMessage("Invalid Input");
+			}
+		}
+
+		errorPopup.draw();
 
 		EndDrawing();
 	}

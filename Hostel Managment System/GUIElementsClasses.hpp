@@ -335,6 +335,7 @@ class ErrorPopup {
 private:
     Rectangle bounds;
     Vector2 position;
+    Texture2D errorTexture;
     std::string message;
     int messageLength = 300;
     float slideSpeed;
@@ -344,14 +345,22 @@ private:
 
 public:
     ErrorPopup(float slideSpeed, float displayTime) : slideSpeed(slideSpeed), originalDisplayTime(displayTime), displayTime(displayTime), isVisible(false) {
-        bounds = { variables::screenWidth, 10, 320, 60 };
+        bounds = { variables::screenWidth, 15, 320, 60 };
         position = { variables::screenWidth, 20 };
+        Image errorCat = LoadImage("resources/errorCat.png");
+        errorTexture = LoadTextureFromImage(errorCat);
+        UnloadImage(errorCat);
+    }
+
+    ~ErrorPopup()
+    {
+        UnloadTexture(errorTexture);
     }
 
     void showMessage(const std::string& errorMessage) {
         message = errorMessage;
-        messageLength = message.length() * variables::widthPerCharacterForLabels;
-        bounds.width = messageLength + 100;
+        messageLength = (message.length() + 5) * variables::widthPerCharacterForLabels;
+        bounds.width = messageLength + 100 ;
         isVisible = true;
     }
 
@@ -379,9 +388,11 @@ public:
   
     void draw() const {
         if (isVisible) {
+            
             DrawRectangleRounded(bounds, 0.5, 5, RED);
-            DrawRectangleRoundedLines(bounds, 0.5, 10, 5, MAROON);
-            drawCustomText(message.c_str(), Vector2 {position.x + 10, position.y + 10 }, variables::labels, 1, variables::H_WHITE);
+            DrawTexture(errorTexture, bounds.x, bounds.y, WHITE);
+            DrawRectangleRoundedLines(bounds, 0.5, 10, 8, MAROON);
+            drawCustomText(TextFormat("     %s", message.c_str()), Vector2{position.x + 10, position.y + 10}, variables::labels, 1, variables::H_WHITE);
         }
     }
 };
