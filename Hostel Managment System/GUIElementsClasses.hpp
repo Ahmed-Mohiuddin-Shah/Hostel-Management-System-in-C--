@@ -33,6 +33,39 @@ public:
     }
 };
 
+class GUIToggleButton {
+private:
+    Rectangle bounds;
+    std::string value1;
+    std::string value2;
+    std::string label;
+    bool state;
+
+public:
+    GUIToggleButton(float x, float y, std::string option1, std::string option2, std::string label) : state(false) {
+        value1 = option1;
+        value2 = option2;
+        this->label = label;
+        this->bounds = Rectangle{ x, y, ((value1.length() > value2.length() ? value1.length() : value2.length()) + label.length()) * variables::widthPerCharacterForLabels , variables::labelsTextHeight };
+    }
+
+    void update() {
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(GetMousePosition(), bounds)) {
+            state = !state;
+        }
+    }
+
+    void draw() const {
+        DrawRectangleRounded(bounds, 0.5, 10, state ? variables::H_BLUE : variables::H_DARK_BLUE);
+        DrawRectangleRoundedLines(bounds, 0.5, 10, 5, state ? variables::H_DARK_BLUE : variables::H_BLUE);
+        drawCustomText(TextFormat("%s%s", label.c_str(), state ? value1.c_str() : value2.c_str()), Vector2{bounds.x + 0.5f, bounds.y  + 0.5f}, variables::labels, 1, variables::H_WHITE);
+    }
+
+    std::string getValue() const {
+        return state ? value1.c_str() : value2.c_str();
+    }
+};
+
 class GUISideBarButton {
 private:
     Rectangle bounds;
@@ -245,7 +278,7 @@ public:
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 60, 20, variables::HOME_SCREEN, "Home", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 80, variables::STUDENT_DETAILS_SCREEN, "Student Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 120, variables::ADD_STUDENT_SCREEN, "Add Student", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 160, variables::FATAL_ERROR_SCREEN, "Promote Students", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 160, variables::PROMOTE_STUDENTS_SCREEN, "Promote Students", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 210, variables::ROOM_DETAILS_SCREEN, "Room Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 250, variables::ADD_ROOM_SCREEN, "Add Room", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 300, variables::STAFF_DETAILS_SCREEN, "Staff Deets", false });
