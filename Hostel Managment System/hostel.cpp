@@ -350,8 +350,6 @@ void Hostel::addStaff(int staffID, std::string staffName, std::string staffCNIC,
 
     Staff staff(staffID, staffName, staffCNIC, phoneNumber, role);
     staffList.push_back(staff);
-
-    std::cout << "-------------- Staff Added -----------------" << std::endl;
 }
 
 void Hostel::removeStaff(int staffID)
@@ -364,6 +362,18 @@ void Hostel::removeStaff(int staffID)
             break;
         }
     }
+}
+
+bool Hostel::checkIfStaffExists(int staffID)
+{
+    for (auto &staff : staffList)
+    {
+        if (staff.getStaffID() == staffID)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 std::string Hostel::getAllStaffsTable()

@@ -66,6 +66,8 @@ public:
 
     void removeStaff(int staffID);
 
+    bool checkIfStaffExists(int staffID);
+
     std::string getAllStaffsTable();
 
     // ------------------------ Room ------------------------
