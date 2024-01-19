@@ -4,7 +4,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "hostel.h"
+
+// Includes for File Handling
+#include "nlohmann/json.hpp"
+#include "FileReader.h"
+
+using JSON = nlohmann::json;
 
 namespace ProjectInfo
 {
@@ -13,7 +18,7 @@ namespace ProjectInfo
 
 	// Defaults for file handling
 	std::string fileName = "HostelData.txt";
-	std::string DefaultHostelInfo = R"({"hostel_name":"Hostelo","hostel_email":"example@gmail.com","hostel_phone_number":"1234-1234567","hostel_address":"Islamabad","students":[null],"rooms":[null],"staffs":[null],"invoices":[null]})";
+	std::string DefaultHostelInfo = R"({"hostel_name":"Hostelo","hostel_email":"example@gmail.com","hostel_phone_number":"12341234567","hostel_address":"Islamabad","students":[null],"rooms":[null],"staffs":[null],"invoices":[null]})";
 }
 
 // Includes For GUI APP
@@ -32,11 +37,8 @@ namespace ProjectInfo
 // Include for Custom Library
 #include "flavortext.h"
 
-// Includes for File Handling
-#include "nlohmann/json.hpp"
-#include "FileReader.h"
-
-using JSON = nlohmann::json;
+// Include for Hostel Class
+#include "hostel.h"
 
 // Includes for Screen layers
 #include "overlay.h"
