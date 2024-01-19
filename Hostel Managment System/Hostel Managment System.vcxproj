@@ -161,6 +161,7 @@
     <ClInclude Include="helperfunctions.h" />
     <ClInclude Include="homeScreen.h" />
     <ClInclude Include="hostel.h" />
+    <ClInclude Include="hostelDetailsScreen.h" />
     <ClInclude Include="HostelFileReader.h" />
     <ClInclude Include="invoice.h" />
     <ClInclude Include="loadingScreen.h" />

@@ -45,3 +45,4 @@ namespace ProjectInfo
 #include "fatalErrorScreen.h"
 #include "createNewHostelScreen.h"
 #include "homeScreen.h"
+#include "hostelDetailsScreen.h"

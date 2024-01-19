@@ -111,5 +111,8 @@
     <ClInclude Include="homeScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="hostelDetailsScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -23,6 +23,9 @@ int main(void)
         case variables::HOME_SCREEN:
             homeScreen();
             break;
+        case variables::HOSTEL_DETAILS_SCREEN:
+            hostelDetailsScreen();
+            break;
         case variables::EXIT_SCREEN:
             variables::shouldExit = true;
             break;
