@@ -414,8 +414,6 @@ void Hostel::addRoom(int roomNumber)
 
     Room room(roomNumber);
     roomList.push_back(room);
-
-    std::cout << "Room Added" << std::endl;
 }
 
 void Hostel::removeRoom(int roomNumber)
@@ -502,7 +500,9 @@ std::string Hostel::getAllRoomsTable()
         {
             studentListString.append(std::string(", ") + std::to_string(studentID));
         }
-        studentListString = studentListString.substr(2, studentListString.length()); // to remove the beginning comma
+        if (!studentListString.empty()) {
+            studentListString = studentListString.substr(2, studentListString.length()); // to remove the beginning comma
+        }
         roomTable.add(studentListString);
         roomTable.endOfRow();
     }
