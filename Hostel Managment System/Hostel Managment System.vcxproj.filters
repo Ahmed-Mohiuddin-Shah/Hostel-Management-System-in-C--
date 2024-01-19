@@ -135,5 +135,8 @@
     <ClInclude Include="displayInvoicesScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="addStaffScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,55 +1,58 @@
 #pragma once
 
-std::string validateInputs(TextInputBox *inputBoxes) {
+namespace createHostelFuncs {
+	std::string validateInputs(TextInputBox* inputBoxes) {
 
-	if (inputBoxes[0].getInputText().empty()) {
-		return "Error 404: Hostel Name Not Found!\n     Did it run away?";
+		if (inputBoxes[0].getInputText().empty()) {
+			return "Error 404: Hostel Name Not Found!\n     Did it run away?";
+		}
+
+		if (inputBoxes[1].getInputText().empty()) {
+			return "Hold on, we're searching the universe\n     for a Hostel without an address...";
+		}
+
+		if (inputBoxes[2].getInputText().empty()) {
+			return "Hostel Phone Number missing.\n     Are you sure it's not on airplane mode?";
+		}
+
+		if (inputBoxes[3].getInputText().empty()) {
+			return "Hostel Email not provided.\n     Did you forget to send it an invitation?";
+		}
+		return "valid";
 	}
 
-	if (inputBoxes[1].getInputText().empty()) {
-		return "Hold on, we're searching the universe\n     for a Hostel without an address...";
+	std::string saveHostelInfo(TextInputBox* inputBoxes) {
+		JSON hostelInfoJson;
+		hostelInfoJson["hostel_name"] = inputBoxes[0].getInputText();
+		hostelInfoJson["hostel_address"] = inputBoxes[1].getInputText();
+		hostelInfoJson["hostel_ph_no"] = inputBoxes[2].getInputText();
+		hostelInfoJson["hostel_email"] = inputBoxes[3].getInputText();
+		hostelInfoJson["students"] = {};
+		hostelInfoJson["staffs"] = {};
+		hostelInfoJson["rooms"] = {};
+		hostelInfoJson["invoices"] = {};
+
+		std::string hostelInfoJsonString = hostelInfoJson.dump();
+
+		try
+		{
+			FileReader::createFile(ProjectInfo::fileName);
+			FileReader::writeToFile(ProjectInfo::fileName, hostelInfoJsonString);
+		}
+		catch (const std::exception e)
+		{
+			FileReader::deleteFile(ProjectInfo::fileName);
+			return e.what();
+		}
+
+		variables::currentLayer = variables::LOADING_SCREEN;
+
+		return "saved";
 	}
-
-	if (inputBoxes[2].getInputText().empty()) {
-		return "Hostel Phone Number missing.\n     Are you sure it's not on airplane mode?";
-	}
-
-	if (inputBoxes[3].getInputText().empty()) {
-		return "Hostel Email not provided.\n     Did you forget to send it an invitation?";
-	}
-	return "valid";
-}
-
-std::string saveHostelInfo(TextInputBox* inputBoxes) {
-	JSON hostelInfoJson;
-	hostelInfoJson["hostel_name"] = inputBoxes[0].getInputText();
-	hostelInfoJson["hostel_address"] = inputBoxes[1].getInputText();
-	hostelInfoJson["hostel_ph_no"] = inputBoxes[2].getInputText();
-	hostelInfoJson["hostel_email"] = inputBoxes[3].getInputText();
-	hostelInfoJson["students"] = {};
-	hostelInfoJson["staffs"] = {};
-	hostelInfoJson["rooms"] = {};
-	hostelInfoJson["invoices"] = {};
-
-	std::string hostelInfoJsonString = hostelInfoJson.dump();
-
-	try
-	{
-		FileReader::createFile(ProjectInfo::fileName);
-		FileReader::writeToFile(ProjectInfo::fileName, hostelInfoJsonString);
-	}
-	catch (const std::exception e)
-	{
-		FileReader::deleteFile(ProjectInfo::fileName);
-		return e.what();
-	}
-
-	variables::currentLayer = variables::LOADING_SCREEN;
-
-	return "saved";
 }
 
 void createNewHostelScreen() {
+
 	using namespace variables;
 	GUIButton createHostelButton(15, screenHeight - 2*(labelsTextHeight + 20), "Create new Hostel!"); // widthPerCharacterForLabels * (X) ; here X is number of characters
 	GUIButton exitProgramButton(15, screenHeight - labelsTextHeight - 10,  "Exit");
@@ -118,9 +121,9 @@ void createNewHostelScreen() {
 		}
 
 		if (createHostelButton.isClicked()) {
-			std::string validityMessage = validateInputs(inputBoxes);
+			std::string validityMessage = createHostelFuncs::validateInputs(inputBoxes);
 			if (validityMessage == "valid") {
-				validityMessage = saveHostelInfo(inputBoxes);
+				validityMessage = createHostelFuncs::saveHostelInfo(inputBoxes);
 				std::cout << validityMessage;
 				if (validityMessage != "saved") {
 					errorPopup.showMessage(validityMessage);
