@@ -246,29 +246,29 @@ public:
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 80, variables::STUDENT_DETAILS_SCREEN, "Student Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 120, variables::ADD_STUDENT_SCREEN, "Add Student", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 160, variables::FATAL_ERROR_SCREEN, "Promote Students", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 200, variables::FATAL_ERROR_SCREEN, "Remove Student", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 250, variables::ROOM_DETAILS_SCREEN, "Room Deets", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 290, variables::ADD_ROOM_SCREEN, "Add Room", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::STAFF_DETAILS_SCREEN, "Staff Deets", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, variables::ADD_STAFF_SCREEN, "Add Staff", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 420, variables::REMOVE_STAFF_SCREEN, "Remove Staff", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 470, variables::FATAL_ERROR_SCREEN, "Generate Invoice", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::DISPLAY_INVOICES_SCREEN, "Display Invoices", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::FATAL_ERROR_SCREEN, "Get Invoice", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 210, variables::ROOM_DETAILS_SCREEN, "Room Deets", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 250, variables::ADD_ROOM_SCREEN, "Add Room", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 300, variables::STAFF_DETAILS_SCREEN, "Staff Deets", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::ADD_STAFF_SCREEN, "Add Staff", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, variables::REMOVE_STAFF_SCREEN, "Remove Staff", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 430, variables::FATAL_ERROR_SCREEN, "Generate Invoice", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 470, variables::DISPLAY_INVOICES_SCREEN, "Display Invoices", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::FATAL_ERROR_SCREEN, "Get Invoice", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::FATAL_ERROR_SCREEN, "Mark Invoice Paid", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 250, 670, variables::EXIT_SCREEN, "Exit", true });
 
         infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset + 60, 10, width - rectOffset - 145, 45 });
-        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 70, width - rectOffset - 10, 165 });
-        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 240, width - rectOffset - 10, 85 });
-        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 330, width - rectOffset - 10, 125 });
-        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 460, width - rectOffset - 10, 125 });
+        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 70, width - rectOffset - 10, 125 });
+        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 200, width - rectOffset - 10, 85 });
+        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 290, width - rectOffset - 10, 125 });
+        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 420, width - rectOffset - 10, 165 });
 
         textOffset = width - 20;
 
         textPositions.push_back({ Vector2{ sideBarBounds.x + textOffset, 80} , "Students"});
-        textPositions.push_back({ Vector2{ sideBarBounds.x + textOffset, 250 }, "Rooms"});
-        textPositions.push_back({ Vector2{ sideBarBounds.x + textOffset, 340 }, "Staff"});
-        textPositions.push_back({ Vector2{ sideBarBounds.x + textOffset, 470 }, "Invocie"});
+        textPositions.push_back({ Vector2{ sideBarBounds.x + textOffset, 210 }, "Rooms"});
+        textPositions.push_back({ Vector2{ sideBarBounds.x + textOffset, 300 }, "Staff"});
+        textPositions.push_back({ Vector2{ sideBarBounds.x + textOffset, 430 }, "Invoices"});
     }
 
     void checkToChangeLayer() {
