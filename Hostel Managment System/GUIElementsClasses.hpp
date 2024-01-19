@@ -38,11 +38,13 @@ private:
     Rectangle bounds;
     variables::LAYERS layerIdentifier;
     const char* text;
+    bool isExitButton;
 public:
-    GUISideBarButton(float x, float y, variables::LAYERS screenLayer, const char* buttonText) {
+    GUISideBarButton(float x, float y, variables::LAYERS screenLayer, const char* buttonText, bool isExitButton) {
         this->bounds = Rectangle{ x, y, TextLength(buttonText) * variables::widthPerCharacterForsideBarButtonText , variables::sideBarButtonTextHeight };
         this->layerIdentifier = screenLayer;
         this->text = buttonText;
+        this->isExitButton = isExitButton;
     }
 
     bool isMouseOver() {
@@ -50,9 +52,16 @@ public:
     }
 
     void draw() {
-        DrawRectangleRounded(bounds, 0.5, 10, isMouseOver() ? variables::H_BLUE : variables::H_DARK_BLUE);
-        DrawRectangleRoundedLines(bounds, 0.5, 10, 5, isMouseOver() ? variables::H_DARK_BLUE : variables::H_BLUE);
-        drawCustomText(text, Vector2{ bounds.x + TextLength(text) / 2, bounds.y + 2.0f }, variables::sideBarButtonText, 1, variables::H_WHITE);
+        if (!isExitButton) {
+            DrawRectangleRounded(bounds, 0.5, 10, isMouseOver() ? variables::H_BLUE : variables::H_DARK_BLUE);
+            DrawRectangleRoundedLines(bounds, 0.5, 10, 5, isMouseOver() ? variables::H_DARK_BLUE : variables::H_BLUE);
+            drawCustomText(text, Vector2{ bounds.x + TextLength(text) / 2, bounds.y + 2.0f }, variables::sideBarButtonText, 1, variables::H_WHITE);
+        }
+        else {
+            DrawRectangleRounded(bounds, 0.7, 10, isMouseOver() ? MAROON : RED);
+            DrawRectangleRoundedLines(bounds, 0.7, 10, 5, isMouseOver() ? RED : MAROON);
+            drawCustomText(text, Vector2{ bounds.x + TextLength(text) / 2, bounds.y + 2.0f }, variables::sideBarButtonText, 1, variables::H_WHITE);
+        }
     }
 
     void setPosition(int xPosition) {
@@ -229,20 +238,21 @@ public:
         sideBarBounds = Rectangle{ closedPositionX, 0, width, variables::screenHeight };
         outsideBounds = Rectangle{ width - width/10, 0, variables::screenWidth - width + width/2, variables::screenHeight };
 
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 120, 20, variables::HOSTEL_DETAILS_SCREEN, "Hostel Deets" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 60, 20, variables::HOME_SCREEN, "Home" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 80, variables::FATAL_ERROR_SCREEN, "Student Deets" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 120, variables::FATAL_ERROR_SCREEN, "Add Student" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 160, variables::FATAL_ERROR_SCREEN, "Promote Students" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 200, variables::FATAL_ERROR_SCREEN, "Remove Student" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 250, variables::FATAL_ERROR_SCREEN, "Room Deets" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 290, variables::FATAL_ERROR_SCREEN, "Add Room" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::FATAL_ERROR_SCREEN, "Staff Deets" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, variables::FATAL_ERROR_SCREEN, "Add Staff" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 420, variables::FATAL_ERROR_SCREEN, "Delete Staff" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 470, variables::FATAL_ERROR_SCREEN, "Generate Invoice" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::FATAL_ERROR_SCREEN, "Display Invoices" });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::FATAL_ERROR_SCREEN, "Get Invoice"});
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 120, 20, variables::HOSTEL_DETAILS_SCREEN, "Hostel Deets", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 60, 20, variables::HOME_SCREEN, "Home", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 80, variables::FATAL_ERROR_SCREEN, "Student Deets", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 120, variables::FATAL_ERROR_SCREEN, "Add Student", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 160, variables::FATAL_ERROR_SCREEN, "Promote Students", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 200, variables::FATAL_ERROR_SCREEN, "Remove Student", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 250, variables::FATAL_ERROR_SCREEN, "Room Deets", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 290, variables::FATAL_ERROR_SCREEN, "Add Room", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::FATAL_ERROR_SCREEN, "Staff Deets", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, variables::FATAL_ERROR_SCREEN, "Add Staff", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 420, variables::FATAL_ERROR_SCREEN, "Delete Staff", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 470, variables::FATAL_ERROR_SCREEN, "Generate Invoice", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::FATAL_ERROR_SCREEN, "Display Invoices", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::FATAL_ERROR_SCREEN, "Get Invoice", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 250, 670, variables::EXIT_SCREEN, "Exit", true });
 
         infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset + 60, 10, width - rectOffset - 145, 45 });
         infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 70, width - rectOffset - 10, 165 });
@@ -303,6 +313,10 @@ public:
             }
             if (button.getScreenLayer() == variables::HOME_SCREEN) {
                 button.setPosition(sideBarBounds.x + buttonOffset + 60);
+                continue;
+            }
+            if (button.getScreenLayer() == variables::EXIT_SCREEN) {
+                button.setPosition(sideBarBounds.x + buttonOffset + 270);
                 continue;
             }
             button.setPosition(sideBarBounds.x + buttonOffset);
