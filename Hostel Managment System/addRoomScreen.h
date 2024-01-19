@@ -14,6 +14,11 @@ void addRoomScreen() {
 		errorPopup.update();
 		roomNumberInputBox.update();
 
+		if (globalShouldShowRoomNotAvailableErrorPopup) {
+			globalShouldShowRoomNotAvailableErrorPopup = false;
+			errorPopup.showMessage("No Empty Rooms Avialable!!\n     Make a new Room!!!");
+		}
+
 		if (addRoomButton.isClicked()) {
 			if (roomNumberInputBox.getInputText().empty()) {
 				errorPopup.showMessage("How can a Room exist Without a Room Number!\n     Enter a Room Number!!");

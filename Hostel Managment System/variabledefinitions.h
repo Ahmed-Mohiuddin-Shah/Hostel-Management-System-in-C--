@@ -80,6 +80,7 @@ namespace variables {
 	// --------------- Overlay -----------------------
 	bool globalBurgerButtonToggleState = false;
 	bool globalShouldShowSuccessPopup = false;
+	bool globalShouldShowRoomNotAvailableErrorPopup = false;
 	std::string successPopupMessage = "Ye!";
 	std::string fatalErrorMessage = "Eh!";
 }
