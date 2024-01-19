@@ -245,7 +245,7 @@ public:
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 160, variables::FATAL_ERROR_SCREEN, "Promote Students", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 200, variables::FATAL_ERROR_SCREEN, "Remove Student", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 250, variables::ROOM_DETAILS_SCREEN, "Room Deets", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 290, variables::FATAL_ERROR_SCREEN, "Add Room", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 290, variables::ADD_ROOM_SCREEN, "Add Room", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::STAFF_DETAILS_SCREEN, "Staff Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, variables::FATAL_ERROR_SCREEN, "Add Staff", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 420, variables::FATAL_ERROR_SCREEN, "Delete Staff", false });

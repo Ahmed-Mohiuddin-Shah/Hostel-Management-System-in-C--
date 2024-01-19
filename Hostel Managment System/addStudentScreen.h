@@ -15,7 +15,7 @@ void addStudentScreen() {
 		ClearBackground(H_DARK_GREY);
 		errorPopup.draw();
 
-		drawCustomBodyText(hostelInstance.getAllRoomsTable().c_str(), { 0, 0 }, labels, 1, H_WHITE);
+		drawCustomBodyText(hostelInstance.getAllStudentsTable().c_str(), { 0, 0 }, labels, 1, H_WHITE);
 
 		guiOverlay();
 		EndDrawing();
