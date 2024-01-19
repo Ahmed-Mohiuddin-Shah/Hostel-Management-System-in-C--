@@ -15,27 +15,32 @@ void addRoomScreen() {
 		roomNumberInputBox.update();
 
 		if (addRoomButton.isClicked()) {
-			
-			int roomNumber;
-
-			try
-			{
-				roomNumber = std::stoi(roomNumberInputBox.getInputText());
-			}
-			catch (const std::exception e)
-			{
-				fatalErrorMessage = e.what();
-				currentLayer = FATAL_ERROR_SCREEN;
-			}
-
-			if (hostelInstance.roomNumberExists(roomNumber)) {
-				errorPopup.showMessage("Room Already Exists!!!\n     Try A different Number!!");
+			if (roomNumberInputBox.getInputText().empty()) {
+				errorPopup.showMessage("How can a Room exist Without a Room Number!\n     Enter a Room Number!!");
 			}
 			else {
-				hostelInstance.addRoom(roomNumber);
-				successPopupMessage = "Room Added Successfully!!";
-				globalShouldShowSuccessPopup = true;
-				currentLayer = ROOM_DETAILS_SCREEN;
+
+				int roomNumber;
+
+				try
+				{
+					roomNumber = std::stoi(roomNumberInputBox.getInputText());
+				}
+				catch (const std::exception e)
+				{
+					fatalErrorMessage = e.what();
+					currentLayer = FATAL_ERROR_SCREEN;
+				}
+
+				if (hostelInstance.roomNumberExists(roomNumber)) {
+					errorPopup.showMessage("Room Already Exists!!!\n     Try A different Number!!");
+				}
+				else {
+					hostelInstance.addRoom(roomNumber);
+					successPopupMessage = "Room Added Successfully!!";
+					globalShouldShowSuccessPopup = true;
+					currentLayer = ROOM_DETAILS_SCREEN;
+				}
 			}
 		}
 
