@@ -98,8 +98,7 @@ void createNewHostelScreen() {
 		}
 
 		if (exitProgramButton.isClicked()) {
-			shouldExit = true;
-			break;
+			currentLayer = EXIT_SCREEN;
 		}
 
 		errorPopup.update();
