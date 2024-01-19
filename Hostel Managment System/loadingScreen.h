@@ -2,7 +2,7 @@
 
 variables::FileLoadStatus loadHostelDB() {
 
-	std::this_thread::sleep_for(std::chrono::seconds(3));  // HEHE Delay for Funsies :)
+	std::this_thread::sleep_for(std::chrono::seconds(1));  // HEHE Delay for Funsies :)
 
 	using namespace variables;
 	if (!FileReader::checkIfFileExists(ProjectInfo::fileName)) {
