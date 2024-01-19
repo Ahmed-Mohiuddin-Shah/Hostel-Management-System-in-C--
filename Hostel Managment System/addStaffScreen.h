@@ -38,7 +38,7 @@ void addStaffScreen() {
 		{90, 190, "Name", false, 64},
 		{90, 240, "CNIC", true, 13},
 		{90, 290, "Phone Number", true, 11},
-		{90, 340, "Role", false, 30},
+		{90, 340, "Role", false, 30}
 	};
 
 	bool anySelected = false;
