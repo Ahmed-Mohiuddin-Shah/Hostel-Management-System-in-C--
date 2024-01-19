@@ -24,18 +24,17 @@ bool saveHostelInfo(TextInputBox* inputBoxes) {
 	}
 	catch (const std::exception&)
 	{
+		FileReader::deleteFile(ProjectInfo::fileName);
 		return false;
 	}
 
 	variables::currentLayer = variables::FATAL_ERROR_SCREEN;
-
 
 	return true;
 }
 
 void createNewHostelScreen() {
 	using namespace variables;
-
 	GUIButton createHostelButton(15, screenHeight - 2*(labelsTextHeight + 20), "Create new Hostel!"); // widthPerCharacterForLabels * (X) ; here X is number of characters
 	GUIButton exitProgramButton(15, screenHeight - labelsTextHeight - 10,  "Exit");
 
@@ -49,7 +48,7 @@ void createNewHostelScreen() {
 
 	bool anySelected = false;
 
-	ErrorPopup errorPopup(1000.0f, 3.0f);
+	ErrorPopup errorPopup(1500.0f, 2.0f);
 
 	while (!layerChangedHandler() && !WindowShouldClose())
 	{
@@ -113,4 +112,8 @@ void createNewHostelScreen() {
 
 		EndDrawing();
 	}
+
+	globalShouldShowSuccessPopup = true;
+	successPopupMessage = "Hostel File Created Successfully";
+
 }

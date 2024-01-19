@@ -396,3 +396,73 @@ public:
         }
     }
 };
+
+class SuccessPopup {
+private:
+    Rectangle bounds;
+    Vector2 position;
+    Texture2D successTexture;
+    std::string message;
+    int messageLength = 300;
+    float slideSpeed;
+    float originalDisplayTime;
+    float displayTime;
+    bool isVisible;
+
+public:
+    SuccessPopup(float slideSpeed, float displayTime) : slideSpeed(slideSpeed), originalDisplayTime(displayTime), displayTime(displayTime), isVisible(false) {
+        bounds = { variables::screenWidth, 15, 320, 60 };
+        position = { variables::screenWidth, 20 };
+        Image successCat = LoadImage("resources/successCat.png");
+        successTexture = LoadTextureFromImage(successCat);
+        UnloadImage(successCat);
+    }
+
+    ~SuccessPopup()
+    {
+        UnloadTexture(successTexture);
+    }
+
+    void showMessage(const std::string& errorMessage) {
+        message = errorMessage;
+        messageLength = (message.length() + 5) * variables::widthPerCharacterForLabels;
+        bounds.width = messageLength + 100;
+        isVisible = true;
+    }
+
+    void update() {
+        if (isVisible) {
+            // Slide in
+            if (bounds.x > variables::screenWidth - messageLength) {
+                position.x -= slideSpeed * GetFrameTime();
+                bounds.x -= slideSpeed * GetFrameTime();
+            }
+
+
+            // Check if time to display has elapsed
+            displayTime -= GetFrameTime();
+            if (displayTime <= 0) {
+                isVisible = false;
+                displayTime = originalDisplayTime;
+            }
+        }
+        else {
+            position = { variables::screenWidth, 10 };
+            bounds.x = variables::screenWidth;
+        }
+    }
+
+    void draw() const {
+        if (isVisible) {
+
+            DrawRectangleRounded(bounds, 0.5, 5, GREEN);
+            DrawTexture(successTexture, bounds.x, bounds.y, WHITE);
+            DrawRectangleRoundedLines(bounds, 0.5, 10, 8, DARKGREEN);
+            drawCustomText(TextFormat("     %s", message.c_str()), Vector2{ position.x + 10, position.y + 10 }, variables::labels, 1, variables::H_WHITE);
+        }
+    }
+
+    bool isFinished() {
+        return isVisible;
+    }
+};

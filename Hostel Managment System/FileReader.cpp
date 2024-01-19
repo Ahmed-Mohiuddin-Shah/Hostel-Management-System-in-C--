@@ -1,6 +1,7 @@
 #include "FileReader.h"
 #include <string>
 #include <iostream>
+#include <cstdio>
 
 // ----------------------------------------------------------------
 // As long as you have the static keyword in the header file,
@@ -23,6 +24,10 @@ bool FileReader::createFile(std::string fileName) {
 	}
 	file.close();
 	return true;
+}
+
+void FileReader::deleteFile(std::string fileName) {
+	std::remove(fileName.c_str());
 }
 
 std::string FileReader::readFromFile(std::string fileName) {

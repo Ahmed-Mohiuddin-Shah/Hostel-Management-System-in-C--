@@ -3,7 +3,7 @@
 void fatalErrorScreen() {
 	using namespace variables;
 
-	ErrorPopup errorPopup(1000.0f, 3.0f);
+	SuccessPopup errorPopup(1000.0f, 3.0f);
 
 	while (!layerChangedHandler() && !WindowShouldClose())
 	{

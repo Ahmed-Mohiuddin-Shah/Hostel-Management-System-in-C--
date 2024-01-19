@@ -69,4 +69,6 @@ namespace variables {
 
 	// --------------- Overlay -----------------------
 	bool globalBurgerButtonToggleState = false;
+	bool globalShouldShowSuccessPopup = false;
+	std::string successPopupMessage = "Ye!";
 }
