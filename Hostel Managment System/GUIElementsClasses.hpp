@@ -225,7 +225,7 @@ private:
 
 public:
     GUISidebar(float width) {
-        closedPositionX = -width - width/10;
+        closedPositionX = -width + width/10;
         sideBarBounds = Rectangle{ closedPositionX, 0, width, variables::screenHeight };
         outsideBounds = Rectangle{ width - width/10, 0, variables::screenWidth - width + width/2, variables::screenHeight };
 
