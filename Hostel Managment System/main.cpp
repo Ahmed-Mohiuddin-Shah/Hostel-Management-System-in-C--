@@ -27,6 +27,18 @@ int main(void)
         case variables::HOSTEL_DETAILS_SCREEN:
             hostelDetailsScreen();
             break;
+        case variables::STUDENT_DETAILS_SCREEN:
+            studentDetailsScreen();
+            break;
+        case variables::ROOM_DETAILS_SCREEN:
+            roomDetailsScreen();
+            break;
+        case variables::STAFF_DETAILS_SCREEN:
+            staffDetailsScreen();
+            break;
+        case variables::DISPLAY_INVOICES_SCREEN:
+            displayInvoicesScreen();
+            break;
         case variables::ADD_STUDENT_SCREEN:
             addStudentScreen();
             break;

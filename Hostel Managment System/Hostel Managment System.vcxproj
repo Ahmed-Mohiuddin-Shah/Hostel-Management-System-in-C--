@@ -156,6 +156,7 @@
     <ClInclude Include="addStudentScreen.h" />
     <ClInclude Include="codeSnippets.hpp" />
     <ClInclude Include="createNewHostelScreen.h" />
+    <ClInclude Include="displayInvoicesScreen.h" />
     <ClInclude Include="exitScreen.h" />
     <ClInclude Include="fatalErrorScreen.h" />
     <ClInclude Include="FileReader.h" />
@@ -171,8 +172,11 @@
     <ClInclude Include="overlay.h" />
     <ClInclude Include="ProjectHeader.hpp" />
     <ClInclude Include="room.h" />
+    <ClInclude Include="roomDetailsScreen.h" />
     <ClInclude Include="staff.h" />
+    <ClInclude Include="staffDetailsScreen.h" />
     <ClInclude Include="student.h" />
+    <ClInclude Include="studentDetailsScreen.h" />
     <ClInclude Include="texttable.hpp" />
     <ClInclude Include="variabledefinitions.h" />
   </ItemGroup>

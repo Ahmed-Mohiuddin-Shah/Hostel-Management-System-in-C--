@@ -123,5 +123,17 @@
     <ClInclude Include="addRoomScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="studentDetailsScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="staffDetailsScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="roomDetailsScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="displayInvoicesScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

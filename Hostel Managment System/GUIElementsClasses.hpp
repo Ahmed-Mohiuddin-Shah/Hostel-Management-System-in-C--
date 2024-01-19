@@ -240,17 +240,17 @@ public:
 
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 120, 20, variables::HOSTEL_DETAILS_SCREEN, "Hostel Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 60, 20, variables::HOME_SCREEN, "Home", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 80, variables::FATAL_ERROR_SCREEN, "Student Deets", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 80, variables::STUDENT_DETAILS_SCREEN, "Student Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 120, variables::ADD_STUDENT_SCREEN, "Add Student", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 160, variables::FATAL_ERROR_SCREEN, "Promote Students", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 200, variables::FATAL_ERROR_SCREEN, "Remove Student", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 250, variables::FATAL_ERROR_SCREEN, "Room Deets", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 250, variables::ROOM_DETAILS_SCREEN, "Room Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 290, variables::FATAL_ERROR_SCREEN, "Add Room", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::FATAL_ERROR_SCREEN, "Staff Deets", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::STAFF_DETAILS_SCREEN, "Staff Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, variables::FATAL_ERROR_SCREEN, "Add Staff", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 420, variables::FATAL_ERROR_SCREEN, "Delete Staff", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 470, variables::FATAL_ERROR_SCREEN, "Generate Invoice", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::FATAL_ERROR_SCREEN, "Display Invoices", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::DISPLAY_INVOICES_SCREEN, "Display Invoices", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::FATAL_ERROR_SCREEN, "Get Invoice", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 250, 670, variables::EXIT_SCREEN, "Exit", true });
 
