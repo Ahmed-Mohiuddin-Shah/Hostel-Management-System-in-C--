@@ -5,6 +5,11 @@
 #include <string>
 #include <vector>
 
+// Includes for MultiThreading
+#include <future>
+#include <chrono>
+#include <thread>
+
 // Includes for File Handling
 #include "nlohmann/json.hpp"
 #include "FileReader.h"
@@ -28,11 +33,6 @@ namespace ProjectInfo
 // Include for GUI elements Classes
 #include "GUIElementsClasses.hpp"
 
-// Includes for MultiThreading
-#include <future>
-#include <chrono>
-#include <thread>
-
 // Include for Custom Library
 #include "flavortext.h"
 
@@ -46,3 +46,4 @@ namespace ProjectInfo
 #include "createNewHostelScreen.h"
 #include "homeScreen.h"
 #include "hostelDetailsScreen.h"
+#include "exitScreen.h"

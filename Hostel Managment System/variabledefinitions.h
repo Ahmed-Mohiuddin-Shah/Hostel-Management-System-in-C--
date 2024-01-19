@@ -42,6 +42,9 @@ namespace variables {
 	int frameBugCatCounter = 0;
 	Vector2 burgerMenuBugCatPosition = { 0, 550 };
 
+	// ------------- Fatal Error Texture -------------
+	Texture2D fatalErrorTexture;
+
 	// -------------- Screen Layers ------------------
 	enum LAYERS
 	{
@@ -70,4 +73,5 @@ namespace variables {
 	bool globalBurgerButtonToggleState = false;
 	bool globalShouldShowSuccessPopup = false;
 	std::string successPopupMessage = "Ye!";
+	std::string errorPopupMessage = "Eh!";
 }

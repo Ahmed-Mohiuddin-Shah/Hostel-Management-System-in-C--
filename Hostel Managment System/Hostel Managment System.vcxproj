@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="codeSnippets.hpp" />
     <ClInclude Include="createNewHostelScreen.h" />
+    <ClInclude Include="exitScreen.h" />
     <ClInclude Include="fatalErrorScreen.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="flavortext.h" />

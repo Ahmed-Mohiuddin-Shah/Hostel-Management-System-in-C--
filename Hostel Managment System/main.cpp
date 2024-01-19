@@ -6,6 +6,7 @@ int main(void)
     InitWindow(variables::screenWidth, variables::screenHeight, ProjectInfo::appName);
     initializeVariables();
     SetTargetFPS(variables::targetFPS);
+    SetExitKey(0);
 
     while (!variables::shouldExit && !WindowShouldClose())
     {
@@ -27,6 +28,7 @@ int main(void)
             hostelDetailsScreen();
             break;
         case variables::EXIT_SCREEN:
+            // exitScreen();
             variables::shouldExit = true;
             break;
         default:
@@ -37,9 +39,9 @@ int main(void)
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
-    // wrap in closing/exit screen
-    unloadResources();
-    
+    UnloadTexture(variables::fatalErrorTexture);
+    UnloadTexture(variables::bugCatTexture);
+    UnloadImage(variables::bugCatGIFImage);
     CloseWindow();
     //--------------------------------------------------------------------------------------
 

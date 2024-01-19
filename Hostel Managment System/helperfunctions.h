@@ -11,6 +11,10 @@ void initializeVariables() {
     // ------------- GIF Animation Initialization ---------
     bugCatGIFImage = LoadImageAnim(bugCatGIFPath, &animBugCatFrames);
     bugCatTexture = LoadTextureFromImage(bugCatGIFImage);
+
+    // ------------- Fatal Error Texture Load -------------
+    Image fatalErrorImage = LoadImage("resources/fatalErrorCat.png");
+    fatalErrorTexture = LoadTextureFromImage(fatalErrorImage);
 }
 
 // ----------- Custom Text Drawing Function ---------------
@@ -37,17 +41,16 @@ void animateBugCatGIF(Vector2 position) {
     DrawTexture(bugCatTexture, position.x, position.y, H_WHITE);
 }
 
-void unloadResources() {
-    using namespace variables;
-    UnloadTexture(bugCatTexture);
-    UnloadImage(bugCatGIFImage);
-}
-
 bool layerChangedHandler() {
     if (variables::previousLayer != variables::currentLayer) {
         variables::previousLayer = variables::currentLayer;
         variables::globalBurgerButtonToggleState = false;
         return true;
     }
+    return false;
+}
+
+bool writeHostelInfoToFile() {
+    // save hostel info
     return false;
 }

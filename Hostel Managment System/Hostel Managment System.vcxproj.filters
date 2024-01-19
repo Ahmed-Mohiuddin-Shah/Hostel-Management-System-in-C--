@@ -114,5 +114,8 @@
     <ClInclude Include="hostelDetailsScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="exitScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
