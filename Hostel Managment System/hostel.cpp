@@ -492,6 +492,24 @@ bool Hostel::areRoomsAvailable()
     return false;
 }
 
+bool Hostel::isRoomSpaceAvailable(int roomNumber) {
+    for (auto& room : roomList)
+    {
+        if (room.getRoomNumber() == roomNumber)
+        {
+            if (room.getStudentCount() == Room::maxStudentCount)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 std::string Hostel::getAllRoomsTable()
 {
 
