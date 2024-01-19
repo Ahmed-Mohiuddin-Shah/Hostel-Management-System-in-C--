@@ -18,6 +18,10 @@ void drawCustomText(const char* text, Vector2 position, float fontSize, float sp
     DrawTextEx(variables::customFont, text, position, fontSize, spacing, colorTint);
 }
 
+void drawCustomBodyText(const char* text, Vector2 position, float fontSize, float spacing, Color colorTint) {
+    DrawTextEx(variables::customFont, text, Vector2 {position.x + 90, position.y}, fontSize, spacing, colorTint);
+}
+
 // ----------- GIF Drawing --------------------------------
 void animateBugCatGIF(Vector2 position) {
     using namespace variables;
