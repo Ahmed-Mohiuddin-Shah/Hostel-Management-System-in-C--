@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <cstdio>
+#include <stdexcept>
 
 // ----------------------------------------------------------------
 // As long as you have the static keyword in the header file,
@@ -19,7 +20,7 @@ bool FileReader::createFile(std::string fileName) {
 	file.open(fileName, std::ios::out);
 	if (!file)
 	{
-		throw "Failed To Create " + fileName;
+		throw std::runtime_error("Failed To Create " + fileName);
 		return false;
 	}
 	file.close();
@@ -35,7 +36,7 @@ std::string FileReader::readFromFile(std::string fileName) {
 	file.open(fileName, std::ios::in);
 	if (!file)
 	{
-		throw "Failed To Open " + fileName;
+		throw std::runtime_error("Failed To Open " + fileName);
 	}
 
 	std::string data;
@@ -51,7 +52,7 @@ void FileReader::writeToFile(std::string fileName, std::string data) {
 	file.open(fileName, std::ofstream::out | std::ofstream::trunc);
 	if (!file)
 	{
-		throw "Failed To Open " + fileName;
+		throw std::runtime_error("Failed To Open " + fileName);
 	}
 	
 	file << data << std::endl;
