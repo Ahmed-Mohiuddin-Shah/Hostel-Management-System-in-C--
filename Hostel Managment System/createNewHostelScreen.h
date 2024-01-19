@@ -20,7 +20,7 @@ std::string validateInputs(TextInputBox *inputBoxes) {
 	return "valid";
 }
 
-bool saveHostelInfo(TextInputBox* inputBoxes) {
+std::string saveHostelInfo(TextInputBox* inputBoxes) {
 	JSON hostelInfoJson;
 	hostelInfoJson["hostel_name"] = inputBoxes[0].getInputText();
 	hostelInfoJson["hostel_address"] = inputBoxes[1].getInputText();
@@ -38,15 +38,15 @@ bool saveHostelInfo(TextInputBox* inputBoxes) {
 		FileReader::createFile(ProjectInfo::fileName);
 		FileReader::writeToFile(ProjectInfo::fileName, hostelInfoJsonString);
 	}
-	catch (const std::exception&)
+	catch (const std::exception e)
 	{
 		FileReader::deleteFile(ProjectInfo::fileName);
-		return false;
+		return e.what();
 	}
 
 	variables::currentLayer = variables::LOADING_SCREEN;
 
-	return true;
+	return "saved";
 }
 
 void createNewHostelScreen() {
@@ -67,7 +67,7 @@ void createNewHostelScreen() {
 	ErrorPopup errorPopup(1500.0f, 2.0f);
 	errorPopup.showMessage("Hostel Info Not Found!!\n     Please Enter New Info!!");
 
-	while (!layerChangedHandler())
+	while (!layerChangedHandler() && !shouldExit)
 	{
 		// --------- Logic -----------------
 		// Update input boxes
@@ -98,7 +98,9 @@ void createNewHostelScreen() {
 		}
 
 		if (exitProgramButton.isClicked()) {
-			currentLayer = EXIT_SCREEN;
+			// This Should Not Go Through ExitScreen But
+			// Should Directly Exit The Program
+			shouldExit = true;
 		}
 
 		errorPopup.update();
@@ -118,8 +120,10 @@ void createNewHostelScreen() {
 		if (createHostelButton.isClicked()) {
 			std::string validityMessage = validateInputs(inputBoxes);
 			if (validityMessage == "valid") {
-				if (!saveHostelInfo(inputBoxes)) {
-					errorPopup.showMessage("Failed to save Info!!\n     Try agiain UwU!!");
+				validityMessage = saveHostelInfo(inputBoxes);
+				std::cout << validityMessage;
+				if (validityMessage != "saved") {
+					errorPopup.showMessage(validityMessage);
 				}
 			}
 			else {
