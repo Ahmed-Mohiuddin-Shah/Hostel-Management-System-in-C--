@@ -580,6 +580,7 @@ std::string Hostel::getAllStudentsTable()
     studentTable.add("Student CNIC");
     studentTable.add("Phone Number");
     studentTable.add("School");
+    studentTable.add("Gender");
     studentTable.add("Semester");
     studentTable.add("Room Number");
     studentTable.endOfRow();
@@ -591,6 +592,7 @@ std::string Hostel::getAllStudentsTable()
         studentTable.add(student.getStudentCNIC());
         studentTable.add(student.getPhoneNumber());
         studentTable.add(student.getSchool());
+        studentTable.add(student.getGender());
         studentTable.add(std::to_string(student.getSem()));
         for (auto room : roomList)
         {
