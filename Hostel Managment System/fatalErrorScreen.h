@@ -3,7 +3,7 @@
 void fatalErrorScreen() {
 	using namespace variables;
 
-	SuccessPopup errorPopup(1000.0f, 3.0f);
+	ErrorPopup errorPopup(1500.0f, 3.0f);
 
 	while (!layerChangedHandler() && !WindowShouldClose())
 	{
@@ -11,7 +11,7 @@ void fatalErrorScreen() {
 		errorPopup.update();
 
 		if (IsKeyPressed(KEY_SPACE)) {
-			errorPopup.showMessage("Error: We Stormin' the WHITE HOUSE with this one!!!!");
+			errorPopup.showMessage("We Stormin' the WHITE HOUSE with this one!!!!\n     Booiisss!!!");
 		}
 
 		// --------- Drawing GUI -----------

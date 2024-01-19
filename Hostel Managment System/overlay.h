@@ -6,7 +6,7 @@ void guiOverlay() {
 
     static GUIBurgerButton burgerButton(10, 10);
     static GUISidebar sideBar(400);
-    static SuccessPopup successPopup(1500.0f, 2.0f);
+    static SuccessPopup successPopup(1500.0f, 3.0f);
 
     // Update
     successPopup.update();
