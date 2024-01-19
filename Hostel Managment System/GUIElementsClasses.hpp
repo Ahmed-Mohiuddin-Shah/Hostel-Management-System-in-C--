@@ -561,6 +561,5 @@ public:
     void draw() const {
 
         drawCustomText(data.c_str(), Vector2{ bounds.x, bounds.y - scrollPosition }, variables::labels, 1, variables::H_WHITE);
-        std::cout << scrollPosition << std::endl;
     }
 };
