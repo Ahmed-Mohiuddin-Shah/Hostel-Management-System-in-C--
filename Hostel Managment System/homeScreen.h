@@ -10,8 +10,8 @@ void homeScreen() {
 		// --------- Drawing GUI -----------
 		BeginDrawing();
 		ClearBackground(H_DARK_GREY);
-		drawCustomText("Welcome To:", Vector2{ 10, 40 }, variables::headings, 1, WHITE);
-		drawCustomText(hostelJSON["hostel_name"].template get<std::string>().c_str(), Vector2{10, 195}, variables::headings, 1, variables::H_BLUE);
+		drawCustomBodyText("Welcome To:", Vector2{ 0, 0 }, variables::headings, 1, WHITE);
+		drawCustomBodyText(hostelJSON["hostel_name"].template get<std::string>().c_str(), Vector2{0, 140}, variables::headings, 1, variables::H_BLUE);
 		guiOverlay();
 		EndDrawing();
 	}
