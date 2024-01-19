@@ -6,6 +6,12 @@ Room::Room(int roomNumber)
     this->studentCount = 0;
 }
 
+Room::Room(int roomNumber, int studentCount, std::vector<int> studentIDList) {
+    this->roomNumber = roomNumber;
+    this->studentCount = studentCount;
+    this->studentIDList = studentIDList;
+}
+
 void Room::setRoomNumber(int roomNumber)
 {
     this->roomNumber = roomNumber;

@@ -13,6 +13,8 @@ public:
 
     Room(int roomNumber);
 
+    Room(int roomNumber, int studentCount, std::vector<int> studentIDList);
+
     void setRoomNumber(int roomNumber);
 
     void setStudentCount(int studentCount);
