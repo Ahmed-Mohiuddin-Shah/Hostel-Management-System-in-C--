@@ -48,6 +48,9 @@ int main(void)
         case variables::ADD_STAFF_SCREEN:
             addStaffScreen();
             break;
+        case variables::REMOVE_STAFF_SCREEN:
+            removeStaffScreen();
+            break;
         case variables::EXIT_SCREEN:
             exitScreen();
             break;

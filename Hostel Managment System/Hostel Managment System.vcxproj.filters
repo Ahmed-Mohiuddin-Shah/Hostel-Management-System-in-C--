@@ -138,5 +138,8 @@
     <ClInclude Include="addStaffScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="removeStaffScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

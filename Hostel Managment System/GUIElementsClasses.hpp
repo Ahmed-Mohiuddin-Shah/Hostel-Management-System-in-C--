@@ -251,7 +251,7 @@ public:
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 290, variables::ADD_ROOM_SCREEN, "Add Room", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::STAFF_DETAILS_SCREEN, "Staff Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, variables::ADD_STAFF_SCREEN, "Add Staff", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 420, variables::FATAL_ERROR_SCREEN, "Delete Staff", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 420, variables::REMOVE_STAFF_SCREEN, "Remove Staff", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 470, variables::FATAL_ERROR_SCREEN, "Generate Invoice", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::DISPLAY_INVOICES_SCREEN, "Display Invoices", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::FATAL_ERROR_SCREEN, "Get Invoice", false });

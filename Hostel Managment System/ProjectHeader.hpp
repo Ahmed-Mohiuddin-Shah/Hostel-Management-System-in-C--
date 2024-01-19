@@ -56,3 +56,4 @@ Hostel hostelInstance;
 #include "staffDetailsScreen.h"
 #include "displayInvoicesScreen.h"
 #include "addStaffScreen.h"
+#include "removeStaffScreen.h"

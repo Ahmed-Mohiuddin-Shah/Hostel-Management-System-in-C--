@@ -172,6 +172,7 @@
     <ClInclude Include="loadingScreen.h" />
     <ClInclude Include="overlay.h" />
     <ClInclude Include="ProjectHeader.hpp" />
+    <ClInclude Include="removeStaffScreen.h" />
     <ClInclude Include="room.h" />
     <ClInclude Include="roomDetailsScreen.h" />
     <ClInclude Include="staff.h" />
