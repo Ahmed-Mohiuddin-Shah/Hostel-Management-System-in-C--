@@ -144,14 +144,17 @@ private:
     Rectangle bounds;
     Rectangle labelBounds;
     const char* label;
-    char text[64];
+    int bufferSize;
+    char *text;
     bool isSelected;
     bool isNumericField;
 
 public:
-    TextInputBox(float x, float y, const char* boxLabel, bool numberField)
-        : bounds({ x, y, variables::widthPerCharacterForLabels * (63 + TextLength(boxLabel)), variables::labelsTextHeight }), labelBounds({ x, y, variables::widthPerCharacterForLabels * (TextLength(boxLabel) + 1), variables::labelsTextHeight }), label(boxLabel), isSelected(false), isNumericField(numberField) {
+    TextInputBox(float x, float y, const char* boxLabel, bool numberField, int bufferSize)
+        : bounds({ x, y, variables::widthPerCharacterForLabels * (bufferSize + 2 + TextLength(boxLabel)), variables::labelsTextHeight }), labelBounds({ x, y, variables::widthPerCharacterForLabels * (TextLength(boxLabel) + 1), variables::labelsTextHeight }), label(boxLabel), isSelected(false), isNumericField(numberField) {
         // Initialize text buffer
+        this->bufferSize = bufferSize + 1;
+        text = new char[bufferSize + 1];
         text[0] = '\0';
     }
 
@@ -184,13 +187,13 @@ public:
             int key = GetCharPressed();
 
             while (key > 0) {
-                if (isNumericField && (key >= '0' && key <= '9') && (strlen(text) < sizeof(text) - 1)) {
+                if (isNumericField && (key >= '0' && key <= '9') && (strlen(text) < bufferSize - 1)) {
                     // Only accept numeric characters when isNumeric is true
                     int len = strlen(text);
                     text[len] = static_cast<char>(key);
                     text[len + 1] = '\0';
                 }
-                else if (!isNumericField && (key >= 32) && (key <= 125) && (strlen(text) < sizeof(text) - 1)) {
+                else if (!isNumericField && (key >= 32) && (key <= 125) && (strlen(text) < bufferSize - 1)) {
                     // Accept alphanumeric characters when isNumeric is false
                     int len = strlen(text);
                     text[len] = static_cast<char>(key);

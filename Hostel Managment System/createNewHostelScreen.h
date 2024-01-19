@@ -56,10 +56,10 @@ void createNewHostelScreen() {
 
 	const size_t numInputBoxes = 4;
 	TextInputBox inputBoxes[numInputBoxes] = {
-		{15, 200, "Hostel Name", false},
-		{15, 300, "Hostel Address", false},
-		{15, 400, "Hostel Phone Number", true},
-		{15, 500, "Hostel Email", false}
+		{15, 200, "Hostel Name", false, 64},
+		{15, 300, "Hostel Address", false, 64},
+		{15, 400, "Hostel Phone Number", true, 11},
+		{15, 500, "Hostel Email", false, 64}
 	};
 
 	bool anySelected = false;
