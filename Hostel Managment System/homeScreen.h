@@ -3,7 +3,7 @@
 void homeScreen() {
 	using namespace variables;
 
-	while (!layerChangedHandler() && !WindowShouldClose())
+	while (!layerChangedHandler())
 	{
 		// --------- Logic -----------------
 

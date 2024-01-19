@@ -67,7 +67,7 @@ void createNewHostelScreen() {
 	ErrorPopup errorPopup(1500.0f, 2.0f);
 	errorPopup.showMessage("Hostel Info Not Found!!\n     Please Enter New Info!!");
 
-	while (!layerChangedHandler() && !WindowShouldClose())
+	while (!layerChangedHandler())
 	{
 		// --------- Logic -----------------
 		// Update input boxes

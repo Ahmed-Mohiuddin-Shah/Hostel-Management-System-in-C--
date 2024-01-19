@@ -30,7 +30,7 @@ void loadingScreen() {
 
 	std::string randomLoadingText = getRandomString(true);
 
-	while (f.wait_for(1us) != std::future_status::ready && !WindowShouldClose())
+	while (f.wait_for(1us) != std::future_status::ready)
 	{
 		// --------- Logic -----------------
 

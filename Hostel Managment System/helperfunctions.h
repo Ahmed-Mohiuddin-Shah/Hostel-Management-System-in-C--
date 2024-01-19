@@ -51,6 +51,18 @@ bool layerChangedHandler() {
 }
 
 bool writeHostelInfoToFile() {
-    // save hostel info
-    return false;
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    
+    try
+    {
+        std::string hostelInfoStringDump = variables::hostelJSON.dump();
+        FileReader::writeToFile(ProjectInfo::fileName, hostelInfoStringDump);
+        return true;
+    }
+    catch (const std::exception e)
+    {
+        variables::fatalErrorMessage = e.what();
+        return false;
+    }
+
 }

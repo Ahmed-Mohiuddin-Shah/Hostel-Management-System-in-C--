@@ -8,7 +8,7 @@ int main(void)
     SetTargetFPS(variables::targetFPS);
     SetExitKey(0);
 
-    while (!variables::shouldExit && !WindowShouldClose())
+    while (!variables::shouldExit)
     {
         switch (variables::currentLayer)
         {
@@ -28,8 +28,7 @@ int main(void)
             hostelDetailsScreen();
             break;
         case variables::EXIT_SCREEN:
-            // exitScreen();
-            variables::shouldExit = true;
+            exitScreen();
             break;
         default:
             fatalErrorScreen();

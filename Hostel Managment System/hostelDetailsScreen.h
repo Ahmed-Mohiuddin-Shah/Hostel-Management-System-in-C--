@@ -8,7 +8,7 @@ void hostelDetailsScreen() {
 	std::string hostelPhNo = hostelJSON["hostel_ph_no"].template get<std::string>();
 	std::string hostelEmail = hostelJSON["hostel_email"].template get<std::string>();
 
-	while (!layerChangedHandler() && !WindowShouldClose())
+	while (!layerChangedHandler())
 	{
 		// --------- Logic -----------------
 

@@ -4,9 +4,9 @@ void fatalErrorScreen() {
 	using namespace variables;
 
 	ErrorPopup errorPopup(1500.0f, 3.0f);
-	errorPopup.showMessage(errorPopupMessage);
+	errorPopup.showMessage("Fatal Error Occured!!!");
 
-	while (!layerChangedHandler() && !WindowShouldClose())
+	while (!layerChangedHandler())
 	{
 		// --------- Logic -----------------
 		errorPopup.update();
@@ -16,7 +16,8 @@ void fatalErrorScreen() {
 		ClearBackground(H_DARK_GREY);
 		errorPopup.draw();
 
-		drawCustomBodyText("Fatal Error \n\n\n\n\nOccured!!!", Vector2{0, 0}, variables::headings, 1, RED);
+		drawCustomBodyText("Fatal Error \n\n\n\n\n\nOccured!!!", Vector2{0, 0}, variables::headings, 1, RED);
+		drawCustomBodyText(fatalErrorMessage.c_str(), Vector2{0, 230}, variables::labels, 1, RED);
 		DrawTexture(fatalErrorTexture, screenWidth - fatalErrorTexture.width, screenHeight - fatalErrorTexture.height, WHITE);
 
 		guiOverlay();

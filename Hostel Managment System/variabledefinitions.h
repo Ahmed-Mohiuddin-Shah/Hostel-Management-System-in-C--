@@ -73,5 +73,5 @@ namespace variables {
 	bool globalBurgerButtonToggleState = false;
 	bool globalShouldShowSuccessPopup = false;
 	std::string successPopupMessage = "Ye!";
-	std::string errorPopupMessage = "Eh!";
+	std::string fatalErrorMessage = "Eh!";
 }
