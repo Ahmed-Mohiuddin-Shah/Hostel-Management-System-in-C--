@@ -20,6 +20,8 @@ public:
 
     Invoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, double amountDue, double amountAfterDue);
 
+    Invoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, bool status, double amountDue, double amountAfterDue);
+
     void setInvoiceID(int invoiceID);
 
     void setStudentID(int studentID);

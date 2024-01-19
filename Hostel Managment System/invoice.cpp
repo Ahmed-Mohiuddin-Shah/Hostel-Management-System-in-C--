@@ -11,6 +11,17 @@ Invoice::Invoice(int invoiceID, int studentID, std::string invoiceDate, std::str
     this->amountAfterDue = amountAfterDue;
 }
 
+Invoice::Invoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, bool status, double amountDue, double amountAfterDue)
+{
+    this->invoiceID = invoiceID;
+    this->studentID = studentID;
+    this->invoiceDate = invoiceDate;
+    this->dueDate = dueDate;
+    this->status = status;
+    this->amountDue = amountDue;
+    this->amountAfterDue = amountAfterDue;
+}
+
 void Invoice::setInvoiceID(int invoiceID)
 {
     this->invoiceID = invoiceID;
