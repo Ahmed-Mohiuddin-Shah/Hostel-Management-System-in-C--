@@ -40,7 +40,7 @@ bool saveHostelInfo(TextInputBox* inputBoxes) {
 		return false;
 	}
 
-	variables::currentLayer = variables::FATAL_ERROR_SCREEN;
+	variables::currentLayer = variables::LOADING_SCREEN;
 
 	return true;
 }
