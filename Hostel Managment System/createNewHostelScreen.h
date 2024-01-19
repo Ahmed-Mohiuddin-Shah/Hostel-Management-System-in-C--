@@ -3,16 +3,19 @@
 std::string validateInputs(TextInputBox *inputBoxes) {
 
 	if (inputBoxes[0].getInputText().empty()) {
-		return "No Hostel Name Provided!!";
+		return "Error 404: Hostel Name Not Found!\n     Did it run away?";
 	}
+
 	if (inputBoxes[1].getInputText().empty()) {
-		return "No Hostel Address Provided!!";
+		return "Hold on, we're searching the universe\n     for a Hostel without an address...";
 	}
+
 	if (inputBoxes[2].getInputText().empty()) {
-		return "No Hostel Phone Number Provided!!";
+		return "Hostel Phone Number missing.\n     Are you sure it's not on airplane mode?";
 	}
+
 	if (inputBoxes[3].getInputText().empty()) {
-		return "No Hostel Email Provided!!";
+		return "Hostel Email not provided.\n     Did you forget to send it an invitation?";
 	}
 	return "valid";
 }
@@ -111,7 +114,9 @@ void createNewHostelScreen() {
 		if (createHostelButton.isClicked()) {
 			std::string validityMessage = validateInputs(inputBoxes);
 			if (validityMessage == "valid") {
-				saveHostelInfo(inputBoxes);
+				if (!saveHostelInfo(inputBoxes)) {
+					errorPopup.showMessage("Failed to save Info!!\n     Try agiain UwU!!");
+				}
 			}
 			else {
 				errorPopup.showMessage(validityMessage);
