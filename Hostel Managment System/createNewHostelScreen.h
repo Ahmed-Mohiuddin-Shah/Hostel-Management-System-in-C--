@@ -1,11 +1,20 @@
 #pragma once
 
-bool validateInputs(TextInputBox *inputBoxes) {
+std::string validateInputs(TextInputBox *inputBoxes) {
 
-	if (inputBoxes[0].getInputText().empty() || inputBoxes[1].getInputText().empty() || inputBoxes[2].getInputText().empty() || inputBoxes[3].getInputText().empty()) {
-		return false;
+	if (inputBoxes[0].getInputText().empty()) {
+		return "No Hostel Name Provided!!";
 	}
-	return true;
+	if (inputBoxes[1].getInputText().empty()) {
+		return "No Hostel Address Provided!!";
+	}
+	if (inputBoxes[2].getInputText().empty()) {
+		return "No Hostel Phone Number Provided!!";
+	}
+	if (inputBoxes[3].getInputText().empty()) {
+		return "No Hostel Email Provided!!";
+	}
+	return "valid";
 }
 
 bool saveHostelInfo(TextInputBox* inputBoxes) {
@@ -100,11 +109,12 @@ void createNewHostelScreen() {
 		}
 
 		if (createHostelButton.isClicked()) {
-			if (validateInputs(inputBoxes)) {
+			std::string validityMessage = validateInputs(inputBoxes);
+			if (validityMessage == "valid") {
 				saveHostelInfo(inputBoxes);
 			}
 			else {
-				errorPopup.showMessage("Invalid Input");
+				errorPopup.showMessage(validityMessage);
 			}
 		}
 
