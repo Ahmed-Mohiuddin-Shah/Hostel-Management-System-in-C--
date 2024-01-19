@@ -52,7 +52,7 @@ bool layerChangedHandler() {
 
 bool writeHostelInfoToFile() {
     std::this_thread::sleep_for(std::chrono::seconds(1));
-    
+
     try
     {
         std::string hostelInfoStringDump = variables::hostelJSON.dump();
@@ -61,7 +61,7 @@ bool writeHostelInfoToFile() {
     }
     catch (const std::exception e)
     {
-        variables::fatalErrorMessage = e.what();
+        variables::fatalErrorMessage = e.what() + std::string("\nFailed To Save Hostel Info!\nTry To Exit Again!");
         return false;
     }
 
