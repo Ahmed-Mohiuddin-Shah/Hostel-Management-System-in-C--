@@ -124,7 +124,6 @@ void createNewHostelScreen() {
 			std::string validityMessage = createHostelFuncs::validateInputs(inputBoxes);
 			if (validityMessage == "valid") {
 				validityMessage = createHostelFuncs::saveHostelInfo(inputBoxes);
-				std::cout << validityMessage;
 				if (validityMessage != "saved") {
 					errorPopup.showMessage(validityMessage);
 				}
