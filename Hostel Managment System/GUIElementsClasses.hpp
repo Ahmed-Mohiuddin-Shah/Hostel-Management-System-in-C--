@@ -214,6 +214,7 @@ struct SideBarInfoText {
 class GUISidebar {
 private:
     Rectangle sideBarBounds;
+    Rectangle outsideBounds;
     float closedPositionX;
     std::vector<GUISideBarButton> buttons;
     std::vector<Rectangle> infoBoxes;
@@ -226,6 +227,7 @@ public:
     GUISidebar(float width) {
         closedPositionX = -width - width/10;
         sideBarBounds = Rectangle{ closedPositionX, 0, width, variables::screenHeight };
+        outsideBounds = Rectangle{ width - width/10, 0, variables::screenWidth - width + width/2, variables::screenHeight };
 
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 120, 20, variables::HOSTEL_DETAILS_SCREEN, "Hostel Deets" });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 60, 20, variables::HOME_SCREEN, "Home" });
@@ -262,6 +264,10 @@ public:
                 variables::currentLayer = button.getScreenLayer();
             }
         }
+    }
+
+    bool isMouseClickedOutsideOfSideBar() {
+        return CheckCollisionPointRec(GetMousePosition(), outsideBounds) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
     }
 
     void shouldShowUpdate(bool show) {

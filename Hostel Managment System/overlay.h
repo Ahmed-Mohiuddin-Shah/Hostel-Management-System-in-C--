@@ -14,6 +14,9 @@ void guiOverlay() {
 
     sideBar.shouldShowUpdate(burgerButton.isButtonToggled());
     sideBar.checkToChangeLayer();
+    if (sideBar.isMouseClickedOutsideOfSideBar()) {
+        globalBurgerButtonToggleState = false;
+    }
 
     if (variables::globalShouldShowSuccessPopup) {
         successPopup.showMessage(variables::successPopupMessage);
