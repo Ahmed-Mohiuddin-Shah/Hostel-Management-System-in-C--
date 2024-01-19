@@ -532,3 +532,35 @@ public:
         return isVisible;
     }
 };
+
+class GUIScrollView {
+private:
+    Vector2 bounds;
+    std::string data;
+    int scrollPosition;
+    int height;
+
+public:
+    GUIScrollView(float x, float y, const std::string& formattedString)
+        : bounds{ x, y }, data(formattedString), scrollPosition(0) {
+        height = (countNewLineCharacters(formattedString) - 3) / 2 * variables::labelsTextHeight;
+    }
+
+    void update() {
+        // Adjust scroll position based on mouse wheel movement
+        scrollPosition -= GetMouseWheelMove() * 20;
+
+        // Ensure scroll position is within valid range
+        scrollPosition = (scrollPosition < 0) ? 0 : scrollPosition;
+
+        if (scrollPosition > height) {
+            scrollPosition = height;
+        }
+    }
+
+    void draw() const {
+
+        drawCustomText(data.c_str(), Vector2{ bounds.x, bounds.y - scrollPosition }, variables::labels, 1, variables::H_WHITE);
+        std::cout << scrollPosition << std::endl;
+    }
+};
