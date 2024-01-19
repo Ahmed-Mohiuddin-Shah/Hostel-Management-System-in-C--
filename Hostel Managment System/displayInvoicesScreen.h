@@ -15,7 +15,7 @@ void displayInvoicesScreen() {
 		ClearBackground(H_DARK_GREY);
 		errorPopup.draw();
 
-		drawCustomBodyText("Student DEETS:", Vector2{ 0, 0 }, headings, 1, H_DARK_BLUE);
+		drawCustomBodyText("Invoices DEETS:", Vector2{ 0, 0 }, headings, 1, H_DARK_BLUE);
 
 		drawCustomBodyText(hostelInstance.getAllInvoicesTable().c_str(), Vector2{ 0, 115 }, labels, 1, H_WHITE);
 
