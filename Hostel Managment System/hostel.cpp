@@ -366,7 +366,7 @@ void Hostel::removeStaff(int staffID)
     }
 }
 
-void Hostel::displayAllStaff()
+std::string Hostel::getAllStaffsTable()
 {
     TextTable staffTable('-', '|', '+');
     staffTable.add("Staff ID");
@@ -386,7 +386,11 @@ void Hostel::displayAllStaff()
         staffTable.endOfRow();
     }
     staffTable.setAlignment(2, TextTable::Alignment::RIGHT);
-    std::cout << staffTable << std::endl;
+    std::string s;
+    std::ostringstream os;
+    os << staffTable;
+    s = os.str();
+    return s;
 }
 
 // ------------------------ Room ------------------------
@@ -557,7 +561,7 @@ void Hostel::addStudent(int studentID, std::string studentName, std::string stud
     studentList.push_back(student);
 }
 
-void Hostel::displayAllStudents()
+std::string Hostel::getAllStudentsTable()
 {
 
     TextTable studentTable('-', '|', '+');
@@ -592,7 +596,11 @@ void Hostel::displayAllStudents()
     }
 
     studentTable.setAlignment(2, TextTable::Alignment::RIGHT);
-    std::cout << studentTable << std::endl;
+    std::string s;
+    std::ostringstream os;
+    os << studentTable;
+    s = os.str();
+    return s;
 }
 
 // ------------------------ Invoice ------------------------
@@ -692,7 +700,7 @@ void Hostel::updateInvoiceStatus(int invoiceID, bool status)
     return;
 }
 
-void Hostel::displayAllInvoices()
+std::string Hostel::getAllInvoicesTable()
 {
 
     TextTable invoiceTable('-', '|', '+');
@@ -715,6 +723,7 @@ void Hostel::displayAllInvoices()
             if (student.getStudentID() == invoice.getStudentID())
             {
                 invoiceTable.add(student.getStudentName());
+                break;
             }
         }
         invoiceTable.add(invoice.getInvoiceDate());
@@ -726,7 +735,11 @@ void Hostel::displayAllInvoices()
     }
 
     invoiceTable.setAlignment(2, TextTable::Alignment::RIGHT);
-    std::cout << invoiceTable << std::endl;
+    std::string s;
+    std::ostringstream os;
+    os << invoiceTable;
+    s = os.str();
+    return s;
 }
 
 void Hostel::displayInvoicesByStudentID(int studentID)

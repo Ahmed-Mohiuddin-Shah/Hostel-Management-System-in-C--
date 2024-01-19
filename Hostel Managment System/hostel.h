@@ -66,7 +66,7 @@ public:
 
     void removeStaff(int staffID);
 
-    void displayAllStaff();
+    std::string getAllStaffsTable();
 
     // ------------------------ Room ------------------------
 
@@ -86,7 +86,7 @@ public:
 
     void addStudent(int studentID, std::string studentName, std::string studentCNIC, std::string phoneNumber, std::string school, std::string gender, short int sem, int roomNumber);
 
-    void displayAllStudents();
+   std::string getAllStudentsTable();
 
     // ------------------------ Invoice ------------------------
 
@@ -96,7 +96,7 @@ public:
 
     void updateInvoiceStatus(int invoiceID, bool status);
 
-    void displayAllInvoices();
+    std::string getAllInvoicesTable();
 
     void displayInvoicesByStudentID(int studentID);
 
