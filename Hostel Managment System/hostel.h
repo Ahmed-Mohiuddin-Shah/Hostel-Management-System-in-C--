@@ -82,6 +82,8 @@ public:
 
     bool areRoomsAvailable();
 
+    bool roomExists(int roomNumber);
+
     bool isRoomSpaceAvailable(int roomNumber);
 
     std::string getAllRoomsTable();
@@ -90,7 +92,11 @@ public:
 
     void addStudent(int studentID, std::string studentName, std::string studentCNIC, std::string phoneNumber, std::string school, std::string gender, short int sem, int roomNumber);
 
-   std::string getAllStudentsTable();
+    void removeStudent(int studentID);
+
+    void promoteAllStudents();
+
+    std::string getAllStudentsTable();
 
     // ------------------------ Invoice ------------------------
 

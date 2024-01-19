@@ -12,23 +12,26 @@ Hostel::Hostel(std::string hostelName, std::string hostelAddress, std::string ho
     this->hostelEmail = hostelEmail;
 }
 
-Hostel::Hostel(JSON hostelInfoJson) {
+Hostel::Hostel(JSON hostelInfoJson)
+{
     this->hostelName = hostelInfoJson["hostel_name"];
     this->hostelAddress = hostelInfoJson["hostel_address"];
     this->hostelPhoneNumber = hostelInfoJson["hostel_ph_no"];
     this->hostelEmail = hostelInfoJson["hostel_email"];
 
     // Initialize other data members using jsonData
-    for (auto json : hostelInfoJson["rooms"]) {
+    for (auto json : hostelInfoJson["rooms"])
+    {
         std::vector<int> sIDList;
-        for (auto entry : json["s_id_list"]) {
+        for (auto entry : json["s_id_list"])
+        {
             sIDList.push_back(entry);
         }
         roomList.push_back(Room(json["room_num"], json["s_count"], sIDList));
     }
 
-
-    for (auto json : hostelInfoJson["students"]) {
+    for (auto json : hostelInfoJson["students"])
+    {
         studentList.push_back(Student(
             json["s_id"],
             json["s_name"],
@@ -36,21 +39,21 @@ Hostel::Hostel(JSON hostelInfoJson) {
             json["s_ph_no"],
             json["school"],
             json["gender"],
-            json["sem"]
-        ));
+            json["sem"]));
     }
 
-    for (auto json : hostelInfoJson["staffs"]) {
+    for (auto json : hostelInfoJson["staffs"])
+    {
         staffList.push_back(Staff(
             json["st_id"],
             json["st_name"],
             json["st_cnic"],
             json["st_ph_no"],
-            json["role"]
-        ));
+            json["role"]));
     }
 
-    for (auto json : hostelInfoJson["invoices"]) {
+    for (auto json : hostelInfoJson["invoices"])
+    {
         invoicesList.push_back(Invoice(
             json["i_id"],
             json["s_id"],
@@ -58,13 +61,12 @@ Hostel::Hostel(JSON hostelInfoJson) {
             json["i_due_date"],
             json["status"],
             json["am_due"],
-            json["am_aft_due"]
-        ));
+            json["am_aft_due"]));
     }
-
 }
 
-JSON Hostel::toJson() {
+JSON Hostel::toJson()
+{
     JSON hostelJSON;
 
     hostelJSON["hostel_name"] = getHostelName();
@@ -74,7 +76,8 @@ JSON Hostel::toJson() {
 
     std::vector<JSON> roomsVector;
 
-    for (auto room : roomList) {
+    for (auto room : roomList)
+    {
         JSON j;
         j["room_num"] = room.getRoomNumber();
         j["s_count"] = room.getStudentCount();
@@ -87,11 +90,10 @@ JSON Hostel::toJson() {
 
     hostelJSON["rooms"] = roomsJSONVector;
 
-
-
     std::vector<JSON> studentsVector;
 
-    for (auto student : studentList) {
+    for (auto student : studentList)
+    {
         JSON j;
         j["s_id"] = student.getStudentID();
         j["s_name"] = student.getStudentName();
@@ -107,11 +109,10 @@ JSON Hostel::toJson() {
 
     hostelJSON["students"] = studentsJSONVector;
 
-
-
     std::vector<JSON> staffsVector;
 
-    for (auto staff : staffList) {
+    for (auto staff : staffList)
+    {
         JSON j;
         j["st_id"] = staff.getStaffID();
         j["st_name"] = staff.getStaffName();
@@ -125,12 +126,12 @@ JSON Hostel::toJson() {
 
     hostelJSON["staffs"] = staffsJSONVector;
 
-
     hostelJSON["invoices"] = {};
 
     std::vector<JSON> invoicesVector;
 
-    for (auto invoice : invoicesList) {
+    for (auto invoice : invoicesList)
+    {
         JSON j;
         j["i_id"] = invoice.getInvoiceID();
         j["s_id"] = invoice.getStudentID();
@@ -492,8 +493,21 @@ bool Hostel::areRoomsAvailable()
     return false;
 }
 
-bool Hostel::isRoomSpaceAvailable(int roomNumber) {
-    for (auto& room : roomList)
+bool Hostel::roomExists(int roomNumber)
+{
+    for (auto room : roomList)
+    {
+        if (room.getRoomNumber() == roomNumber)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Hostel::isRoomSpaceAvailable(int roomNumber)
+{
+    for (auto &room : roomList)
     {
         if (room.getRoomNumber() == roomNumber)
         {
@@ -528,7 +542,8 @@ std::string Hostel::getAllRoomsTable()
         {
             studentListString.append(std::string(", ") + std::to_string(studentID));
         }
-        if (!studentListString.empty()) {
+        if (!studentListString.empty())
+        {
             studentListString = studentListString.substr(2, studentListString.length()); // to remove the beginning comma
         }
         roomTable.add(studentListString);
@@ -587,6 +602,18 @@ void Hostel::addStudent(int studentID, std::string studentName, std::string stud
     student.setStudentID(studentID);
     student.setStudentName(studentName);
     studentList.push_back(student);
+}
+
+void Hostel::promoteAllStudents()
+{
+    for (auto &student : studentList)
+    {
+        student.setSem(student.getSem() + 1);
+        if (student.getSem() > 8)
+        {
+            student.setSem(8);
+        }
+    }
 }
 
 std::string Hostel::getAllStudentsTable()
@@ -890,4 +917,3 @@ void Hostel::displayInvoicesByDate(std::string date)
     invoiceTable.setAlignment(2, TextTable::Alignment::RIGHT);
     std::cout << invoiceTable << std::endl;
 }
-

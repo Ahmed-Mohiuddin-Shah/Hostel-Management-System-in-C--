@@ -58,6 +58,7 @@ namespace variables {
 		STAFF_DETAILS_SCREEN,
 		DISPLAY_INVOICES_SCREEN,
 		ADD_STUDENT_SCREEN,
+		PROMOTE_STUDENTS_SCREEN,
 		ADD_ROOM_SCREEN,
 		ADD_STAFF_SCREEN,
 		REMOVE_STAFF_SCREEN,
@@ -82,5 +83,5 @@ namespace variables {
 	bool globalShouldShowSuccessPopup = false;
 	bool globalShouldShowRoomNotAvailableErrorPopup = false;
 	std::string successPopupMessage = "Ye!";
-	std::string fatalErrorMessage = "Eh!";
+	std::string fatalErrorMessage = "Not Implemented Yet!";
 }

@@ -42,6 +42,9 @@ int main(void)
         case variables::ADD_STUDENT_SCREEN:
             addStudentScreen();
             break;
+        case variables::PROMOTE_STUDENTS_SCREEN:
+            promoteStudentsScreen();
+            break;
         case variables::ADD_ROOM_SCREEN:
             addRoomScreen();
             break;

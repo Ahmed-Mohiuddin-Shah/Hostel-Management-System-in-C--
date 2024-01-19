@@ -141,5 +141,8 @@
     <ClInclude Include="removeStaffScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="promoteStudentsScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
