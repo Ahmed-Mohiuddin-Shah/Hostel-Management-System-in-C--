@@ -25,6 +25,11 @@ namespace ProjectInfo
 	std::string fileName = "HostelData.txt";
 }
 
+// Include for Hostel Class
+#include "hostel.h"
+
+Hostel hostelInstance;
+
 // Includes For GUI APP
 #include "raylib.h"
 #include "variabledefinitions.h"
@@ -36,9 +41,6 @@ namespace ProjectInfo
 // Include for Custom Library
 #include "flavortext.h"
 
-// Include for Hostel Class
-#include "hostel.h"
-
 // Includes for Screen layers
 #include "overlay.h"
 #include "loadingScreen.h"
@@ -47,3 +49,5 @@ namespace ProjectInfo
 #include "homeScreen.h"
 #include "hostelDetailsScreen.h"
 #include "exitScreen.h"
+#include "addStudentScreen.h"
+#include "addRoomScreen.h"

@@ -27,6 +27,9 @@ int main(void)
         case variables::HOSTEL_DETAILS_SCREEN:
             hostelDetailsScreen();
             break;
+        case variables::ADD_STUDENT_SCREEN:
+            addStudentScreen();
+            break;
         case variables::EXIT_SCREEN:
             exitScreen();
             break;

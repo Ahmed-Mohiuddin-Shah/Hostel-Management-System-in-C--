@@ -152,6 +152,8 @@
     <Font Include="resources\ComicCode.otf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="addRoomScreen.h" />
+    <ClInclude Include="addStudentScreen.h" />
     <ClInclude Include="codeSnippets.hpp" />
     <ClInclude Include="createNewHostelScreen.h" />
     <ClInclude Include="exitScreen.h" />

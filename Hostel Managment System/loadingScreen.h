@@ -63,10 +63,13 @@ void loadingScreen() {
 		try
 		{
 			hostelJSON = JSON::parse(fileContent);
+			hostelInstance = Hostel(hostelJSON);
 		}
 		catch (const std::exception e)
 		{
-			std::cout << e.what()<<std::endl;
+			fatalErrorMessage = e.what() + std::string("\n") + fileContent + std::string("\n") + hostelJSON.dump();
+			currentLayer = FATAL_ERROR_SCREEN;
+			return;
 		}
 
 		globalShouldShowSuccessPopup = true;

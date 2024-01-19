@@ -117,5 +117,11 @@
     <ClInclude Include="exitScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="addStudentScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="addRoomScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

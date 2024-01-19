@@ -55,7 +55,7 @@ bool writeHostelInfoToFile() {
 
     try
     {
-        std::string hostelInfoStringDump = variables::hostelJSON.dump();
+        std::string hostelInfoStringDump = hostelInstance.toJson().dump();
         FileReader::writeToFile(ProjectInfo::fileName, hostelInfoStringDump);
         return true;
     }
