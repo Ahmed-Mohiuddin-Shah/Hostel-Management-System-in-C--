@@ -56,18 +56,22 @@ void loadingScreen() {
 	switch (fileStatus)
 	{
 	case variables::DOES_NOT_EXIST:
-
-		BeginDrawing();
-		ClearBackground(H_DARK_GREY);
-		drawCustomText("Hostel File Does Not Exist :(", Vector2{10, 10}, labels, 1, H_WHITE);
-		EndDrawing();
-
-		std::this_thread::sleep_for(std::chrono::seconds(2));
-
 		currentLayer = CREATE_NEW_HOSTEL_SCREEN;
 		break;
 	case variables::LOADED_SUCCESSFULLY:
-		currentLayer = FATAL_ERROR_SCREEN;
+
+		try
+		{
+			hostelJSON = JSON::parse(fileContent);
+		}
+		catch (const std::exception e)
+		{
+			std::cout << e.what()<<std::endl;
+		}
+
+		globalShouldShowSuccessPopup = true;
+		successPopupMessage = "Hostel Info Loaded Successfully!!";
+		currentLayer = HOME_SCREEN;
 		break;
 	case variables::FAILED_TO_LOAD:
 		currentLayer = FATAL_ERROR_SCREEN;

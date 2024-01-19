@@ -108,5 +108,8 @@
     <ClInclude Include="createNewHostelScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="homeScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -65,6 +65,7 @@ void createNewHostelScreen() {
 	bool anySelected = false;
 
 	ErrorPopup errorPopup(1500.0f, 2.0f);
+	errorPopup.showMessage("Hostel Info Not Found!!\n     Please Enter New Info!!");
 
 	while (!layerChangedHandler() && !WindowShouldClose())
 	{
@@ -133,6 +134,6 @@ void createNewHostelScreen() {
 	}
 
 	globalShouldShowSuccessPopup = true;
-	successPopupMessage = "Hostel File Created!\n     Even the tech gremlins gave it a thumbs up.";
+	variables::successPopupMessage = "Hostel File Created!\n     Even the tech gremlins gave it a thumbs up.";
 
 }

@@ -27,8 +27,6 @@ namespace variables {
 	float sideBarButtonTextHeight = 25;
 	float widthPerCharacterForsideBarButtonText = 10;
 
-
-
 	// ------------- Screen Size ---------------------
 	const int screenWidth = 1280;
 	const int screenHeight = 720;
@@ -66,6 +64,7 @@ namespace variables {
 	};
 
 	std::string fileContent = "";
+	JSON hostelJSON;
 
 	// --------------- Overlay -----------------------
 	bool globalBurgerButtonToggleState = false;

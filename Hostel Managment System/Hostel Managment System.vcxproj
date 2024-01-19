@@ -159,6 +159,7 @@
     <ClInclude Include="flavortext.h" />
     <ClInclude Include="GUIElementsClasses.hpp" />
     <ClInclude Include="helperfunctions.h" />
+    <ClInclude Include="homeScreen.h" />
     <ClInclude Include="hostel.h" />
     <ClInclude Include="HostelFileReader.h" />
     <ClInclude Include="invoice.h" />

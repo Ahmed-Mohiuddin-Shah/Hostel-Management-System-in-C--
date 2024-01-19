@@ -20,6 +20,9 @@ int main(void)
         case variables::CREATE_NEW_HOSTEL_SCREEN:
             createNewHostelScreen();
             break;
+        case variables::HOME_SCREEN:
+            homeScreen();
+            break;
         case variables::EXIT_SCREEN:
             variables::shouldExit = true;
             break;
