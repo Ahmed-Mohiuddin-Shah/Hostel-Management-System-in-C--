@@ -434,9 +434,14 @@ public:
         UnloadTexture(successTexture);
     }
 
-    void showMessage(const std::string& errorMessage) {
-        message = errorMessage;
-        messageLength = (message.length() + 5) * variables::widthPerCharacterForLabels;
+    void showMessage(const std::string& successMessage) {
+        message = successMessage;
+
+        std::string delimiter = "\n";
+        std::string token1 = message.substr(0, message.find(delimiter));
+        std::string token2 = message.substr(message.find(delimiter) + 1, message.length());
+
+        messageLength = ((token1.length() > token2.length() ? token1.length() : token2.length()) + 5) * variables::widthPerCharacterForLabels;
         bounds.width = messageLength + 100;
         isVisible = true;
     }

@@ -129,6 +129,6 @@ void createNewHostelScreen() {
 	}
 
 	globalShouldShowSuccessPopup = true;
-	successPopupMessage = "Hostel File Created Successfully";
+	successPopupMessage = "Hostel File Created!\n     Even the tech gremlins gave it a thumbs up.";
 
 }
