@@ -26,6 +26,10 @@ bool saveHostelInfo(TextInputBox* inputBoxes) {
 	hostelInfoJson["hostel_address"] = inputBoxes[1].getInputText();
 	hostelInfoJson["hostel_ph_no"] = inputBoxes[2].getInputText();
 	hostelInfoJson["hostel_email"] = inputBoxes[3].getInputText();
+	hostelInfoJson["students"] = {};
+	hostelInfoJson["staffs"] = {};
+	hostelInfoJson["rooms"] = {};
+	hostelInfoJson["invoices"] = {};
 
 	std::string hostelInfoJsonString = hostelInfoJson.dump();
 

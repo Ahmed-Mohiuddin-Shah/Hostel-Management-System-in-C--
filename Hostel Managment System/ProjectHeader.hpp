@@ -18,7 +18,6 @@ namespace ProjectInfo
 
 	// Defaults for file handling
 	std::string fileName = "HostelData.txt";
-	std::string DefaultHostelInfo = R"({"hostel_name":"Hostelo","hostel_email":"example@gmail.com","hostel_phone_number":"12341234567","hostel_address":"Islamabad","students":[null],"rooms":[null],"staffs":[null],"invoices":[null]})";
 }
 
 // Includes For GUI APP
