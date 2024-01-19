@@ -6,6 +6,11 @@
 #include "student.h"
 #include "texttable.hpp" // External library class header file for creating tables in console
 
+#include "nlohmann/json.hpp"
+#include "FileReader.h"
+
+using JSON = nlohmann::json;
+
 class Hostel
 {
 private:
@@ -22,6 +27,10 @@ public:
     Hostel();
 
     Hostel(std::string hostelName, std::string hostelAddress, std::string hostelPhoneNumber, std::string hostelEmail);
+
+    Hostel(JSON hostelInfoJson);
+
+    JSON toJson();
 
     void setHostelName(std::string hostelName);
 
@@ -71,7 +80,7 @@ public:
 
     bool areRoomsAvailable();
 
-    void displayAllRooms();
+    std::string getAllRoomsTable();
 
     // ------------------------ Student ------------------------
 
