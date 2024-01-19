@@ -47,13 +47,13 @@ void addRoomScreen() {
 		// --------- Drawing GUI -----------
 		BeginDrawing();
 		ClearBackground(H_DARK_GREY);
-		errorPopup.draw();
+
 
 		drawCustomBodyText("Add Room:", Vector2{ 0, 0 }, headings, 1, H_DARK_BLUE);
 		roomNumberInputBox.draw();
 		addRoomButton.draw();
 
-
+		errorPopup.draw();
 		guiOverlay();
 		EndDrawing();
 	}

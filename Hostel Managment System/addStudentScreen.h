@@ -13,10 +13,11 @@ void addStudentScreen() {
 		// --------- Drawing GUI -----------
 		BeginDrawing();
 		ClearBackground(H_DARK_GREY);
-		errorPopup.draw();
+
 
 		drawCustomBodyText(hostelInstance.getAllStudentsTable().c_str(), { 0, 0 }, labels, 1, H_WHITE);
 
+		errorPopup.draw();
 		guiOverlay();
 		EndDrawing();
 	}
