@@ -18,6 +18,7 @@ private:
     std::string hostelAddress;
     std::string hostelPhoneNumber;
     std::string hostelEmail;
+    unsigned int invoiceIDTrack;
     std::vector<Invoice> invoicesList;
     std::vector<Room> roomList;
     std::vector<Student> studentList;
@@ -39,6 +40,10 @@ public:
     void setHostelPhoneNumber(std::string hostelPhoneNumber);
 
     void setHostelEmail(std::string hostelEmail);
+
+    unsigned int getInvoiceIDTrack() {
+        return invoiceIDTrack;
+    }
 
     std::string getHostelName();
 

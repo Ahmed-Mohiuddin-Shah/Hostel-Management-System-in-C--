@@ -10,6 +10,7 @@ Hostel::Hostel(std::string hostelName, std::string hostelAddress, std::string ho
     this->hostelAddress = hostelAddress;
     this->hostelPhoneNumber = hostelPhoneNumber;
     this->hostelEmail = hostelEmail;
+    this->invoiceIDTrack = 0;
 }
 
 Hostel::Hostel(JSON hostelInfoJson)
@@ -18,6 +19,8 @@ Hostel::Hostel(JSON hostelInfoJson)
     this->hostelAddress = hostelInfoJson["hostel_address"];
     this->hostelPhoneNumber = hostelInfoJson["hostel_ph_no"];
     this->hostelEmail = hostelInfoJson["hostel_email"];
+
+    this->invoiceIDTrack = hostelInfoJson["inv_id_track"];
 
     // Initialize other data members using jsonData
     for (auto json : hostelInfoJson["rooms"])
@@ -73,6 +76,8 @@ JSON Hostel::toJson()
     hostelJSON["hostel_address"] = getHostelAddress();
     hostelJSON["hostel_ph_no"] = getHostelPhoneNumber();
     hostelJSON["hostel_email"] = getHostelEmail();
+
+    hostelJSON["inv_id_track"] = getInvoiceIDTrack();
 
     std::vector<JSON> roomsVector;
 
