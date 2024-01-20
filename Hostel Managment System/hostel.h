@@ -19,6 +19,7 @@ private:
     std::string hostelPhoneNumber;
     std::string hostelEmail;
     unsigned int invoiceIDTrack;
+    bool seriousMode;
     std::vector<Invoice> invoicesList;
     std::vector<Room> roomList;
     std::vector<Student> studentList;
@@ -63,6 +64,10 @@ public:
     void addInvoice(Invoice invoice);
 
     std::string getInvoiceStatusStr(Invoice invoice);
+
+    void setMode(int mode);
+
+    bool getMode();
 
     void displayHostelInfo();
 

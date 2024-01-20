@@ -11,7 +11,7 @@ Hostel::Hostel(std::string hostelName, std::string hostelAddress, std::string ho
     this->hostelPhoneNumber = hostelPhoneNumber;
     this->hostelEmail = hostelEmail;
     this->invoiceIDTrack = 0;
-
+    this->seriousMode = true;
 }
 
 Hostel::Hostel(JSON hostelInfoJson)
@@ -22,6 +22,7 @@ Hostel::Hostel(JSON hostelInfoJson)
     this->hostelEmail = hostelInfoJson["hostel_email"];
 
     this->invoiceIDTrack = hostelInfoJson["inv_id_track"];
+    this->seriousMode = hostelInfoJson["mode"];
 
     // Initialize other data members using jsonData
     for (auto json : hostelInfoJson["rooms"])
@@ -194,6 +195,14 @@ std::string Hostel::getHostelPhoneNumber()
 std::string Hostel::getHostelEmail()
 {
     return hostelEmail;
+}
+
+void Hostel::setMode(int mode) {
+    seriousMode = mode;
+}
+
+bool Hostel::getMode() {
+    return seriousMode;
 }
 
 void Hostel::addRoom(Room room)
