@@ -385,7 +385,7 @@ public:
     }
 
     void draw() {
-        DrawRectangleRounded(sideBarBounds, 0.2, 10, variables::H_BLUE);
+        DrawRectangleRounded(sideBarBounds, 0.1, 10, variables::H_BLUE);
         DrawRectangle(sideBarBounds.x, sideBarBounds.y, (sideBarBounds.width / 2), sideBarBounds.height, variables::H_BLUE);
 
         // draw info boxes
