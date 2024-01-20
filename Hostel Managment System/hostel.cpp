@@ -794,7 +794,63 @@ std::string Hostel::getAllInvoicesTable()
     return s;
 }
 
-void Hostel::displayInvoicesByStudentID(int studentID)
+std::string Hostel::getAllInvoicesByStudentID(int studentID, bool status)
+{
+
+    TextTable invoiceTable('-', '|', '+');
+    invoiceTable.add("Invoice ID");
+    invoiceTable.add("Student ID");
+    invoiceTable.add("Student Name");
+    invoiceTable.add("Invoice Date");
+    invoiceTable.add("Due Date");
+    invoiceTable.add("Status");
+    invoiceTable.add("Amount Due");
+    invoiceTable.add("Amount After Due");
+    invoiceTable.endOfRow();
+
+    for (auto &invoice : invoicesList)
+    {
+        if (invoice.getStudentID() == studentID && invoice.getStatus() == status)
+        {
+            invoiceTable.add(std::to_string(invoice.getInvoiceID()));
+            invoiceTable.add(std::to_string(invoice.getStudentID()));
+
+            if (!checkIfStudentExists(studentID))
+            {
+                invoiceTable.add("Student Deleted");
+                invoiceTable.endOfRow();
+                continue;
+            }
+            else
+            {
+                for (auto student : studentList)
+                {
+                    if (student.getStudentID() == invoice.getStudentID())
+                    {
+                        invoiceTable.add(student.getStudentName());
+                        break;
+                    }
+                }
+            }
+
+            invoiceTable.add(invoice.getInvoiceDate());
+            invoiceTable.add(invoice.getDueDate());
+            invoiceTable.add(getInvoiceStatusStr(invoice));
+            invoiceTable.add(std::to_string(invoice.getAmountDue()));
+            invoiceTable.add(std::to_string(invoice.getAmountAfterDue()));
+            invoiceTable.endOfRow();
+        }
+    }
+
+    invoiceTable.setAlignment(2, TextTable::Alignment::RIGHT);
+    std::string s;
+    std::ostringstream os;
+    os << invoiceTable;
+    s = os.str();
+    return s;
+}
+
+std::string Hostel::getAllInvoicesByInvoiceID(unsigned int InvoiceID)
 {
     TextTable invoiceTable('-', '|', '+');
     invoiceTable.add("Invoice ID");
@@ -809,15 +865,25 @@ void Hostel::displayInvoicesByStudentID(int studentID)
 
     for (auto &invoice : invoicesList)
     {
-        if (invoice.getStudentID() == studentID)
+        if (invoice.getInvoiceID() == InvoiceID)
         {
             invoiceTable.add(std::to_string(invoice.getInvoiceID()));
             invoiceTable.add(std::to_string(invoice.getStudentID()));
-            for (auto student : studentList)
+            if (!checkIfStudentExists(invoice.getStudentID()))
             {
-                if (student.getStudentID() == invoice.getStudentID())
+                invoiceTable.add("Student Deleted");
+                invoiceTable.endOfRow();
+                continue;
+            }
+            else
+            {
+                for (auto student : studentList)
                 {
-                    invoiceTable.add(student.getStudentName());
+                    if (student.getStudentID() == invoice.getStudentID())
+                    {
+                        invoiceTable.add(student.getStudentName());
+                        break;
+                    }
                 }
             }
             invoiceTable.add(invoice.getInvoiceDate());
@@ -830,12 +896,15 @@ void Hostel::displayInvoicesByStudentID(int studentID)
     }
 
     invoiceTable.setAlignment(2, TextTable::Alignment::RIGHT);
-    std::cout << invoiceTable << std::endl;
+    std::string s;
+    std::ostringstream os;
+    os << invoiceTable;
+    s = os.str();
+    return s;
 }
 
-void Hostel::displayInvoicesByStatus(bool status)
+std::string Hostel::getAllInvoicesByStatus(bool status)
 {
-
     TextTable invoiceTable('-', '|', '+');
     invoiceTable.add("Invoice ID");
     invoiceTable.add("Student ID");
@@ -853,11 +922,21 @@ void Hostel::displayInvoicesByStatus(bool status)
         {
             invoiceTable.add(std::to_string(invoice.getInvoiceID()));
             invoiceTable.add(std::to_string(invoice.getStudentID()));
-            for (auto student : studentList)
+            if (!checkIfStudentExists(invoice.getStudentID()))
             {
-                if (student.getStudentID() == invoice.getStudentID())
+                invoiceTable.add("Student Deleted");
+                invoiceTable.endOfRow();
+                continue;
+            }
+            else
+            {
+                for (auto student : studentList)
                 {
-                    invoiceTable.add(student.getStudentName());
+                    if (student.getStudentID() == invoice.getStudentID())
+                    {
+                        invoiceTable.add(student.getStudentName());
+                        break;
+                    }
                 }
             }
             invoiceTable.add(invoice.getInvoiceDate());
@@ -870,45 +949,9 @@ void Hostel::displayInvoicesByStatus(bool status)
     }
 
     invoiceTable.setAlignment(2, TextTable::Alignment::RIGHT);
-    std::cout << invoiceTable << std::endl;
-}
-
-void Hostel::displayInvoicesByDate(std::string date)
-{
-
-    TextTable invoiceTable('-', '|', '+');
-    invoiceTable.add("Invoice ID");
-    invoiceTable.add("Student ID");
-    invoiceTable.add("Student Name");
-    invoiceTable.add("Invoice Date");
-    invoiceTable.add("Due Date");
-    invoiceTable.add("Status");
-    invoiceTable.add("Amount Due");
-    invoiceTable.add("Amount After Due");
-    invoiceTable.endOfRow();
-
-    for (auto &invoice : invoicesList)
-    {
-        if (invoice.getInvoiceDate() == date)
-        {
-            invoiceTable.add(std::to_string(invoice.getInvoiceID()));
-            invoiceTable.add(std::to_string(invoice.getStudentID()));
-            for (auto student : studentList)
-            {
-                if (student.getStudentID() == invoice.getStudentID())
-                {
-                    invoiceTable.add(student.getStudentName());
-                }
-            }
-            invoiceTable.add(invoice.getInvoiceDate());
-            invoiceTable.add(invoice.getDueDate());
-            invoiceTable.add(getInvoiceStatusStr(invoice));
-            invoiceTable.add(std::to_string(invoice.getAmountDue()));
-            invoiceTable.add(std::to_string(invoice.getAmountAfterDue()));
-            invoiceTable.endOfRow();
-        }
-    }
-
-    invoiceTable.setAlignment(2, TextTable::Alignment::RIGHT);
-    std::cout << invoiceTable << std::endl;
+    std::string s;
+    std::ostringstream os;
+    os << invoiceTable;
+    s = os.str();
+    return s;
 }

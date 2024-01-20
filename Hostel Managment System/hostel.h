@@ -118,9 +118,9 @@ public:
 
     std::string getAllInvoicesTable();
 
-    void displayInvoicesByStudentID(int studentID);
+    std::string getAllInvoicesByStudentID(int studentID, bool status);
 
-    void displayInvoicesByStatus(bool status);
+    std::string getAllInvoicesByInvoiceID(unsigned int invoiceID);
 
-    void displayInvoicesByDate(std::string date);
+    std::string getAllInvoicesByStatus(bool status);
 };
