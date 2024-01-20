@@ -27,6 +27,7 @@ namespace createHostelFuncs {
 		hostelInfoJson["hostel_address"] = inputBoxes[1].getInputText();
 		hostelInfoJson["hostel_ph_no"] = inputBoxes[2].getInputText();
 		hostelInfoJson["hostel_email"] = inputBoxes[3].getInputText();
+		hostelInfoJson["inv_id_track"] = 0;
 		hostelInfoJson["students"] = {};
 		hostelInfoJson["staffs"] = {};
 		hostelInfoJson["rooms"] = {};
