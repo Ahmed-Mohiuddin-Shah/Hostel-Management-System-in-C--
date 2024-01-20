@@ -41,7 +41,8 @@ public:
 
     void setHostelEmail(std::string hostelEmail);
 
-    unsigned int getInvoiceIDTrack() {
+    unsigned int getInvoiceIDTrack()
+    {
         return invoiceIDTrack;
     }
 
@@ -107,7 +108,9 @@ public:
 
     bool checkIfStudentExists(int studentID);
 
-    void addInvoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, double amountDue, double amountAfterDue);
+    void addInvoice(int studentID, std::string invoiceDate, std::string dueDate, double amountDue, double amountAfterDue);
+
+    void addInvoicesForAllStudents(std::string invoiceDate, std::string dueDate, double amountDue, double amountAfterDue);
 
     void updateInvoiceStatus(int invoiceID, bool status);
 

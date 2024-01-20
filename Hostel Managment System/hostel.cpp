@@ -679,39 +679,8 @@ bool Hostel::checkIfStudentExists(int studentID)
     return false;
 }
 
-void Hostel::addInvoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, double amountDue, double amountAfterDue)
+void Hostel::addInvoice(int studentID, std::string invoiceDate, std::string dueDate, double amountDue, double amountAfterDue)
 {
-
-    if (invoiceID < 0)
-    {
-        std::cout << "Invalid invoice ID!" << std::endl;
-        return;
-    }
-
-    if (studentID < 0)
-    {
-        std::cout << "Invalid student ID!" << std::endl;
-        return;
-    }
-
-    if (amountDue < 0)
-    {
-        std::cout << "Invalid amount due!" << std::endl;
-        return;
-    }
-
-    if (amountAfterDue < 0 && amountAfterDue < amountDue)
-    {
-        std::cout << "Invalid amount after due!" << std::endl;
-        return;
-    }
-
-    // TODO: Optimize this
-    // if (invoiceDate > dueDate)
-    // {
-    //     std::cout << "Invalid invoice date!" << std::endl;
-    //     return;
-    // }
 
     if (!checkIfStudentExists(studentID))
     {
@@ -719,18 +688,17 @@ void Hostel::addInvoice(int invoiceID, int studentID, std::string invoiceDate, s
         return;
     }
 
-    for (int i = 0; i < invoicesList.size(); i++)
-    {
-        if (invoicesList[i].getInvoiceID() == invoiceID)
-        {
-            std::cout << "Invoice already exists!" << std::endl;
-            return;
-        }
-    }
-
-    Invoice invoice(invoiceID, studentID, invoiceDate, dueDate, amountDue, amountAfterDue);
+    Invoice invoice(invoiceIDTrack++, studentID, invoiceDate, dueDate, amountDue, amountAfterDue);
     invoicesList.push_back(invoice);
-    std::cout << "----------------------Invoice Added!-------------" << std::endl;
+}
+
+void Hostel::addInvoicesForAllStudents(std::string invoiceDate, std::string dueDate, double amountDue, double amountAfterDue)
+{
+    for (auto &student : studentList)
+    {
+        Invoice invoice(invoiceIDTrack++, student.getStudentID(), invoiceDate, dueDate, amountDue, amountAfterDue);
+        invoicesList.push_back(invoice);
+    }
 }
 
 void Hostel::updateInvoiceStatus(int invoiceID, bool status)
