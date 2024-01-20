@@ -325,18 +325,18 @@ public:
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::ADD_STAFF_SCREEN, "Add Staff", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, variables::REMOVE_STAFF_SCREEN, "Remove Staff", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 430, variables::GENERATE_INVOICES_SCREEN, "Generate Invoice", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 470, variables::DISPLAY_INVOICES_SCREEN, "Display Invoices", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::GET_SPECIFIC_INVOICE_SCREEN, "Get Invoice", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::MARK_INVOICE_PAID, "Mark Invoice Paid", false });
+        // buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::DISPLAY_INVOICES_SCREEN, "Display Invoices", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 470, variables::GET_SPECIFIC_INVOICE_SCREEN, "Get Invoice", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::MARK_INVOICE_PAID, "Mark Invoice Paid", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 250, 670, variables::EXIT_SCREEN, "Exit", true });
 
-        modeToggleButton = GUIToggleButton(sideBarBounds.x + buttonOffset + 230, 610, " Serious", "  Fun", "");
+        modeToggleButton = GUIToggleButton(sideBarBounds.x + buttonOffset, 560, "Serious", "Fun", " Mode: ");
 
         infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset + 60, 10, width - rectOffset - 145, 45 });
         infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 70, width - rectOffset - 10, 125 });
         infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 200, width - rectOffset - 10, 85 });
         infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 290, width - rectOffset - 10, 125 });
-        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 420, width - rectOffset - 10, 165 });
+        infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 420, width - rectOffset - 10, 125 });
 
         textOffset = width - 20;
 
@@ -403,7 +403,7 @@ public:
             button.setPosition(sideBarBounds.x + buttonOffset);
         }
 
-        modeToggleButton.updatePositionX(sideBarBounds.x + buttonOffset + 230);
+        modeToggleButton.updatePositionX(sideBarBounds.x + buttonOffset);
 
     }
 
