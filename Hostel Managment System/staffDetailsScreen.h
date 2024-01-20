@@ -19,7 +19,9 @@ void staffDetailsScreen() {
 
 		scrollView.draw();
 
-		DrawRectangle(90, 0, screenWidth, 140, H_DARK_GREY);
+		DrawRectangle(0, 0, screenWidth, 80, H_DARK_GREY);
+		DrawRectangleGradientV(0, 80, screenWidth, 140, H_DARK_GREY, BLANK);
+
 		drawCustomBodyText("Staff DEETS:", Vector2{ 0, 0 }, headings, 1, H_DARK_BLUE);
 
 		errorPopup.draw();

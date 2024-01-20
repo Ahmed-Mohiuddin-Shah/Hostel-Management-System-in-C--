@@ -61,7 +61,9 @@ void getSpecificInvoiceScreen()
 
 		scrollView.draw();
 
-		DrawRectangle(90, 0, screenWidth, 330, H_DARK_GREY);
+
+		DrawRectangle(0, 0, screenWidth, 270, H_DARK_GREY);
+		DrawRectangleGradientV(0, 270, screenWidth, 330, H_DARK_GREY, BLANK);
 
 		drawCustomText("Filter Invoices:", Vector2{ 90, 10 }, headings, 1, H_DARK_BLUE);
 		filterInvoicesButton.draw();
