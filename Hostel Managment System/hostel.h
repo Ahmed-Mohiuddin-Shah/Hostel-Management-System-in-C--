@@ -98,7 +98,7 @@ public:
 
     void addStudent(int studentID, std::string studentName, std::string studentCNIC, std::string phoneNumber, std::string school, std::string gender, short int sem, int roomNumber);
 
-    void removeStudent(int studentID);
+    void deleteStudent(int studentID);
 
     void promoteAllStudents();
 

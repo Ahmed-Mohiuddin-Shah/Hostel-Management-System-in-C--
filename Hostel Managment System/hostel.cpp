@@ -621,6 +621,30 @@ void Hostel::promoteAllStudents()
     }
 }
 
+void Hostel::deleteStudent(int studentID)
+{
+    for (int i = 0; i < studentList.size(); i++)
+    {
+        if (studentList[i].getStudentID() == studentID)
+        {
+            studentList.erase(studentList.begin() + i);
+            break;
+        }
+    }
+
+    for (auto &room : roomList)
+    {
+        for (int i = 0; i < room.getStudentIDList().size(); i++)
+        {
+            if (room.getStudentIDList()[i] == studentID)
+            {
+                room.removeStudent(studentID);
+                break;
+            }
+        }
+    }
+}
+
 std::string Hostel::getAllStudentsTable()
 {
 
@@ -764,18 +788,25 @@ std::string Hostel::getAllInvoicesTable()
         }
 
         // If isPaid is the same, sort by invoiceID
-        return a.getInvoiceID() < b.getInvoiceID(); });
+        return a.getInvoiceID() > b.getInvoiceID(); });
 
     for (auto &invoice : invoicesList)
     {
         invoiceTable.add(std::to_string(invoice.getInvoiceID()));
         invoiceTable.add(std::to_string(invoice.getStudentID()));
-        for (auto student : studentList)
+        if (!checkIfStudentExists(invoice.getStudentID()))
         {
-            if (student.getStudentID() == invoice.getStudentID())
+            invoiceTable.add("Student Deleted");
+        }
+        else
+        {
+            for (auto student : studentList)
             {
-                invoiceTable.add(student.getStudentName());
-                break;
+                if (student.getStudentID() == invoice.getStudentID())
+                {
+                    invoiceTable.add(student.getStudentName());
+                    break;
+                }
             }
         }
         invoiceTable.add(invoice.getInvoiceDate());
@@ -808,6 +839,16 @@ std::string Hostel::getAllInvoicesByStudentID(int studentID, bool status)
     invoiceTable.add("Amount After Due");
     invoiceTable.endOfRow();
 
+    std::sort(invoicesList.begin(), invoicesList.end(), [](Invoice a, Invoice b)
+        {
+            // First, sort by isPaid (false comes before true)
+            if (a.getStatus() != b.getStatus()) {
+                return a.getStatus() < b.getStatus();
+            }
+
+            // If isPaid is the same, sort by invoiceID
+            return a.getInvoiceID() > b.getInvoiceID(); });
+
     for (auto &invoice : invoicesList)
     {
         if (invoice.getStudentID() == studentID && invoice.getStatus() == status)
@@ -818,8 +859,6 @@ std::string Hostel::getAllInvoicesByStudentID(int studentID, bool status)
             if (!checkIfStudentExists(studentID))
             {
                 invoiceTable.add("Student Deleted");
-                invoiceTable.endOfRow();
-                continue;
             }
             else
             {
@@ -863,6 +902,16 @@ std::string Hostel::getAllInvoicesByInvoiceID(unsigned int InvoiceID)
     invoiceTable.add("Amount After Due");
     invoiceTable.endOfRow();
 
+    std::sort(invoicesList.begin(), invoicesList.end(), [](Invoice a, Invoice b)
+        {
+            // First, sort by isPaid (false comes before true)
+            if (a.getStatus() != b.getStatus()) {
+                return a.getStatus() < b.getStatus();
+            }
+
+            // If isPaid is the same, sort by invoiceID
+            return a.getInvoiceID() > b.getInvoiceID(); });
+
     for (auto &invoice : invoicesList)
     {
         if (invoice.getInvoiceID() == InvoiceID)
@@ -872,8 +921,6 @@ std::string Hostel::getAllInvoicesByInvoiceID(unsigned int InvoiceID)
             if (!checkIfStudentExists(invoice.getStudentID()))
             {
                 invoiceTable.add("Student Deleted");
-                invoiceTable.endOfRow();
-                continue;
             }
             else
             {
@@ -916,6 +963,16 @@ std::string Hostel::getAllInvoicesByStatus(bool status)
     invoiceTable.add("Amount After Due");
     invoiceTable.endOfRow();
 
+    std::sort(invoicesList.begin(), invoicesList.end(), [](Invoice a, Invoice b)
+        {
+            // First, sort by isPaid (false comes before true)
+            if (a.getStatus() != b.getStatus()) {
+                return a.getStatus() < b.getStatus();
+            }
+
+            // If isPaid is the same, sort by invoiceID
+            return a.getInvoiceID() > b.getInvoiceID(); });
+
     for (auto &invoice : invoicesList)
     {
         if (invoice.getStatus() == status)
@@ -925,8 +982,6 @@ std::string Hostel::getAllInvoicesByStatus(bool status)
             if (!checkIfStudentExists(invoice.getStudentID()))
             {
                 invoiceTable.add("Student Deleted");
-                invoiceTable.endOfRow();
-                continue;
             }
             else
             {
