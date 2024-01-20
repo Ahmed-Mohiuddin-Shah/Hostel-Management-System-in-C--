@@ -285,7 +285,7 @@ public:
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 120, 20, variables::HOSTEL_DETAILS_SCREEN, "Hostel Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 60, 20, variables::HOME_SCREEN, "Home", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 80, variables::STUDENT_DETAILS_SCREEN, "Student Deets", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 120, variables::ADD_STUDENT_SCREEN, "Add Student", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 120, variables::ADD_STUDENT_SCREEN, "Add/Delete Student", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 160, variables::PROMOTE_STUDENTS_SCREEN, "Promote Students", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 210, variables::ROOM_DETAILS_SCREEN, "Room Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 250, variables::ADD_ROOM_SCREEN, "Add Room", false });
