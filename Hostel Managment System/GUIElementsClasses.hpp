@@ -65,12 +65,20 @@ public:
         drawCustomText(TextFormat("%s%s", label.c_str(), state ? value1.c_str() : value2.c_str()), Vector2{bounds.x + 0.5f, bounds.y  + 0.5f}, variables::labels, 1, variables::H_WHITE);
     }
 
+    void updatePositionX(int xPos) {
+        bounds.x = xPos;
+    }
+
     std::string getValue() const {
         return state ? value1.c_str() : value2.c_str();
     }
 
     bool getState() {
         return state;
+    }
+
+    void setState(bool state) {
+        this->state = state;
     }
 };
 
@@ -272,6 +280,7 @@ private:
     std::vector<GUISideBarButton> buttons;
     std::vector<Rectangle> infoBoxes;
     std::vector<SideBarInfoText> textPositions;
+    GUIToggleButton modeToggleButton;
     const int buttonOffset = 65;
     const int rectOffset = 55;
     int textOffset;
@@ -298,6 +307,8 @@ public:
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::MARK_INVOICE_PAID, "Mark Invoice Paid", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 250, 670, variables::EXIT_SCREEN, "Exit", true });
 
+        modeToggleButton = GUIToggleButton(sideBarBounds.x + buttonOffset + 230, 610, " Serious", "  Fun", "");
+
         infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset + 60, 10, width - rectOffset - 145, 45 });
         infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 70, width - rectOffset - 10, 125 });
         infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset, 200, width - rectOffset - 10, 85 });
@@ -318,6 +329,9 @@ public:
                 variables::currentLayer = button.getScreenLayer();
             }
         }
+        modeToggleButton.setState(hostelInstance.getMode());
+        modeToggleButton.update();
+        hostelInstance.setMode(modeToggleButton.getState());
     }
 
     bool isMouseClickedOutsideOfSideBar() {
@@ -366,6 +380,8 @@ public:
             button.setPosition(sideBarBounds.x + buttonOffset);
         }
 
+        modeToggleButton.updatePositionX(sideBarBounds.x + buttonOffset + 230);
+
     }
 
     void draw() {
@@ -389,6 +405,8 @@ public:
         for (auto& button : buttons) {
             button.draw();
         }
+
+        modeToggleButton.draw();
 
 
         animateBugCatGIF(Vector2{ sideBarBounds.x + 10, variables::burgerMenuBugCatPosition.y });

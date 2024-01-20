@@ -5,6 +5,7 @@ namespace variables {
 	// ------------- Misc ----------------------------
 	const int targetFPS = 60;
 	bool shouldExit = false;
+	bool isSeriousMode = true;
 
 	// ------------- Color Palette -------------------
 	Color H_DARK_GREY = { 68, 72, 68, 255 };

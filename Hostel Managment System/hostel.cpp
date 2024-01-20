@@ -80,6 +80,7 @@ JSON Hostel::toJson()
     hostelJSON["hostel_email"] = getHostelEmail();
 
     hostelJSON["inv_id_track"] = getInvoiceIDTrack();
+    hostelJSON["mode"] = getMode();
 
     std::vector<JSON> roomsVector;
 
