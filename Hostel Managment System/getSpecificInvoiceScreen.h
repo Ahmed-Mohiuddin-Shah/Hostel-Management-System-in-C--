@@ -61,9 +61,9 @@ void getSpecificInvoiceScreen()
 
 		scrollView.draw();
 
-		DrawRectangle(90, 0, screenWidth, 350, H_DARK_GREY);
+		DrawRectangle(90, 0, screenWidth, 330, H_DARK_GREY);
 
-		drawCustomText("Add Staff:", Vector2{ 90, 10 }, headings, 1, H_WHITE);
+		drawCustomText("Filter Invoices:", Vector2{ 90, 10 }, headings, 1, H_DARK_BLUE);
 		filterInvoicesButton.draw();
 		statusToggleButton.draw();
 
