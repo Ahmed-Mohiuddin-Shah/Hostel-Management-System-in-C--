@@ -440,137 +440,6 @@ public:
     }
 };
 
-class Popup {
-protected:
-    Rectangle bounds;
-    Vector2 position;
-    std::string message;
-    int messageLength = 300;
-    float slideSpeed;
-    float originalDisplayTime;
-    float displayTime;
-    bool isVisible;
-};
-
-class ErrorPopup : private Popup{
-private:
-
-public:
-    ErrorPopup(float slideSpeed, float displayTime) {
-        this->slideSpeed = slideSpeed; 
-        this->originalDisplayTime = displayTime;
-        this->displayTime = displayTime;
-        this->isVisible = false;
-        this->bounds = { variables::screenWidth, 15, 320, 60 };
-        this->position = { variables::screenWidth, 20 };
-    }
-
-    void showMessage(const std::string& errorMessage) {
-        message = errorMessage;
-
-        std::string delimiter = "\n";
-        std::string token1 = message.substr(0, message.find(delimiter));
-        std::string token2 = message.substr(message.find(delimiter) + 1, message.length());
-
-        messageLength = ((token1.length() > token2.length() ? token1.length() : token2.length()) + 5) * variables::widthPerCharacterForLabels;
-        bounds.width = messageLength + 100 ;
-        isVisible = true;
-    }
-
-    void update() {
-        if (isVisible) {
-            // Slide in
-            if (bounds.x > variables::screenWidth - messageLength) {
-                position.x -= slideSpeed * GetFrameTime();
-                bounds.x -= slideSpeed * GetFrameTime();
-            }
-
-
-            // Check if time to display has elapsed
-            displayTime -= GetFrameTime();
-            if (displayTime <= 0) {
-                isVisible = false;
-                displayTime = originalDisplayTime;
-            }
-        }
-        else {
-            position = { variables::screenWidth, 10 };
-            bounds.x = variables::screenWidth;
-        }
-    }
-  
-    void draw() const {
-        if (isVisible) {
-            
-            DrawRectangleRounded(bounds, 0.5, 5, RED);
-            DrawTexture(hostelInstance.getMode() ? variables::errorTexture : variables::errorCatTexture, bounds.x, bounds.y, WHITE);
-            DrawRectangleRoundedLines(bounds, 0.5, 10, 8, MAROON);
-            drawCustomText(TextFormat("     %s", message.c_str()), Vector2{position.x + 10, position.y + 10}, variables::labels, 1, variables::H_WHITE);
-        }
-    }
-};
-
-class SuccessPopup : private Popup {
-private:
-
-public:
-    SuccessPopup(float slideSpeed, float displayTime) {
-        this->slideSpeed = slideSpeed;
-        this->originalDisplayTime = displayTime;
-        this->displayTime = displayTime;
-        this->isVisible = false;
-        this->bounds = { variables::screenWidth, 15, 320, 60 };
-        this->position = { variables::screenWidth, 20 };
-    }
-
-    void showMessage(const std::string& successMessage) {
-        message = successMessage;
-
-        std::string delimiter = "\n";
-        std::string token1 = message.substr(0, message.find(delimiter));
-        std::string token2 = message.substr(message.find(delimiter) + 1, message.length());
-
-        messageLength = ((token1.length() > token2.length() ? token1.length() : token2.length()) + 5) * variables::widthPerCharacterForLabels;
-        bounds.width = messageLength + 100;
-        isVisible = true;
-    }
-
-    void update() {
-        if (isVisible) {
-            // Slide in
-            if (bounds.x > variables::screenWidth - messageLength) {
-                position.x -= slideSpeed * GetFrameTime();
-                bounds.x -= slideSpeed * GetFrameTime();
-            }
-
-
-            // Check if time to display has elapsed
-            displayTime -= GetFrameTime();
-            if (displayTime <= 0) {
-                isVisible = false;
-                displayTime = originalDisplayTime;
-            }
-        }
-        else {
-            position = { variables::screenWidth, 10 };
-            bounds.x = variables::screenWidth;
-        }
-    }
-
-    void draw() const {
-        if (isVisible) {
-
-            DrawRectangleRounded(bounds, 0.5, 5, GREEN);
-            DrawTexture(hostelInstance.getMode() ? variables::successTexture : variables::successCatTexture, bounds.x, bounds.y, WHITE);
-            DrawRectangleRoundedLines(bounds, 0.5, 10, 8, DARKGREEN);
-            drawCustomText(TextFormat("     %s", message.c_str()), Vector2{ position.x + 10, position.y + 10 }, variables::labels, 1, variables::H_WHITE);
-        }
-    }
-
-    bool isFinished() {
-        return isVisible;
-    }
-};
 
 class GUIScrollView {
 private:
@@ -604,5 +473,106 @@ public:
 
     void setText(std::string formattedString) {
         data = formattedString;
+    }
+};
+
+class Popup {
+protected:
+    Rectangle bounds;
+    Vector2 position;
+    std::string message;
+    int messageLength = 300;
+    float slideSpeed;
+    float originalDisplayTime;
+    float displayTime;
+    bool isVisible;
+
+public:
+    void showMessage(const std::string& message) {
+        this->message = message;
+
+        std::string delimiter = "\n";
+        std::string token1 = message.substr(0, message.find(delimiter));
+        std::string token2 = message.substr(message.find(delimiter) + 1, message.length());
+
+        messageLength = ((token1.length() > token2.length() ? token1.length() : token2.length()) + 5) * variables::widthPerCharacterForLabels;
+        bounds.width = messageLength + 100;
+        isVisible = true;
+    }
+
+    void update() {
+        if (isVisible) {
+            // Slide in
+            if (bounds.x > variables::screenWidth - messageLength) {
+                position.x -= slideSpeed * GetFrameTime();
+                bounds.x -= slideSpeed * GetFrameTime();
+            }
+
+
+            // Check if time to display has elapsed
+            displayTime -= GetFrameTime();
+            if (displayTime <= 0) {
+                isVisible = false;
+                displayTime = originalDisplayTime;
+            }
+        }
+        else {
+            position = { variables::screenWidth, 10 };
+            bounds.x = variables::screenWidth;
+        }
+    }
+
+    virtual void draw() const = 0;
+};
+
+class ErrorPopup : public Popup{
+private:
+
+public:
+    ErrorPopup(float slideSpeed, float displayTime) {
+        this->slideSpeed = slideSpeed; 
+        this->originalDisplayTime = displayTime;
+        this->displayTime = displayTime;
+        this->isVisible = false;
+        this->bounds = { variables::screenWidth, 15, 320, 60 };
+        this->position = { variables::screenWidth, 20 };
+    }
+  
+    void draw() const {
+        if (isVisible) {
+            
+            DrawRectangleRounded(bounds, 0.5, 5, RED);
+            DrawTexture(hostelInstance.getMode() ? variables::errorTexture : variables::errorCatTexture, bounds.x, bounds.y, WHITE);
+            DrawRectangleRoundedLines(bounds, 0.5, 10, 8, MAROON);
+            drawCustomText(TextFormat("     %s", message.c_str()), Vector2{position.x + 10, position.y + 10}, variables::labels, 1, variables::H_WHITE);
+        }
+    }
+};
+
+class SuccessPopup :public Popup {
+private:
+
+public:
+    SuccessPopup(float slideSpeed, float displayTime) {
+        this->slideSpeed = slideSpeed;
+        this->originalDisplayTime = displayTime;
+        this->displayTime = displayTime;
+        this->isVisible = false;
+        this->bounds = { variables::screenWidth, 15, 320, 60 };
+        this->position = { variables::screenWidth, 20 };
+    }
+
+    void draw() const {
+        if (isVisible) {
+
+            DrawRectangleRounded(bounds, 0.5, 5, GREEN);
+            DrawTexture(hostelInstance.getMode() ? variables::successTexture : variables::successCatTexture, bounds.x, bounds.y, WHITE);
+            DrawRectangleRoundedLines(bounds, 0.5, 10, 8, DARKGREEN);
+            drawCustomText(TextFormat("     %s", message.c_str()), Vector2{ position.x + 10, position.y + 10 }, variables::labels, 1, variables::H_WHITE);
+        }
+    }
+
+    bool isFinished() {
+        return isVisible;
     }
 };
