@@ -48,7 +48,7 @@ void addRoomScreen() {
 					hostelInstance.removeRoom(roomNumber);
 					successPopupMessage = "Room deleted Successfully!!";
 					globalShouldShowSuccessPopup = true;
-					currentLayer = ROOM_DETAILS_SCREEN;
+					currentLayer = ADD_ROOM_SCREEN;
 				}
 			}
 		}
@@ -78,7 +78,7 @@ void addRoomScreen() {
 					hostelInstance.addRoom(roomNumber);
 					successPopupMessage = "Room Added Successfully!!";
 					globalShouldShowSuccessPopup = true;
-					currentLayer = ROOM_DETAILS_SCREEN;
+					currentLayer = ADD_ROOM_SCREEN;
 				}
 			}
 		}
