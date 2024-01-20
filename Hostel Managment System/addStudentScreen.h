@@ -40,7 +40,7 @@ void addStudentScreen() {
 
 	using namespace variables;
 	GUIButton addStudentButton(90, 540, "Add Student");
-	GUIButton deleteStudentButton(300, 140, "Delete Student");
+	GUIButton deleteStudentButton(310, 140, "Delete Student");
 
 	const size_t numInputBoxes = 7;
 	TextInputBox inputBoxes[numInputBoxes] = {
@@ -101,11 +101,11 @@ void addStudentScreen() {
 		// --------- Drawing GUI -----------
 		BeginDrawing();
 		ClearBackground(H_DARK_GREY);
-		drawCustomText("Add/Delete Student:", Vector2{ 90, 10 }, headings, 1, H_DARK_BLUE);
+		drawCustomText("Add/Delete Student:", Vector2{ 90, 0 }, headings, 1, H_DARK_BLUE);
 		addStudentButton.draw();
 
 		deleteStudentButton.draw();
-		drawCustomBodyText("Only Need Student ID to delete Student!", Vector2{ 400, 140 }, labels, 1, RED);
+		drawCustomBodyText("Only Need Student ID to delete Student!", Vector2{ 410, 140 }, labels, 1, RED);
 
 		// Draw the input boxes
 		for (size_t i = 0; i < numInputBoxes; ++i) {

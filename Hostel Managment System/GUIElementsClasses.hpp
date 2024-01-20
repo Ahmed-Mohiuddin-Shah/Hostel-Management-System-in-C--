@@ -197,14 +197,19 @@ private:
     char *text;
     bool isSelected;
     bool isNumericField;
+    bool showCursor;
+    float cursorTimer;
+    const float cursorBlinkSpeed = 0.5;
 
 public:
     TextInputBox(float x, float y, const char* boxLabel, bool numberField, int bufferSize)
-        : bounds({ x, y, variables::widthPerCharacterForLabels * (bufferSize + 2 + TextLength(boxLabel)), variables::labelsTextHeight }), labelBounds({ x, y, variables::widthPerCharacterForLabels * (TextLength(boxLabel) + 1), variables::labelsTextHeight }), label(boxLabel), isSelected(false), isNumericField(numberField) {
+        : bounds({ x, y, variables::widthPerCharacterForLabels * (bufferSize + 4 + TextLength(boxLabel)), variables::labelsTextHeight }), labelBounds({ x, y, variables::widthPerCharacterForLabels * (TextLength(boxLabel) + 1), variables::labelsTextHeight }), label(boxLabel), isSelected(false), isNumericField(numberField) {
         // Initialize text buffer
         this->bufferSize = bufferSize + 1;
         text = new char[bufferSize + 1];
         text[0] = '\0';
+        showCursor = false;
+        cursorTimer = 0.0f;
     }
 
 
@@ -225,6 +230,12 @@ public:
         DrawRectangleRoundedLines(labelBounds, 0.5, 10, 5, isSelected ? variables::H_DARK_BLUE : variables::H_BLUE);
 
         drawCustomText(TextFormat("%s  %s", label, text), Vector2{ bounds.x + 10, bounds.y + bounds.height / 2 - 10 }, variables::labels, 1, variables::H_WHITE);
+    
+        if (isSelected && showCursor) {
+            DrawLine(bounds.x + labelBounds.width + 15 + (TextLength(text) * variables::widthPerCharacterForLabels), bounds.y + bounds.height / 2 - 10,
+                bounds.x + labelBounds.width + 15 + (TextLength(text) * variables::widthPerCharacterForLabels), bounds.y + bounds.height / 2 + 10, variables::H_WHITE);
+        }
+
     }
 
     void update() {
@@ -255,6 +266,18 @@ public:
             if (IsKeyPressed(KEY_BACKSPACE) && (strlen(text) > 0)) {
                 text[strlen(text) - 1] = '\0';
             }
+        }
+
+        if (isSelected) {
+            cursorTimer += GetFrameTime();
+            if (cursorTimer >= cursorBlinkSpeed) {
+                showCursor = !showCursor;
+                cursorTimer = 0.0f;  // Reset the timer
+            }
+        }
+        else {
+            showCursor = false;  // Reset cursor visibility when not selected
+            cursorTimer = 0.0f;
         }
     }
 
