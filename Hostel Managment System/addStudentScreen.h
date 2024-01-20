@@ -40,6 +40,7 @@ void addStudentScreen() {
 
 	using namespace variables;
 	GUIButton addStudentButton(90, 540, "Add Student");
+	GUIButton deleteStudentButton(300, 140, "Delete Student");
 
 	const size_t numInputBoxes = 7;
 	TextInputBox inputBoxes[numInputBoxes] = {
@@ -103,12 +104,44 @@ void addStudentScreen() {
 		drawCustomText("Add Student:", Vector2{ 90, 10 }, headings, 1, H_WHITE);
 		addStudentButton.draw();
 
+		deleteStudentButton.draw();
+		drawCustomBodyText("Only Need Student ID to delete Student!", Vector2{ 400, 140 }, labels, 1, RED);
+
 		// Draw the input boxes
 		for (size_t i = 0; i < numInputBoxes; ++i) {
 			inputBoxes[i].draw();
 		}
 
 		genderToggleButton.draw();
+
+		if (deleteStudentButton.isClicked()) {
+			if (inputBoxes[0].getInputText().empty()) {
+				errorPopup.showMessage("You Need An ID to Delete Student!!");
+			}
+			else {
+				int studentID;
+
+				try
+				{
+					studentID = std::stoi(inputBoxes[0].getInputText());
+				}
+				catch (const std::exception e)
+				{
+					fatalErrorMessage = e.what();
+					currentLayer = FATAL_ERROR_SCREEN;
+				}
+
+				if (!hostelInstance.checkIfStudentExists(studentID)) {
+					errorPopup.showMessage("Student Does Not Exist!!\     Try a different ID");
+				}
+				else {
+					hostelInstance.deleteStudent(studentID);
+					successPopupMessage = "Student removed Successfully!!";
+					globalShouldShowSuccessPopup = true;
+					currentLayer = STUDENT_DETAILS_SCREEN;
+				}
+			}
+		}
 
 		if (addStudentButton.isClicked()) {
 
