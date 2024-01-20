@@ -5,7 +5,6 @@ namespace variables {
 	// ------------- Misc ----------------------------
 	const int targetFPS = 60;
 	bool shouldExit = false;
-	bool isSeriousMode = true;
 
 	// ------------- Color Palette -------------------
 	Color H_DARK_GREY = { 68, 72, 68, 255 };
@@ -45,6 +44,13 @@ namespace variables {
 
 	// ------------- Fatal Error Texture -------------
 	Texture2D fatalErrorTexture;
+	Texture2D fatalErrorCatTexture;
+	// ------------- Success Texture -----------------
+	Texture2D successTexture;
+	Texture2D successCatTexture;
+	// ------------- Error Texture -------------------
+	Texture2D errorTexture;
+	Texture2D errorCatTexture;
 
 	// -------------- Screen Layers ------------------
 	enum LAYERS
@@ -76,6 +82,7 @@ namespace variables {
 	enum FileLoadStatus {
 		DOES_NOT_EXIST,
 		LOADED_SUCCESSFULLY,
+		FILE_EMPTY,
 		FAILED_TO_LOAD
 	};
 

@@ -13,8 +13,26 @@ void initializeVariables() {
     bugCatTexture = LoadTextureFromImage(bugCatGIFImage);
 
     // ------------- Fatal Error Texture Load -------------
-    Image fatalErrorImage = LoadImage("resources/fatalErrorCat.png");
+    Image fatalErrorImage = LoadImage("resources/fatalError.png");
     fatalErrorTexture = LoadTextureFromImage(fatalErrorImage);
+    fatalErrorImage = LoadImage("resources/fatalErrorCat.png");
+    fatalErrorCatTexture = LoadTextureFromImage(fatalErrorImage);
+    UnloadImage(fatalErrorImage);
+
+    // ------------- Success Texture Load -----------------
+    Image successImage = LoadImage("resources/success.png");
+    successTexture = LoadTextureFromImage(successImage);
+    successImage = LoadImage("resources/successCat.png");
+    successCatTexture = LoadTextureFromImage(successImage);
+    UnloadImage(successImage);
+
+    // ------------- Error texture Load -------------------
+    Image errorImage = LoadImage("resources/error.png");
+    errorTexture = LoadTextureFromImage(errorImage);
+    errorImage = LoadImage("resources/errorCat.png");
+    errorCatTexture = LoadTextureFromImage(errorImage);
+    UnloadImage(errorImage);
+
 }
 
 // ----------- Custom Text Drawing Function ---------------

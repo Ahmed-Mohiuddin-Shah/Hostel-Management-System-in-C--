@@ -75,6 +75,8 @@ int main(void)
     // De-Initialization
     //--------------------------------------------------------------------------------------
     UnloadTexture(variables::fatalErrorTexture);
+    UnloadTexture(variables::successTexture);
+    UnloadTexture(variables::errorTexture);
     UnloadTexture(variables::bugCatTexture);
     UnloadImage(variables::bugCatGIFImage);
     CloseWindow();

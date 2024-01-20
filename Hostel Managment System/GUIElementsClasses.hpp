@@ -409,7 +409,11 @@ public:
         modeToggleButton.draw();
 
 
-        animateBugCatGIF(Vector2{ sideBarBounds.x + 10, variables::burgerMenuBugCatPosition.y });
+        // if Serious mode is off
+        if (!hostelInstance.getMode()) {
+            animateBugCatGIF(Vector2{ sideBarBounds.x + 10, variables::burgerMenuBugCatPosition.y });
+        }
+        
     }
 };
 
@@ -417,7 +421,6 @@ class ErrorPopup {
 private:
     Rectangle bounds;
     Vector2 position;
-    Texture2D errorTexture;
     std::string message;
     int messageLength = 300;
     float slideSpeed;
@@ -429,14 +432,6 @@ public:
     ErrorPopup(float slideSpeed, float displayTime) : slideSpeed(slideSpeed), originalDisplayTime(displayTime), displayTime(displayTime), isVisible(false) {
         bounds = { variables::screenWidth, 15, 320, 60 };
         position = { variables::screenWidth, 20 };
-        Image errorCat = LoadImage("resources/errorCat.png");
-        errorTexture = LoadTextureFromImage(errorCat);
-        UnloadImage(errorCat);
-    }
-
-    ~ErrorPopup()
-    {
-        UnloadTexture(errorTexture);
     }
 
     void showMessage(const std::string& errorMessage) {
@@ -477,7 +472,7 @@ public:
         if (isVisible) {
             
             DrawRectangleRounded(bounds, 0.5, 5, RED);
-            DrawTexture(errorTexture, bounds.x, bounds.y, WHITE);
+            DrawTexture(hostelInstance.getMode() ? variables::errorTexture : variables::errorCatTexture, bounds.x, bounds.y, WHITE);
             DrawRectangleRoundedLines(bounds, 0.5, 10, 8, MAROON);
             drawCustomText(TextFormat("     %s", message.c_str()), Vector2{position.x + 10, position.y + 10}, variables::labels, 1, variables::H_WHITE);
         }
@@ -488,7 +483,6 @@ class SuccessPopup {
 private:
     Rectangle bounds;
     Vector2 position;
-    Texture2D successTexture;
     std::string message;
     int messageLength = 300;
     float slideSpeed;
@@ -500,14 +494,6 @@ public:
     SuccessPopup(float slideSpeed, float displayTime) : slideSpeed(slideSpeed), originalDisplayTime(displayTime), displayTime(displayTime), isVisible(false) {
         bounds = { variables::screenWidth, 15, 320, 60 };
         position = { variables::screenWidth, 20 };
-        Image successCat = LoadImage("resources/successCat.png");
-        successTexture = LoadTextureFromImage(successCat);
-        UnloadImage(successCat);
-    }
-
-    ~SuccessPopup()
-    {
-        UnloadTexture(successTexture);
     }
 
     void showMessage(const std::string& successMessage) {
@@ -548,7 +534,7 @@ public:
         if (isVisible) {
 
             DrawRectangleRounded(bounds, 0.5, 5, GREEN);
-            DrawTexture(successTexture, bounds.x, bounds.y, WHITE);
+            DrawTexture(hostelInstance.getMode() ? variables::successTexture : variables::successCatTexture, bounds.x, bounds.y, WHITE);
             DrawRectangleRoundedLines(bounds, 0.5, 10, 8, DARKGREEN);
             drawCustomText(TextFormat("     %s", message.c_str()), Vector2{ position.x + 10, position.y + 10 }, variables::labels, 1, variables::H_WHITE);
         }

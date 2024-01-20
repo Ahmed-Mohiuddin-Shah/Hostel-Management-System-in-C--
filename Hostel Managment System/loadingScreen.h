@@ -67,7 +67,7 @@ void loadingScreen() {
 		}
 		catch (const std::exception e)
 		{
-			fatalErrorMessage = e.what() + std::string("\n") + fileContent + std::string("\n") + hostelJSON.dump();
+			fatalErrorMessage = e.what() + std::string("\nFileContent: ") + fileContent + std::string("\nHostelJSON") + hostelJSON.dump() + std::string("\nIssue In Hostel JSON Text File\nExit Porgram and create a new one.\nOr if you have a copy of HostelData.txt then restore from there");
 			currentLayer = FATAL_ERROR_SCREEN;
 			return;
 		}
@@ -77,9 +77,6 @@ void loadingScreen() {
 		currentLayer = HOME_SCREEN;
 		break;
 	case variables::FAILED_TO_LOAD:
-		currentLayer = FATAL_ERROR_SCREEN;
-		break;
-	default:
 		currentLayer = FATAL_ERROR_SCREEN;
 		break;
 	}

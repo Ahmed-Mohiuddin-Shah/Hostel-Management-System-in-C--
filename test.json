@@ -1,0 +1,140 @@
+{
+    "hostel_address": "H12 Campus",
+    "hostel_email": "example@gmail.com",
+    "hostel_name": "Hostelo",
+    "hostel_ph_no": "03218108000",
+    "inv_id_track": 5,
+    "mode": true,
+    "invoices": [
+        {
+            "am_aft_due": 350,
+            "am_due": 342,
+            "i_date": "2024-01-20",
+            "i_due_date": "2024-01-22",
+            "i_id": 4,
+            "s_id": 123456,
+            "status": false
+        },
+        {
+            "am_aft_due": 550,
+            "am_due": 500,
+            "i_date": "2024-01-20",
+            "i_due_date": "2024-01-24",
+            "i_id": 2,
+            "s_id": 12321321,
+            "status": false
+        },
+        {
+            "am_aft_due": 550,
+            "am_due": 500,
+            "i_date": "2024-01-20",
+            "i_due_date": "2024-01-24",
+            "i_id": 0,
+            "s_id": 535353,
+            "status": false
+        },
+        {
+            "am_aft_due": 550,
+            "am_due": 500,
+            "i_date": "2024-01-20",
+            "i_due_date": "2024-01-24",
+            "i_id": 3,
+            "s_id": 2134241,
+            "status": true
+        },
+        {
+            "am_aft_due": 550,
+            "am_due": 500,
+            "i_date": "2024-01-20",
+            "i_due_date": "2024-01-24",
+            "i_id": 1,
+            "s_id": 34234,
+            "status": true
+        }
+    ],
+    "rooms": [
+        {
+            "room_num": 123,
+            "s_count": 3,
+            "s_id_list": [
+                535353,
+                34234,
+                12321321
+            ]
+        },
+        {
+            "room_num": 142,
+            "s_count": 0,
+            "s_id_list": []
+        },
+        {
+            "room_num": 2133,
+            "s_count": 0,
+            "s_id_list": []
+        },
+        {
+            "room_num": 21123,
+            "s_count": 0,
+            "s_id_list": []
+        },
+        {
+            "room_num": 423,
+            "s_count": 1,
+            "s_id_list": [
+                2134241
+            ]
+        },
+        {
+            "room_num": 420,
+            "s_count": 0,
+            "s_id_list": []
+        }
+    ],
+    "staffs": [
+        {
+            "role": "Worker",
+            "st_cnic": "7821633",
+            "st_id": 1234,
+            "st_name": "Ahmed Mohiuddin Shah",
+            "st_ph_no": "31232613821"
+        }
+    ],
+    "students": [
+        {
+            "gender": "Male",
+            "s_cnic": "423423",
+            "s_id": 535353,
+            "s_name": "asdada",
+            "s_ph_no": "423423",
+            "school": "sadad",
+            "sem": 3
+        },
+        {
+            "gender": "Male",
+            "s_cnic": "23423",
+            "s_id": 34234,
+            "s_name": "42344",
+            "s_ph_no": "4234",
+            "school": "234234",
+            "sem": 2
+        },
+        {
+            "gender": "Female",
+            "s_cnic": "321321",
+            "s_id": 12321321,
+            "s_name": "312321",
+            "s_ph_no": "312321",
+            "school": "3123213",
+            "sem": 3
+        },
+        {
+            "gender": "Male",
+            "s_cnic": "423424214124",
+            "s_id": 2134241,
+            "s_name": "Haider",
+            "s_ph_no": "412412412",
+            "school": "S3H",
+            "sem": 4
+        }
+    ]
+}

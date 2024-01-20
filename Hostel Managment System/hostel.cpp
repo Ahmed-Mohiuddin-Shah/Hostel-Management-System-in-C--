@@ -2,6 +2,7 @@
 
 Hostel::Hostel()
 {
+    this->seriousMode = true;
 }
 
 Hostel::Hostel(std::string hostelName, std::string hostelAddress, std::string hostelPhoneNumber, std::string hostelEmail)

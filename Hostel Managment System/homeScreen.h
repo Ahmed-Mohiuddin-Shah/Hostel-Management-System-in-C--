@@ -3,6 +3,11 @@
 void homeScreen() {
 	using namespace variables;
 
+	if (hostelInstance.getHostelName() == "") {
+		currentLayer = CREATE_NEW_HOSTEL_SCREEN;
+		return;
+	}
+
 	while (!layerChangedHandler())
 	{
 		// --------- Logic -----------------
