@@ -42,6 +42,10 @@ private:
     bool state;
 
 public:
+    GUIToggleButton() {
+
+    }
+
     GUIToggleButton(float x, float y, std::string option1, std::string option2, std::string label) : state(false) {
         value1 = option1;
         value2 = option2;
@@ -66,14 +70,7 @@ public:
     }
 
     bool getState() {
-        return getState();
-    }
-};
-
-class GUIBooleanToggleButton : public GUIToggleButton {
-public:
-    bool getValue()  {
-        return getState();
+        return state;
     }
 };
 
@@ -572,5 +569,9 @@ public:
     void draw() const {
 
         drawCustomText(data.c_str(), Vector2{ bounds.x, bounds.y - scrollPosition }, variables::labels, 1, variables::H_WHITE);
+    }
+
+    void setText(std::string formattedString) {
+        data = formattedString;
     }
 };

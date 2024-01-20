@@ -144,5 +144,14 @@
     <ClInclude Include="promoteStudentsScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="getSpecificInvoiceScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="generateInvoicesScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="markInvoicePaidScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

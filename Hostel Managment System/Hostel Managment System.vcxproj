@@ -162,6 +162,8 @@
     <ClInclude Include="fatalErrorScreen.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="flavortext.h" />
+    <ClInclude Include="generateInvoicesScreen.h" />
+    <ClInclude Include="getSpecificInvoiceScreen.h" />
     <ClInclude Include="GUIElementsClasses.hpp" />
     <ClInclude Include="helperfunctions.h" />
     <ClInclude Include="homeScreen.h" />
@@ -170,6 +172,7 @@
     <ClInclude Include="HostelFileReader.h" />
     <ClInclude Include="invoice.h" />
     <ClInclude Include="loadingScreen.h" />
+    <ClInclude Include="markInvoicePaidScreen.h" />
     <ClInclude Include="overlay.h" />
     <ClInclude Include="ProjectHeader.hpp" />
     <ClInclude Include="promoteStudentsScreen.h" />

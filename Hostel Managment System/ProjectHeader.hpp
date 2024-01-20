@@ -1,9 +1,14 @@
 #pragma once
 
-// -------- Includes for Hostel Test
+#define _CRT_SECURE_NO_WARNINGS
+
+// --------------------------
 #include <iostream>
 #include <string>
 #include <vector>
+#include <ctime>
+#include <iomanip>
+#include <algorithm>
 
 // Includes for MultiThreading
 #include <future>
@@ -58,3 +63,6 @@ Hostel hostelInstance;
 #include "addStaffScreen.h"
 #include "removeStaffScreen.h"
 #include "promoteStudentsScreen.h"
+#include "generateInvoicesScreen.h"
+#include "getSpecificInvoiceScreen.h"
+#include "markInvoicePaidScreen.h"

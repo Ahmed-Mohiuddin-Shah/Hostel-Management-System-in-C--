@@ -54,6 +54,15 @@ int main(void)
         case variables::REMOVE_STAFF_SCREEN:
             removeStaffScreen();
             break;
+        case variables::GENERATE_INVOICES_SCREEN:
+            generateInvoicesScreen();
+            break;
+        case variables::MARK_INVOICE_PAID:
+            markInvoicePaidScreen();
+            break;
+        case variables::GET_SPECIFIC_INVOICE_SCREEN:
+            getSpecificInvoiceScreen();
+            break;
         case variables::EXIT_SCREEN:
             exitScreen();
             break;
