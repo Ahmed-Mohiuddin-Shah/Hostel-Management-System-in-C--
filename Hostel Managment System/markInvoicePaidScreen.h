@@ -35,6 +35,9 @@ void markInvoicePaidScreen() {
 				if (!hostelInstance.checkIfInvoiceExists(invoiceID)) {
 					errorPopup.showMessage("Invoice Does not Exist!!!\n     Try A different ID!!");
 				}
+				else if (hostelInstance.checkIfInvoiceIsPaid(invoiceID)) {
+					errorPopup.showMessage("Invoice Already Paid!!!");
+				}
 				else {
 					hostelInstance.updateInvoiceStatus(invoiceID, true);
 					successPopupMessage = "Invoice Updated Successfully!!";
