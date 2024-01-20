@@ -137,7 +137,6 @@
   <ItemGroup>
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="hostel.cpp" />
-    <ClCompile Include="HostelFileReader.cpp" />
     <ClCompile Include="invoice.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="room.cpp" />
@@ -169,7 +168,6 @@
     <ClInclude Include="homeScreen.h" />
     <ClInclude Include="hostel.h" />
     <ClInclude Include="hostelDetailsScreen.h" />
-    <ClInclude Include="HostelFileReader.h" />
     <ClInclude Include="invoice.h" />
     <ClInclude Include="loadingScreen.h" />
     <ClInclude Include="markInvoicePaidScreen.h" />
