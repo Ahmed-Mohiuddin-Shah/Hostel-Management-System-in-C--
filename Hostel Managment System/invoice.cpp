@@ -1,6 +1,6 @@
 #include "invoice.h"
 
-Invoice::Invoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, double amountDue, double amountAfterDue)
+Invoice::Invoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, unsigned int amountDue, unsigned int amountAfterDue)
 {
     this->invoiceID = invoiceID;
     this->studentID = studentID;
@@ -11,7 +11,7 @@ Invoice::Invoice(int invoiceID, int studentID, std::string invoiceDate, std::str
     this->amountAfterDue = amountAfterDue;
 }
 
-Invoice::Invoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, bool status, double amountDue, double amountAfterDue)
+Invoice::Invoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, bool status, unsigned int amountDue, unsigned int amountAfterDue)
 {
     this->invoiceID = invoiceID;
     this->studentID = studentID;
@@ -47,12 +47,12 @@ void Invoice::setStatus(bool status)
     this->status = status;
 }
 
-void Invoice::setAmountDue(double amountDue)
+void Invoice::setAmountDue(unsigned int amountDue)
 {
     this->amountDue = amountDue;
 }
 
-void Invoice::setAmountAfterDue(double amountAfterDue)
+void Invoice::setAmountAfterDue(unsigned int amountAfterDue)
 {
     this->amountAfterDue = amountAfterDue;
 }
@@ -82,12 +82,12 @@ bool Invoice::getStatus()
     return status;
 }
 
-double Invoice::getAmountDue()
+unsigned int Invoice::getAmountDue()
 {
     return amountDue;
 }
 
-double Invoice::getAmountAfterDue()
+unsigned int Invoice::getAmountAfterDue()
 {
     return amountAfterDue;
 }

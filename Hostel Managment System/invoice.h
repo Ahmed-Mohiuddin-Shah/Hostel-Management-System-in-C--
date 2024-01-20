@@ -8,8 +8,8 @@ private:
     std::string invoiceDate;
     std::string dueDate;
     bool status;
-    double amountDue;
-    double amountAfterDue;
+    unsigned int amountDue;
+    unsigned int amountAfterDue;
 
 public:
     enum Status
@@ -18,9 +18,9 @@ public:
         UNPAID = false
     };
 
-    Invoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, double amountDue, double amountAfterDue);
+    Invoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, unsigned int amountDue, unsigned int amountAfterDue);
 
-    Invoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, bool status, double amountDue, double amountAfterDue);
+    Invoice(int invoiceID, int studentID, std::string invoiceDate, std::string dueDate, bool status, unsigned int amountDue, unsigned int amountAfterDue);
 
     void setInvoiceID(int invoiceID);
 
@@ -32,9 +32,9 @@ public:
 
     void setStatus(bool status);
 
-    void setAmountDue(double amountDue);
+    void setAmountDue(unsigned int amountDue);
 
-    void setAmountAfterDue(double amountAfterDue);
+    void setAmountAfterDue(unsigned int amountAfterDue);
 
     int getInvoiceID();
 
@@ -46,7 +46,7 @@ public:
 
     bool getStatus();
 
-    double getAmountDue();
+    unsigned int getAmountDue();
 
-    double getAmountAfterDue();
+    unsigned int getAmountAfterDue();
 };
