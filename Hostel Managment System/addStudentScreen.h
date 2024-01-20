@@ -101,7 +101,7 @@ void addStudentScreen() {
 		// --------- Drawing GUI -----------
 		BeginDrawing();
 		ClearBackground(H_DARK_GREY);
-		drawCustomText("Add/Delete Student:", Vector2{ 90, 0 }, headings, 1, H_DARK_BLUE);
+		drawCustomBodyText("Add/Delete Student:", Vector2{ 0, 0 }, headings, 1, H_DARK_BLUE);
 		addStudentButton.draw();
 
 		deleteStudentButton.draw();

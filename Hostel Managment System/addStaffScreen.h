@@ -80,7 +80,7 @@ void addStaffScreen() {
 		// --------- Drawing GUI -----------
 		BeginDrawing();
 		ClearBackground(H_DARK_GREY);
-		drawCustomText("Add Staff:", Vector2{ 90, 10 }, headings, 1, H_DARK_BLUE);
+		drawCustomBodyText("Add Staff:", Vector2{ 0, 0 }, headings, 1, H_DARK_BLUE);
 		addStaffButton.draw();
 
 		// Draw the input boxes

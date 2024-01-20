@@ -65,7 +65,7 @@ void getSpecificInvoiceScreen()
 		DrawRectangle(0, 0, screenWidth, 270, H_DARK_GREY);
 		DrawRectangleGradientV(0, 270, screenWidth, 330, H_DARK_GREY, BLANK);
 
-		drawCustomText("Filter Invoices:", Vector2{ 90, 10 }, headings, 1, H_DARK_BLUE);
+		drawCustomBodyText("Invoices:", Vector2{ 0, 0 }, headings, 1, H_DARK_BLUE);
 		filterInvoicesButton.draw();
 		statusToggleButton.draw();
 

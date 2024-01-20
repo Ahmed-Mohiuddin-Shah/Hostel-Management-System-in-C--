@@ -111,7 +111,7 @@ void generateInvoicesScreen() {
 		// --------- Drawing GUI -----------
 		BeginDrawing();
 		ClearBackground(H_DARK_GREY);
-		drawCustomBodyText("Generate Invoice(s):", Vector2{ 0, 10 }, headings, 1, H_DARK_BLUE);
+		drawCustomBodyText("Generate Invoice(s):", Vector2{ 0, 0 }, headings, 1, H_DARK_BLUE);
 		drawCustomBodyText("Leave Empty To Generate For All Students", Vector2{ 0, 300 }, labels, 1, RED);
 		generateInvoice_s_Button.draw();
 
