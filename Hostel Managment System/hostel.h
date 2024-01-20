@@ -112,6 +112,8 @@ public:
 
     void addInvoicesForAllStudents(std::string invoiceDate, std::string dueDate, double amountDue, double amountAfterDue);
 
+    bool checkIfInvoiceExists(int invoiceID);
+
     void updateInvoiceStatus(int invoiceID, bool status);
 
     std::string getAllInvoicesTable();

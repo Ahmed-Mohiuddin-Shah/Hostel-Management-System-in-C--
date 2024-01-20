@@ -701,6 +701,18 @@ void Hostel::addInvoicesForAllStudents(std::string invoiceDate, std::string dueD
     }
 }
 
+bool Hostel::checkIfInvoiceExists(int invoiceID)
+{
+    for (auto &invoice : invoicesList)
+    {
+        if (invoice.getInvoiceID() == invoiceID)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 void Hostel::updateInvoiceStatus(int invoiceID, bool status)
 {
 
@@ -744,15 +756,15 @@ std::string Hostel::getAllInvoicesTable()
     invoiceTable.add("Amount After Due");
     invoiceTable.endOfRow();
 
-    std::sort(invoicesList.begin(), invoicesList.end(), [](Invoice a, Invoice b) {
+    std::sort(invoicesList.begin(), invoicesList.end(), [](Invoice a, Invoice b)
+              {
         // First, sort by isPaid (false comes before true)
         if (a.getStatus() != b.getStatus()) {
             return a.getStatus() < b.getStatus();
         }
 
         // If isPaid is the same, sort by invoiceID
-        return a.getInvoiceID() < b.getInvoiceID();
-        });
+        return a.getInvoiceID() < b.getInvoiceID(); });
 
     for (auto &invoice : invoicesList)
     {
