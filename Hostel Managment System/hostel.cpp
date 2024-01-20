@@ -744,6 +744,16 @@ std::string Hostel::getAllInvoicesTable()
     invoiceTable.add("Amount After Due");
     invoiceTable.endOfRow();
 
+    std::sort(invoicesList.begin(), invoicesList.end(), [](Invoice a, Invoice b) {
+        // First, sort by isPaid (false comes before true)
+        if (a.getStatus() != b.getStatus()) {
+            return a.getStatus() < b.getStatus();
+        }
+
+        // If isPaid is the same, sort by invoiceID
+        return a.getInvoiceID() < b.getInvoiceID();
+        });
+
     for (auto &invoice : invoicesList)
     {
         invoiceTable.add(std::to_string(invoice.getInvoiceID()));
