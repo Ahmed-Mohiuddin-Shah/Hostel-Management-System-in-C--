@@ -199,11 +199,13 @@ std::string Hostel::getHostelEmail()
     return hostelEmail;
 }
 
-void Hostel::setMode(int mode) {
+void Hostel::setMode(int mode)
+{
     seriousMode = mode;
 }
 
-bool Hostel::getMode() {
+bool Hostel::getMode()
+{
     return seriousMode;
 }
 
@@ -763,6 +765,18 @@ bool Hostel::checkIfInvoiceExists(int invoiceID)
         if (invoice.getInvoiceID() == invoiceID)
         {
             return true;
+        }
+    }
+    return false;
+}
+
+bool Hostel::checkIfInvoiceIsPaid(int invoiceID)
+{
+    for (auto &invoice : invoicesList)
+    {
+        if (invoice.getInvoiceID() == invoiceID)
+        {
+            return invoice.getStatus();
         }
     }
     return false;

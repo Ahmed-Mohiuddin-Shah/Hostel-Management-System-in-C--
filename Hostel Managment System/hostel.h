@@ -121,6 +121,8 @@ public:
 
     bool checkIfInvoiceExists(int invoiceID);
 
+    bool checkIfInvoiceIsPaid(int invoiceID);
+
     void updateInvoiceStatus(int invoiceID, bool status);
 
     std::string getAllInvoicesTable();
