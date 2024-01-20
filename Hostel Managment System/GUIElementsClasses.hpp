@@ -64,6 +64,17 @@ public:
     std::string getValue() const {
         return state ? value1.c_str() : value2.c_str();
     }
+
+    bool getState() {
+        return getState();
+    }
+};
+
+class GUIBooleanToggleButton : public GUIToggleButton {
+public:
+    bool getValue()  {
+        return getState();
+    }
 };
 
 class GUISideBarButton {
@@ -284,10 +295,10 @@ public:
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 300, variables::STAFF_DETAILS_SCREEN, "Staff Deets", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 340, variables::ADD_STAFF_SCREEN, "Add Staff", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 380, variables::REMOVE_STAFF_SCREEN, "Remove Staff", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 430, variables::FATAL_ERROR_SCREEN, "Generate Invoice", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 430, variables::GENERATE_INVOICES_SCREEN, "Generate Invoice", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 470, variables::DISPLAY_INVOICES_SCREEN, "Display Invoices", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::FATAL_ERROR_SCREEN, "Get Invoice", false });
-        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::FATAL_ERROR_SCREEN, "Mark Invoice Paid", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 510, variables::GET_SPECIFIC_INVOICE_SCREEN, "Get Invoice", false });
+        buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset, 550, variables::MARK_INVOICE_PAID, "Mark Invoice Paid", false });
         buttons.push_back(GUISideBarButton{ sideBarBounds.x + buttonOffset + 250, 670, variables::EXIT_SCREEN, "Exit", true });
 
         infoBoxes.push_back(Rectangle{ sideBarBounds.x + rectOffset + 60, 10, width - rectOffset - 145, 45 });
