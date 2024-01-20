@@ -440,8 +440,8 @@ public:
     }
 };
 
-class ErrorPopup {
-private:
+class Popup {
+protected:
     Rectangle bounds;
     Vector2 position;
     std::string message;
@@ -450,11 +450,19 @@ private:
     float originalDisplayTime;
     float displayTime;
     bool isVisible;
+};
+
+class ErrorPopup : private Popup{
+private:
 
 public:
-    ErrorPopup(float slideSpeed, float displayTime) : slideSpeed(slideSpeed), originalDisplayTime(displayTime), displayTime(displayTime), isVisible(false) {
-        bounds = { variables::screenWidth, 15, 320, 60 };
-        position = { variables::screenWidth, 20 };
+    ErrorPopup(float slideSpeed, float displayTime) {
+        this->slideSpeed = slideSpeed; 
+        this->originalDisplayTime = displayTime;
+        this->displayTime = displayTime;
+        this->isVisible = false;
+        this->bounds = { variables::screenWidth, 15, 320, 60 };
+        this->position = { variables::screenWidth, 20 };
     }
 
     void showMessage(const std::string& errorMessage) {
@@ -502,21 +510,17 @@ public:
     }
 };
 
-class SuccessPopup {
+class SuccessPopup : private Popup {
 private:
-    Rectangle bounds;
-    Vector2 position;
-    std::string message;
-    int messageLength = 300;
-    float slideSpeed;
-    float originalDisplayTime;
-    float displayTime;
-    bool isVisible;
 
 public:
-    SuccessPopup(float slideSpeed, float displayTime) : slideSpeed(slideSpeed), originalDisplayTime(displayTime), displayTime(displayTime), isVisible(false) {
-        bounds = { variables::screenWidth, 15, 320, 60 };
-        position = { variables::screenWidth, 20 };
+    SuccessPopup(float slideSpeed, float displayTime) {
+        this->slideSpeed = slideSpeed;
+        this->originalDisplayTime = displayTime;
+        this->displayTime = displayTime;
+        this->isVisible = false;
+        this->bounds = { variables::screenWidth, 15, 320, 60 };
+        this->position = { variables::screenWidth, 20 };
     }
 
     void showMessage(const std::string& successMessage) {
