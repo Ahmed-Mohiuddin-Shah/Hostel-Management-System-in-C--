@@ -11,6 +11,7 @@ Hostel::Hostel(std::string hostelName, std::string hostelAddress, std::string ho
     this->hostelPhoneNumber = hostelPhoneNumber;
     this->hostelEmail = hostelEmail;
     this->invoiceIDTrack = 0;
+
 }
 
 Hostel::Hostel(JSON hostelInfoJson)
@@ -529,6 +530,25 @@ bool Hostel::isRoomSpaceAvailable(int roomNumber)
     return false;
 }
 
+bool Hostel::isRoomEmpty(int roomNumber)
+{
+    for (auto &room : roomList)
+    {
+        if (room.getRoomNumber() == roomNumber)
+        {
+            if (room.getStudentCount() == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+    return false;
+}
+
 std::string Hostel::getAllRoomsTable()
 {
 
@@ -840,7 +860,7 @@ std::string Hostel::getAllInvoicesByStudentID(int studentID, bool status)
     invoiceTable.endOfRow();
 
     std::sort(invoicesList.begin(), invoicesList.end(), [](Invoice a, Invoice b)
-        {
+              {
             // First, sort by isPaid (false comes before true)
             if (a.getStatus() != b.getStatus()) {
                 return a.getStatus() < b.getStatus();
@@ -903,7 +923,7 @@ std::string Hostel::getAllInvoicesByInvoiceID(unsigned int InvoiceID)
     invoiceTable.endOfRow();
 
     std::sort(invoicesList.begin(), invoicesList.end(), [](Invoice a, Invoice b)
-        {
+              {
             // First, sort by isPaid (false comes before true)
             if (a.getStatus() != b.getStatus()) {
                 return a.getStatus() < b.getStatus();
@@ -964,7 +984,7 @@ std::string Hostel::getAllInvoicesByStatus(bool status)
     invoiceTable.endOfRow();
 
     std::sort(invoicesList.begin(), invoicesList.end(), [](Invoice a, Invoice b)
-        {
+              {
             // First, sort by isPaid (false comes before true)
             if (a.getStatus() != b.getStatus()) {
                 return a.getStatus() < b.getStatus();

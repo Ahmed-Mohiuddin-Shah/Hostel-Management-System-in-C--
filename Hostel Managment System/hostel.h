@@ -92,6 +92,8 @@ public:
 
     bool isRoomSpaceAvailable(int roomNumber);
 
+    bool isRoomEmpty(int roomNumber);
+
     std::string getAllRoomsTable();
 
     // ------------------------ Student ------------------------
