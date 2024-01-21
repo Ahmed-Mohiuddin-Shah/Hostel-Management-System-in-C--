@@ -39,9 +39,13 @@ std::string FileReader::readFromFile(std::string fileName) {
 		throw std::runtime_error("Failed To Open " + fileName);
 	}
 
-	std::string data;
+	std::string data = "";
+	std::string tempData;
 	
-	std::getline(file, data);
+	while (!file.eof()) {
+		std::getline(file, tempData);
+		data.append(tempData);
+	}
 
 	file.close();
 	return data;
