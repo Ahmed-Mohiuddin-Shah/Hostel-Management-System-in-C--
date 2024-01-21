@@ -473,6 +473,8 @@ public:
 
     void setText(std::string formattedString) {
         data = formattedString;
+        height = (countNewLineCharacters(formattedString) - 3) / 2 * variables::labelsTextHeight;
+        scrollPosition = 0;
     }
 };
 
