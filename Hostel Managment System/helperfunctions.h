@@ -73,7 +73,7 @@ bool writeHostelInfoToFile() {
 
     try
     {
-        std::string hostelInfoStringDump = hostelInstance.toJson().dump();
+        std::string hostelInfoStringDump = hostelInstance.toJson().dump(4);
         FileReader::writeToFile(ProjectInfo::fileName, hostelInfoStringDump);
         return true;
     }

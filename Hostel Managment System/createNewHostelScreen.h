@@ -34,7 +34,7 @@ namespace createHostelFuncs {
 		hostelInfoJson["rooms"] = {};
 		hostelInfoJson["invoices"] = {};
 
-		std::string hostelInfoJsonString = hostelInfoJson.dump();
+		std::string hostelInfoJsonString = hostelInfoJson.dump(4);
 
 		try
 		{
